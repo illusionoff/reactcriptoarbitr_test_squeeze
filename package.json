@@ -1,0 +1,22 @@
+{
+  "name": "frontcriptoarbitr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "ENV=dev ./node_modules/.bin/nodemon --harmony ws.js",
+    "starttest": "ENV=dev ./node_modules/.bin/nodemon --harmony app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ws.js"
+  },
+  "author": "xinming.zhang",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9"
+  },
+  "execMap": {
+    "js": "node –harmony"
+  }
+}
