@@ -15,10 +15,26 @@ const bayOrSellBith = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
 const init = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
 const timeGate = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
 const timeBith = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
+const percentBonus = [0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05];
 
-const dataY = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
+let dataY = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
+let numberY = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117];
 
-const numberY = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117];
+// имитация данных
+let dataYTimeEnd = dataY[dataY.length - 1];
+let arrMore = [];
+let count = 118;
+for (let i = 0; i < 15; i++) {
+  dataYTimeEnd += 200;
+  arrMore.push(dataYTimeEnd);
+  numberY.push(count);
+  count++;
+}
+dataY = [...dataY, ...arrMore];
+
+
+
+
 console.log('numberY[2].toString()=', typeof numberY[2].toString());
 console.log('String', 'str');
 let newDataY = dataY.map((elem, index) => {
@@ -54,69 +70,7 @@ const data = canvas => {
   const ctx = canvas.getContext('2d');
   console.log('ctx=', ctx);
   const gradient = ctx.createLinearGradient(100, 0, 100, 2);
-  // // const g = ctx.createLinearGradient(...);
-  // // const data = [{ x: 'Jan', net: 100, cogs: 50, gm: 50 }, { x: 'Feb', net: 120, cogs: 55, gm: 75 }];
-  // // const cfg = {
-  // //   type: 'bar',
-  // //   data: {
-  // //     labels: ['Jan', 'Feb'],
-  // //     datasets: [{
-  // //       label: 'Net sales',
-  // //       data: data,
-  // //       parsing: {
-  // //         yAxisKey: 'net'
-  // //       }
-  // //     }, {
-  // //       label: 'Cost of goods sold',
-  // //       data: data,
-  // //       parsing: {
-  // //         yAxisKey: 'cogs'
-  // //       }
-  // //     }, {
-  // //       label: 'Gross margin',
-  // //       data: data,
-  // //       parsing: {
-  // //         yAxisKey: 'gm'
-  // //       }
-  // //     }]
-  // //   },
-  // // };
   return {
-    //   // backgroundColor: gradient,
-    //   // labels: ['a', 'b', 'c'],
-    //   // datasets: [{
-    //   //   label: 'test label',
-    //   //   backgroundColor: ['red', 'blue', 'green'],
-    //   //   data: [100, 200, 300]
-    //   //   // ...the rest
-    //   // },
-    //   // {
-    //   //   backgroundColor: ['red',
-    //   //     'red',
-    //   //     'red'
-    //   //   ],
-    //   //   data: [150, 250, 350]
-    //   //   // ...the rest
-    //   // },
-    //   //   // {
-    //   //   //   backgroundColor: ['green',
-    //   //   //     'green',
-    //   //   //     'green'
-    //   //   //   ],
-    //   //   //   data: [{ id: 'Sales', nested: { value: 1500 } }, { id: 'Purchases', nested: { value: 500 } }],
-    //   //   //   options: {
-    //   //   //     parsing: {
-    //   //   //       xAxisKey: 'id',
-    //   //   //       yAxisKey: 'nested.value'
-    //   //   //     }
-    //   //   //   }
-    //   //   //   // ...the rest
-    //   //   // }
-    //   // ],
-    //   // options: {
-    //   //   responsive: false
-    //   // }
-
     //   // number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeBith,init
     //   // 1,0.61495762,0.61202401,0.61756266,0.6190815,-0.00553865,-0.00412388,1625823192271,1625823192373,true
     //   // 2,0.61495762,0.61202401,0.61756266,0.6190815,-0.00553865,-0.00412388,1625823192584,1625823192492,true
@@ -125,20 +79,20 @@ const data = canvas => {
     backgroundColor: gradient, // что-то никакой разницы не видно
     labels: newDataY,
     datasets: [{
-      label: 'A',
-      // yAxisID: 'A',
+      label: 'a',
+      yAxisID: 'a',
       // backgroundColor: ['red', 'red', 'red', 'red', 'red'],
       backgroundColor: 'blue',
       borderColor: 'red',
       // color: "#F7464A",
       // fillColor: "rgba(255, 187, 0, 1)",
       // color: 'blue',
-      data: [100, 96, 84, 76, 100, 96, 84, 76, 100, 96, 84, 76]
+      data: [100, 96, 84, 76, 100, 96, 84, 76, 100, 96, 84, 76, 84, 76]
     }, {
-      label: 'B',
-      // yAxisID: 'B',
+      label: 'b',
+      yAxisID: 'b',
       borderColor: 'green',
-      data: [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1]
+      data: [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1]
     }]
 
     //   labels: ["January;2015", "February;2015", "March;2015", "January;2016", "February;2016", "March;2016"],
@@ -148,66 +102,10 @@ const data = canvas => {
     //     data: [12, 19, 3, 5, 2, 3]
     //   }]
 
-
   };
 }
 
-
 const options = {
-  // scales: {
-  //   yAxes: [{
-  //     id: 'A',
-  //     type: 'linear',
-  //     // position: 'left',
-  //   }, {
-  //     id: 'B',
-  //     type: 'linear',
-  //     position: 'right',
-  //     ticks: {
-  //       max: 1,
-  //       min: 0
-  //     }
-  //   }]
-  // }
-
-  // scales: {
-  //   xAxes: [
-  //     {
-  //       id: 'xAxis1',
-  //       type: "category",
-  //       ticks: {
-  //         callback: function (label) {
-  //           var month = label.split(";")[0];
-  //           var year = label.split(";")[1];
-  //           return month;
-  //         }
-  //       }
-  //     },
-  //     {
-  //       id: 'xAxis2',
-  //       type: "category",
-  //       gridLines: {
-  //         drawOnChartArea: false, // only want the grid lines for one axis to show up
-  //       },
-  //       ticks: {
-  //         callback: function (label) {
-  //           var month = label.split(";")[0];
-  //           var year = label.split(";")[1];
-  //           if (month === "February") {
-  //             return year;
-  //           } else {
-  //             return "";
-  //           }
-  //         }
-  //       }
-  //     }],
-  //   yAxes: [{
-  //     ticks: {
-  //       beginAtZero: true
-  //     }
-  //   }]
-  // }
-
   responsive: true,
   interaction: {
     mode: 'index',
@@ -222,22 +120,27 @@ const options = {
   },
   scales: {
 
-    // y1: {
-    //   ticks: {
-    //     // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
-    //     // callback: function (val, index) {
-    //     //   // Hide the label of every 2nd dataset
-    //     //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
-    //     // },
-    //     color: 'red',
-    //   }
-    // },
+    a: {
+      type: 'linear',
+      display: true,
+      position: 'left',
+      ticks: {
+        // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+        // callback: function (val, index) {
+        //   // Hide the label of every 2nd dataset
+        //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
+        // },
+        color: 'red',
+      }
+    },
     // y: {
     //   type: 'linear',
     //   display: true,
     //   position: 'left',
     // },
-    y1: {
+
+
+    b: {
       type: 'linear',
       display: true,
       position: 'right',
@@ -248,18 +151,124 @@ const options = {
         //   // Hide the label of every 2nd dataset
         //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
         // },
-        color: 'red',
+        color: 'green',
       },
       // grid line settings
       grid: {
         drawOnChartArea: false, // only want the grid lines for one axis to show up
       },
     },
-    y2: {
+    // y2: {
+    //   type: 'linear',
+    //   display: true,
+    //   position: 'left',
+    //   // ticks: { color: 'red' },
+    //   ticks: {
+    //     // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+    //     // callback: function (val, index) {
+    //     //   // Hide the label of every 2nd dataset
+    //     //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
+    //     // },
+    //     color: 'green',
+    //   },
+    //   // grid line settings
+    //   grid: {
+    //     drawOnChartArea: false, // only want the grid lines for one axis to show up
+    //   },
+    // },
+  }
+}
+
+const data2 = canvas => {
+  // // canvas.parentNode.style.height = '1280px';
+  // // canvas.parentNode.style.width = '1280px';
+  const ctx = canvas.getContext('2d');
+  console.log('ctx=', ctx);
+  const gradient = ctx.createLinearGradient(100, 0, 100, 2);
+  return {
+    //   // number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeBith,init
+    //   // 1,0.61495762,0.61202401,0.61756266,0.6190815,-0.00553865,-0.00412388,1625823192271,1625823192373,true
+    //   // 2,0.61495762,0.61202401,0.61756266,0.6190815,-0.00553865,-0.00412388,1625823192584,1625823192492,true
+    //   // 3,0.61492768,0.61202401,0.61755264,0.6190815,-0.00552863,-0.00415382,1625823192830,1625823192492,false
+    //   // 4,0.61439874,0.61202401,0.61800354,0.6190815,-0.00597953,-0.00468276,1625823193001,1625823192492,false
+    backgroundColor: gradient, // что-то никакой разницы не видно
+    labels: newDataY,
+    datasets: [{
+      label: 'percentBonus',
+      yAxisID: 'a',
+      // backgroundColor: ['red', 'red', 'red', 'red', 'red'],
+      backgroundColor: 'blue',
+      borderColor: 'green',
+      // color: "#F7464A",
+      // fillColor: "rgba(255, 187, 0, 1)",
+      // color: 'blue',
+      data: percentBonus
+    }, {
+      label: 'bayGate',
+      yAxisID: 'b',
+      borderColor: 'blue',
+      data: [1.22034442, 1.22044442, 1.22056442, 1.23034442, 1.22184442, 1.217034442, 1.21784442, 1.22034442, 1.22034442, 1.22774442, 1.22554442, 1.22034442, 1.22034442, 1.22094442]
+    }, {
+      label: 'bayBith',
+      yAxisID: 'c',
+      borderColor: '#bbdefb',
+      data: [1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
+    }, {
+      label: 'sellGate',
+      yAxisID: 'd',
+      borderColor: 'red',
+      data: [1.25034442, 1.24954442, 1.24856442, 1.24934442, 1.24784442, 1.251034442, 1.25284442, 1.24634442, 1.24534442, 1.24874442, 1.25154442, 1.25434442, 1.25034442, 1.25294442]
+    },
+    {
+      label: 'sellBith',
+      yAxisID: 'e',
+      borderColor: '#f8bbd0',
+      data: [1.26034442, 1.25954442, 1.23856442, 1.26934442, 1.27784442, 1.261034442, 1.24284442, 1.25634442, 1.24934442, 1.23874442, 1.26154442, 1.26434442, 1.27034442, 1.26294442]
+    }
+
+    ]
+
+    //   labels: ["January;2015", "February;2015", "March;2015", "January;2016", "February;2016", "March;2016"],
+    //   datasets: [{
+    //     label: '# of Votes',
+    //     xAxisID: 'xAxis1',
+    //     data: [12, 19, 3, 5, 2, 3]
+    //   }]
+
+  };
+}
+
+const options2 = {
+  responsive: true,
+  interaction: {
+    mode: 'index',
+    intersect: false,
+  },
+  stacked: false,
+  plugins: {
+    title: {
+      display: true,
+      text: 'percentBonus'
+    }
+  },
+  scales: {
+
+    a: {
       type: 'linear',
       display: true,
       position: 'left',
-      // ticks: { color: 'red' },
+      title: {
+        display: true,
+        text: 'percentBonus',
+        color: '#191',
+        font: {
+          family: 'Times',
+          size: 20,
+          style: 'normal',
+          lineHeight: 1.2
+        },
+        padding: { top: 30, left: 0, right: 0, bottom: 0 }
+      },
       ticks: {
         // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
         // callback: function (val, index) {
@@ -273,10 +282,81 @@ const options = {
         drawOnChartArea: false, // only want the grid lines for one axis to show up
       },
     },
+    // y: {
+    //   type: 'linear',
+    //   display: true,
+    //   position: 'left',
+    // },
+
+
+    b: {
+      type: 'linear',
+      display: true,
+      position: 'right',
+      title: {
+        display: true,
+        text: 'price',
+        color: '#191',
+        font: {
+          family: 'Times',
+          size: 20,
+          style: 'normal',
+          lineHeight: 1.2
+        },
+        padding: { top: 30, left: 0, right: 0, bottom: 0 }
+      },
+      // ticks: { color: 'red' },
+      ticks: {
+        // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+        // callback: function (val, index) {
+        //   // Hide the label of every 2nd dataset
+        //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
+        // },
+        color: 'blue', //#bbdefb голубой
+        // format: new Intl.NumberFormat('en-IN', { maximumFractionDigits: 5 })
+        // precision: 5,
+      },
+      // grid line settings
+      grid: {
+        drawOnChartArea: false, // only want the grid lines for one axis to show up
+      },
+    },
+    c: {
+      type: 'linear',
+      display: false,
+      position: 'right',
+    },
+    d: {
+      type: 'linear',
+      display: false,
+      position: 'right',
+    },
+    e: {
+      type: 'linear',
+      display: false,
+      position: 'right',
+    },
+    // y2: {
+    //   type: 'linear',
+    //   display: true,
+    //   position: 'left',
+    //   // ticks: { color: 'red' },
+    //   ticks: {
+    //     // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+    //     // callback: function (val, index) {
+    //     //   // Hide the label of every 2nd dataset
+    //     //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
+    //     // },
+    //     color: 'green',
+    //   },
+    //   // grid line settings
+    //   grid: {
+    //     drawOnChartArea: false, // only want the grid lines for one axis to show up
+    //   },
+    // },
   }
-
-
 }
+
 export const Chart = () => {
   // const ref = useRef();
   return (
@@ -290,6 +370,13 @@ export const Chart = () => {
         <div>
           <canvas id="myChart"></canvas>
         </div>
+        <Line data={data2}
+          // ref={ref}
+          // width={100}
+          // height={50}
+          // options={{ maintainAspectRatio: false }}
+          options={options2}
+        />
         <Line data={data}
           // ref={ref}
           // width={100}
