@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
 const PORT = config.get('PORT') || 5000;
-
+app.use('/api/message', require('./routes/routerTest'));
 // app.use('/api/message', require('./routes/routerMessage'));
 // app.use('/', require('./routes/routerIndex')); dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 if (process.env.NODE_ENV === 'production') {
