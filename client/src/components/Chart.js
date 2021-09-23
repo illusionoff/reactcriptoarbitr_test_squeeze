@@ -70,7 +70,29 @@ let newDataY = dataY.map((elem, index) => {
   return result
 });
 console.log(newDataY);
+let newDataY2 = newDataY.map((elem) => {
+  return elem += '5';
+});
+console.log('newDataY2=', newDataY2);
+console.log('newDataY.length=', newDataY.length);
+// let colorArr2 = Array.from(Array(29), (elem, index) => {
+//   // console.log('elem=', elem);
+//   console.log('index=', index);
+//   // console.log('colorArr2[index]=', colorArr2[index]);
+//   // console.log('arr[index]=', arr[index]);
+//   return 'red'
+// });
+// console.log('colorArr2=', colorArr2);
 
+
+
+// colorArr.length = 29;
+// colorArr.fill('red');
+// console.log('colorArr=', colorArr);
+// colorArr.fill('red').map((el, i, array) => {
+//   return array[i] = i % 2 === 0 ? 'red' : 'green'
+// });
+// console.log('colorArr two =', colorArr);
 
 
 // Chart.defaults.global.legend.display = false; // eslint-disable-next-line no-unused-vars
@@ -103,7 +125,7 @@ const data = canvas => {
     //   // 3,0.61492768,0.61202401,0.61755264,0.6190815,-0.00552863,-0.00415382,1625823192830,1625823192492,false
     //   // 4,0.61439874,0.61202401,0.61800354,0.6190815,-0.00597953,-0.00468276,1625823193001,1625823192492,false
     backgroundColor: gradient, // что-то никакой разницы не видно
-    labels: newDataY,
+    // labels: newDataY, //можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
     datasets: [{
       label: 'a',
       yAxisID: 'a',
@@ -119,7 +141,20 @@ const data = canvas => {
       yAxisID: 'b',
       borderColor: 'green',
       data: [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1]
-    }]
+    },
+      // {
+      //   label: 'x',
+      //   xAxisID: 'x',
+      //   borderColor: 'green',
+      //   data: newDataY
+      // },
+      // {
+      //   label: 'x2',
+      //   xAxisID: 'x2',
+      //   borderColor: 'red',
+      //   data: newDataY2
+      // },
+    ]
 
     //   labels: ["January;2015", "February;2015", "March;2015", "January;2016", "February;2016", "March;2016"],
     //   datasets: [{
@@ -130,7 +165,9 @@ const data = canvas => {
 
   };
 }
-
+let colorArr = Array(29).fill('red').map((el, i, array) => {
+  return array[i] = i % 2 === 0 ? 'red' : 'green'
+});
 const options = {
   responsive: true,
   interaction: {
@@ -184,6 +221,51 @@ const options = {
         drawOnChartArea: false, // only want the grid lines for one axis to show up
       },
     },
+    x: {
+      position: 'bottom',
+      grid: {
+        // offset: true // offset true to get labels in between the lines instead of on the lines
+      },
+      labels: newDataY, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+      ticks: { color: colorArr }, //colorArr через одного другой цвет'green'
+    },
+    x2: {
+      position: 'top',
+      grid: {
+        // offset: true // offset true to get labels in between the lines instead of on the lines
+      },
+      labels: newDataY2,  // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+      ticks: {
+        // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
+        // callback: function (val, index) {
+        //   // Hide the label of every 2nd dataset
+        //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
+        // },
+        // callback: function (val, index) {
+        //   // Hide the label of every 2nd dataset
+        //   // return index % 2 === 0 ? this.getLabelForValue(val) : '';
+        //   // return index % 2 === 0 ? this.getLabelForValue(val) : '1';
+        //   return index % 2 === 0 ? this.getLabelForValue(val) : this.getLabelForValue(val + 1000_000)
+        // },
+        color: colorArr //colorArr через одного другой цвет'green'
+        // color: Array(29).fill('red').map((el, i, array) => {
+        //   return array[i] = i % 2 === 0 ? 'red' : 'green'
+        // }) //colorArr через одного другой цвет'green'
+      },
+    },
+    // yAxes: [{
+    //   id: 'a',
+    //   type: 'linear',
+    //   position: 'left',
+    // }, {
+    //   id: 'b',
+    //   type: 'linear',
+    //   position: 'right',
+    //   ticks: {
+    //     max: 1,
+    //     min: 0
+    //   }
+    // }]
     // y2: {
     //   type: 'linear',
     //   display: true,
@@ -237,7 +319,7 @@ const data2 = canvas => {
     }, {
       label: 'bayBith',
       yAxisID: 'c',
-      borderColor: '#bbdefb',
+      borderColor: '#bbdefb', //light blue
       data: [1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
     }, {
       label: 'sellGate',
@@ -248,7 +330,7 @@ const data2 = canvas => {
     {
       label: 'sellBith',
       yAxisID: 'e',
-      borderColor: '#f8bbd0',
+      borderColor: '#f8bbd0', //light- pink светло-розовый
       data: [1.26034442, 1.25954442, 1.23856442, 1.26934442, 1.27784442, 1.261034442, 1.24284442, 1.25634442, 1.24934442, 1.23874442, 1.26154442, 1.26434442, 1.27034442, 1.26294442]
     }
 
@@ -286,7 +368,7 @@ const options2 = {
       title: {
         display: true,
         text: 'percentBonus',
-        color: '#191',
+        color: '#191', // green
         font: {
           family: 'Times',
           size: 20,
@@ -301,7 +383,7 @@ const options2 = {
         //   // Hide the label of every 2nd dataset
         //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
         // },
-        color: 'red',
+        color: 'green',
       },
       // grid line settings
       grid: {
@@ -322,7 +404,7 @@ const options2 = {
       title: {
         display: true,
         text: 'price',
-        color: '#191',
+        color: 'red',
         font: {
           family: 'Times',
           size: 20,
