@@ -225,7 +225,7 @@ const options = {
           style: 'normal',
           lineHeight: 1.2
         },
-        padding: { top: 45, left: 0, right: 0, bottom: 0 }
+        padding: { top: 48, left: 0, right: 0, bottom: 0 }
       },
       ticks: {
         // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
@@ -235,7 +235,6 @@ const options = {
         // },
         color: 'red',
         stepSize: 2,
-
         // major: true,
         // padding: 2
       }
@@ -254,7 +253,7 @@ const options = {
       title: {
         display: true,
         text: 'price',
-        color: 'red',
+        color: 'White',
         font: {
           family: 'Times',
           size: 20,
@@ -271,7 +270,9 @@ const options = {
         //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
         // },
         color: 'green',
-        stepSize: 2
+        stepSize: 2,
+        // padding: 22
+
       },
       // grid line settings
       grid: {
