@@ -1,5 +1,9 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+
+
+const FONT_AXIS = { size: 16, style: 'italic' };
+const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 // import { parseCSV } from '../functions/functions';
 // import fs from "fs";
 // import parse from 'csv-parse';
@@ -155,7 +159,7 @@ const data = canvas => {
       label: 'bayOrSellGate',
       yAxisID: 'a',
       // backgroundColor: ['red', 'red', 'red', 'red', 'red'],
-      backgroundColor: 'blue',
+      // backgroundColor: 'blue',
       borderColor: 'red',
       // color: "#F7464A",
       // fillColor: "rgba(255, 187, 0, 1)",
@@ -205,7 +209,8 @@ const options = {
   plugins: {
     title: {
       display: true,
-      text: 'Chart.js Line Chart - Multi Axis'
+      text: 'Boolean and times diagram',
+      font: FONT_TITLE_CHART
     }
   },
   // maintainAspectRatio: false,
@@ -285,7 +290,7 @@ const options = {
         display: true,
         text: 'timeBith',
         color: 'red',
-        font: { size: 24 }
+        font: FONT_AXIS
       },
       grid: {
         // offset: true // offset true to get labels in between the lines instead of on the lines
@@ -299,7 +304,7 @@ const options = {
         display: true,
         text: 'timeGate',
         color: 'green',
-        font: { size: 24 }
+        font: FONT_AXIS
       },
       grid: {
         // offset: true // offset true to get labels in between the lines instead of on the lines
@@ -370,7 +375,7 @@ const data2 = canvas => {
     //   // 3,0.61492768,0.61202401,0.61755264,0.6190815,-0.00552863,-0.00415382,1625823192830,1625823192492,false
     //   // 4,0.61439874,0.61202401,0.61800354,0.6190815,-0.00597953,-0.00468276,1625823193001,1625823192492,false
     backgroundColor: gradient, // что-то никакой разницы не видно
-    labels: newDataY,
+    // labels: newDataY,
     datasets: [{
       label: 'percentBonus',
       yAxisID: 'a',
@@ -426,7 +431,9 @@ const options2 = {
   plugins: {
     title: {
       display: true,
-      text: 'percentBonus'
+      text: 'Quotation price diagram',
+      font: FONT_TITLE_CHART
+
     }
   },
   scales: {
@@ -514,6 +521,20 @@ const options2 = {
       display: false,
       position: 'right',
     },
+    x: {
+      position: 'bottom',
+      title: {
+        display: true,
+        text: 'timeServer',
+        color: 'blue',
+        font: FONT_AXIS
+      },
+      grid: {
+        // offset: true // offset true to get labels in between the lines instead of on the lines
+      },
+      labels: newDataY, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+      ticks: { color: colorArr }, //colorArr через одного другой цвет'green'
+    },
     // y2: {
     //   type: 'linear',
     //   display: true,
@@ -555,6 +576,7 @@ export const Chart = () => {
           // options={{ maintainAspectRatio: false }}
           options={options2}
         />
+        <hr width="85%" />
         <Line data={data}
           // ref={ref}
           // width={100}
