@@ -50,14 +50,39 @@ let numberY = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 
 let dataYTimeEnd = dataY[dataY.length - 1];
 let arrMore = [];
 let count = 118;
+let bayOrSellGateFull = [...bayOrSellGate];
+let bayOrSellBithFull = [...bayOrSellBith];
+
 for (let i = 0; i < 15; i++) {
   dataYTimeEnd += 200;
   arrMore.push(dataYTimeEnd);
   numberY.push(count);
   count++;
-}
-dataY = [...dataY, ...arrMore];
 
+  bayOrSellGateFull.push(getRandomIntInclusive(0, 1));
+  bayOrSellBithFull.push(getRandomIntInclusive(0, 1));
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+}
+
+dataY = [...dataY, ...arrMore];
+// bayOrSellGateFull.map((el, i, array) => {
+//   // return array[i] = i % 2 === 0 ? '#566573' : 'green'
+//   console.log('el[i]=', el[i]);
+//   console.log('array[i]=', array[i]);
+//   return array[i] = array[i] === 0 ? 1000 : 0
+// });
+// bayOrSellBithFull.map((el, i, array) => {
+//   // return array[i] = i % 2 === 0 ? '#566573' : 'green'
+//   console.log('el[i]=', el[i]);
+//   console.log('array[i]=', array[i]);
+//   return array[i] = array[i] === 0 ? 10000 : 0
+// });
+console.log('bayOrSellGateFull=', bayOrSellGateFull);
 
 
 
@@ -127,7 +152,7 @@ const data = canvas => {
     backgroundColor: gradient, // что-то никакой разницы не видно
     // labels: newDataY, //можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
     datasets: [{
-      label: 'a',
+      label: 'bayOrSellGate',
       yAxisID: 'a',
       // backgroundColor: ['red', 'red', 'red', 'red', 'red'],
       backgroundColor: 'blue',
@@ -135,12 +160,12 @@ const data = canvas => {
       // color: "#F7464A",
       // fillColor: "rgba(255, 187, 0, 1)",
       // color: 'blue',
-      data: [100, 96, 84, 76, 100, 96, 84, 76, 100, 96, 84, 76, 84, 76]
+      data: bayOrSellGateFull
     }, {
-      label: 'b',
+      label: 'bayOrSellBith',
       yAxisID: 'b',
       borderColor: 'green',
-      data: [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1]
+      data: bayOrSellBithFull
     },
       // {
       //   label: 'x',
@@ -165,9 +190,11 @@ const data = canvas => {
 
   };
 }
+
 let colorArr = Array(29).fill('red').map((el, i, array) => {
-  return array[i] = i % 2 === 0 ? 'red' : 'green'
+  return array[i] = i % 2 === 0 ? '#566573' : 'green'
 });
+
 const options = {
   responsive: true,
   interaction: {
@@ -181,12 +208,25 @@ const options = {
       text: 'Chart.js Line Chart - Multi Axis'
     }
   },
+  // maintainAspectRatio: false,
   scales: {
 
     a: {
       type: 'linear',
       display: true,
       position: 'left',
+      title: {
+        display: true,
+        text: 'false/true',
+        color: '#191', // green
+        font: {
+          family: 'Times',
+          size: 20,
+          style: 'normal',
+          lineHeight: 1.2
+        },
+        padding: { top: 45, left: 0, right: 0, bottom: 0 }
+      },
       ticks: {
         // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
         // callback: function (val, index) {
@@ -194,6 +234,10 @@ const options = {
         //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
         // },
         color: 'red',
+        stepSize: 2,
+
+        // major: true,
+        // padding: 2
       }
     },
     // y: {
@@ -207,6 +251,18 @@ const options = {
       type: 'linear',
       display: true,
       position: 'right',
+      title: {
+        display: true,
+        text: 'price',
+        color: 'red',
+        font: {
+          family: 'Times',
+          size: 20,
+          style: 'normal',
+          lineHeight: 1.2
+        },
+        padding: { top: 50, left: 0, right: 0, bottom: 0 }
+      },
       // ticks: { color: 'red' },
       ticks: {
         // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
@@ -215,6 +271,7 @@ const options = {
         //   return index % 2 === 0 ? this.getLabelForValue(val) : '';
         // },
         color: 'green',
+        stepSize: 2
       },
       // grid line settings
       grid: {
@@ -223,6 +280,12 @@ const options = {
     },
     x: {
       position: 'bottom',
+      title: {
+        display: true,
+        text: 'timeBith',
+        color: 'red',
+        font: { size: 24 }
+      },
       grid: {
         // offset: true // offset true to get labels in between the lines instead of on the lines
       },
@@ -231,6 +294,12 @@ const options = {
     },
     x2: {
       position: 'top',
+      title: {
+        display: true,
+        text: 'timeGate',
+        color: 'green',
+        font: { size: 24 }
+      },
       grid: {
         // offset: true // offset true to get labels in between the lines instead of on the lines
       },
@@ -488,7 +557,7 @@ export const Chart = () => {
         <Line data={data}
           // ref={ref}
           // width={100}
-          // height={50}
+          height={100}
           // options={{ maintainAspectRatio: false }}
           options={options}
         />
