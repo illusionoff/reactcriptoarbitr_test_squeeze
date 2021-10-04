@@ -53,8 +53,34 @@ export const LoadCSV = () => {
   //       })
   //   }
   // }
+  const [mounted, setMounted] = useState(true);
+  const toggle = () => setMounted(!mounted);
+  function ListItem(props) {
+    // Правильно! Не нужно определять здесь ключ:
+    return <li>{props.value}</li>;
+  }
 
-  const SampleComponent = () => {
+  function NumberList(props) {
+    const numbers = props.numbers;
+    const listItems = numbers.map((number) =>
+      // Правильно! Ключ нужно определять внутри массива:
+      <ListItem key={number.toString()} value={number} />
+    );
+    return (
+      <ul>
+        {listItems}
+      </ul>
+    );
+  }
+
+  const numbers = [1, 2, 3, 4, 5, 6];
+
+
+  const getRandomColor = () => {
+    return "#" + Math.random().toString(16).slice(2, 8);
+  }
+
+  const FirstLoadNamesCsv = () => {
     useEffect(() => {
       // код для запуска при монтировании компонента
       // fetch('http://localhost:3000/data/newsData.json')
@@ -65,14 +91,33 @@ export const LoadCSV = () => {
       //     console.log(this)
       //     console.log('приехали данные ', data)
       //   })
+      document.body.style.backgroundColor = getRandomColor();
+
+      // let componentList = [
+      //   <SampleComponent name="SomeName1" />,
+      //   <SampleComponent name="SomeName2" />
+      // ];
       getNamesCSV();
+
     }, [])
-    return (<div> foo </div>)
+    // return (<div> foo </div>)
+    return (
+      <>
+        <ul>
+          <li>10</li>
+          <li>11</li>
+        </ul>
+      </>)
+    // return (
+    //   <section id="NumberList">
+    //     <NumberList numbers={numbers} />
+    //   </section>)
   }
-  SampleComponent();
+  FirstLoadNamesCsv();
 
   return (
     <>
+      {/* {mounted && <FirstLoadNamesCsv />} */}
       <div>
         <h3 className="page-title white-text">Load CSV files</h3>
         <div className="container">
@@ -105,7 +150,9 @@ export const LoadCSV = () => {
 
 
       </div>
-
+      {/* <section id="SampleComponent" className="full-height">
+          <SampleComponent />
+        </section > */}
     </>
   )
 }
