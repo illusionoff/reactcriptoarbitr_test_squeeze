@@ -30,6 +30,15 @@ export const WriteMe = () => {
     } catch (e) { }
   }
 
+  const getCSV = async () => {
+    try {
+      const data = await request('/api/message/getcsv', 'POST', { ...form });
+      messageRequest(data.message);
+      console.log('getCSV')
+      console.log('Data:', data);
+    } catch (e) { }
+  }
+
   return (
     <>
       <div>
@@ -124,6 +133,16 @@ export const WriteMe = () => {
                         <p>Footer</p>
                     </div> */}
         </div>
+        <div className="card-action">
+          <button
+            // className="btn yellow darken-4"
+            className="btn cyan darken-1"
+            onClick={getCSV}
+            disabled={loading}
+          >CSV
+          </button>
+        </div>
+
       </div>
 
     </>
