@@ -135,7 +135,15 @@ router.post('/getcsv',
         // console.log('length=', length); // 15
         return dataObj//records
       }
-
+      // List files working true
+      // const testFolder = './tests/';./testCSV/
+      const testFolder = './testCSV/';
+      fs.readdir(testFolder, (err, files) => {
+        files.forEach(file => {
+          console.log(file);
+        });
+      });
+      //
       processFile()
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
