@@ -3,6 +3,7 @@ import { Chart } from './components/Chart';
 import { WriteMe } from './components/WriteMe';
 // import logo from './logo.svg';
 // import './App.css';
+import { LoadCSV } from './components/LoadCSV';
 
 
 function ListItem(props) {
@@ -50,6 +51,9 @@ function App() {
         </section>
         <section id="WriteMe" className="full-height">
           <WriteMe />
+        </section >
+        <section id="LoadCSV" className="full-height">
+          <LoadCSV />
         </section >
         <section id="chart">
           <Chart />
