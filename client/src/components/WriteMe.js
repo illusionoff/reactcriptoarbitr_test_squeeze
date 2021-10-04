@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHttp } from '../hooks/http.hook';
 import { useMessage } from '../hooks/message.hook';
 
+//
+// import ReactDOM from 'react-dom';
+
 export const WriteMe = () => {
   const messageRequest = useMessage();
   const { loading, error, request, clearError } = useHttp(); //error
@@ -34,10 +37,23 @@ export const WriteMe = () => {
     try {
       const data = await request('/api/message/getcsv', 'POST', { ...form });
       messageRequest(data.message);
-      console.log('getCSV')
+      console.log('getCSV');
       console.log('Data:', data);
     } catch (e) { }
   }
+
+  const getNamesCSV = async () => {
+    try {
+      const data = await request('/api/message/getdircsv', 'POST', { ...form });
+      messageRequest(data.message);
+      console.log('getdircsv')
+      console.log('Data:', data);
+    } catch (e) { }
+  }
+
+  // getNamesCSV();
+
+
 
   return (
     <>
@@ -65,26 +81,6 @@ export const WriteMe = () => {
                   />
                   <label htmlFor="name">Ваше имя:</label>
                   <span className="helper-text" data-error="Имя меньше трех символов"></span>
-                </div>
-
-                <div className="input-field">
-                  <textarea
-                    placeholder="Введите Сообщение"
-                    id="message"
-                    type="text"
-                    name="message"
-                    className=" yellow-input materialize-textarea validate"
-                    minLength="3"
-                    // pattern=".{3,500}"
-                    // title="5 to 10 characters"
-                    maxLength="1000"
-                    data-length="1000"
-                    required
-                    value={form.message}
-                    onChange={changeHandler}
-                  />
-                  <label htmlFor="message" >Ваше сообщение:</label>
-                  <span className="helper-text" data-error="Сообщение больше 1000 символов"></span>
                 </div>
 
               </div>
@@ -141,6 +137,34 @@ export const WriteMe = () => {
             disabled={loading}
           >CSV
           </button>
+        </div>
+
+        <div className="card-action">
+          <button
+            // className="btn yellow darken-4"
+            className="btn cyan darken-1"
+            onClick={getNamesCSV}
+            disabled={loading}
+          >getNamesCSV
+          </button>
+        </div>
+
+        <div className="input-field">
+          <textarea
+            placeholder="Введите Сообщение"
+            id="message"
+            type="text"
+            name="message"
+            className=" yellow-input materialize-textarea validate"
+            minLength="3"
+            maxLength="1000"
+            data-length="1000"
+            required
+            value={form.message}
+            onChange={changeHandler}
+          />
+          <label htmlFor="message" >Ваше сообщение:</label>
+          <span className="helper-text" data-error="Сообщение больше 1000 символов"></span>
         </div>
 
       </div>

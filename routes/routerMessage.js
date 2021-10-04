@@ -165,5 +165,40 @@ router.post('/getcsv',
     }
   });
 
+router.post('/getdircsv',
+  [], async function (req, res) {
+    try {
+
+      // return res.status(400).json({ message: 'Некорректный данные чтения имен файлов' })
+
+      // !!! использовал раньше "res.json(await quotes.getMultiple(name, message))" что вызывало ошибку, потому что уже res дали ответ и пытаюсь получается повторно отсылаю ответ браузеру
+
+      // List files working true
+      // const testFolder = './tests/';./testCSV/
+      const testFolder = './testCSV/';
+      let namesFiles = [];
+      fs.readdir(testFolder, (err, files) => {
+        files.forEach(file => {
+          namesFiles.push(file);
+          console.log(file);
+        });
+        res.status(201).json({ namesfiles: namesFiles });
+
+      });
+      //
+
+
+      // res.status(201).json({ message: 'read dir CSV files folder' });
+      // res.status(201).json({ message: 'read dir CSV files folder' });
+
+
+    } catch (err) {
+      // Упростить вывод ошибок при подготовке  prodaction ( лишняя информация для пользователя)
+      console.error(`Error while getting quotes `, err.message);
+      // res.status(err.statusCode || 500).json({ 'message': err.message || 'Что-то пошло не так, попробуйте снова' });
+      res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' });
+    }
+  });
+
 
 module.exports = router;
