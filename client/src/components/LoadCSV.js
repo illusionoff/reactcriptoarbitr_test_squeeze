@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useHttp } from '../hooks/http.hook';
-import { useMessage } from '../hooks/message.hook';
+// import { useHttp } from '../hooks/http.hook';
+// import { useMessage } from '../hooks/message.hook';
 
 //
 // import ReactDOM from 'react-dom';
 
 export const LoadCSV = () => {
   // const messageRequest = useMessage();
-  const { loading, error, request, clearError } = useHttp(); //error
+  // const { loading, error, request, clearError } = useHttp(); //error
   // const [form, setForm] = useState({
   //   name: "", message: ""
   // });
@@ -61,8 +61,6 @@ export const LoadCSV = () => {
   //       })
   //   }
   // }
-  const [mounted, setMounted] = useState(true);
-  const toggle = () => setMounted(!mounted);
   function ListItem(props) {
     // Правильно! Не нужно определять здесь ключ:
     return <li>{props.value}</li>;
@@ -81,7 +79,7 @@ export const LoadCSV = () => {
     );
   }
 
-  const numbers = [1, 2, 3, 4, 5, 6];
+  // const numbers = [1, 2, 3, 4, 5, 6];
 
 
   const getRandomColor = () => {
@@ -203,12 +201,23 @@ export const LoadCSV = () => {
     // if (numbers.namesfiles) {
     //   console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
     // }
-    return (
-      // <p>Countries: {countries.length}</p>
-      <div>Countries: {countries.namesfiles}</div>
-      // <div>Countries: {countries.namesfiles.lenght}</div>
 
-    )
+    if (Array.isArray(countries.namesfiles)) {
+      // console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
+      return (
+        <div>Countries: {countries.namesfiles[2]}</div>
+      )
+    } else {
+      return (
+        <div>Countries: {countries}</div>
+      )
+    }
+    // return (
+    //   // <p>Countries: {countries.length}</p>
+    //   <div>Countries: {countries.namesfiles}</div>
+    //   // <div>Countries: {countries.namesfiles.lenght}</div>
+
+    // )
 
   };
 
@@ -231,7 +240,7 @@ export const LoadCSV = () => {
             // className="btn yellow darken-4"
             className="btn cyan darken-1"
             onClick={getCSV}
-            disabled={loading}
+          // disabled={loading}
           >CSV
           </button>
         </div>
@@ -241,7 +250,7 @@ export const LoadCSV = () => {
             // className="btn yellow darken-4"
             className="btn cyan darken-1"
             onClick={getNamesCSV}
-            disabled={loading}
+          // disabled={loading}
           >getNamesCSV
           </button>
         </div>
