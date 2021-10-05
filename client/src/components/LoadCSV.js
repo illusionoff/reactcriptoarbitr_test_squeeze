@@ -194,10 +194,18 @@ export const LoadCSV = () => {
     console.log('countries=', countries);
 
     // Display data
+    console.log('typeof countries.namesfiles=', typeof countries.namesfiles);
+    console.log('countries.namesfiles=', countries.namesfiles);
+    if (numbers.namesfileslength) {
+      console.log('countries.namesfiles[2]=', countries.namesfiles[2]);
+    }
     return (
       // <p>Countries: {countries.length}</p>
       <div>Countries: {countries.namesfiles}</div>
-    );
+      // <div>Countries: {countries.namesfiles.lenght}</div>
+
+    )
+
   };
 
 
