@@ -24,19 +24,27 @@ export const LoadCSV = () => {
 
   const getCSV = async () => {
     try {
-      const data = await request('/api/message/getcsv', 'POST');
+      // const data = await request('/api/message/getcsv', 'POST');
+      postData('http://localhost:3006/api/message/getcsv', {})
+        .then((data) => {
+          console.log(data); // JSON data parsed by `response.json()` call
+        });
       // messageRequest(data.message);
-      console.log('getCSV');
-      console.log('Data:', data);
+      // console.log('getCSV');
+      // console.log('Data:', data);
     } catch (e) { }
   }
 
   const getNamesCSV = async () => {
     try {
-      const data = await request('/api/message/getdircsv', 'POST');
+      // const data = await request('/api/message/getdircsv', 'POST');
+      postData('http://localhost:3006/api/message/getdircsv', {})
+        .then((data) => {
+          console.log(data); // JSON data parsed by `response.json()` call
+        });
       // messageRequest(data.message);
-      console.log('getdircsv')
-      console.log('Data:', data);
+      // console.log('getdircsv')
+      // console.log('Data:', data);
     } catch (e) { }
   }
 
@@ -80,7 +88,30 @@ export const LoadCSV = () => {
     return "#" + Math.random().toString(16).slice(2, 8);
   }
 
+  async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    return await response.json(); // parses JSON response into native JavaScript objects
+  }
+
+
+
+
   const FirstLoadNamesCsv = () => {
+    // const [count, setCount] = useState(0);
+    // const [appointments, setAppointments] = useState([]);
     useEffect(() => {
       // код для запуска при монтировании компонента
       // fetch('http://localhost:3000/data/newsData.json')
@@ -97,23 +128,38 @@ export const LoadCSV = () => {
       //   <SampleComponent name="SomeName1" />,
       //   <SampleComponent name="SomeName2" />
       // ];
-      getNamesCSV();
+      document.title = `Вы нажали  раз`;
+
+      postData('http://localhost:3006/api/message/getdircsv', {})
+        .then((data) => {
+          console.log(data); // JSON data parsed by `response.json()` call
+        });
+      // fetch('./data.json')
+      // .then(response => response.json())
+      // .then(result => {
+      //   console.log('getdircsv')
+      //   console.log('Data:', data);
+
+      // });
+      // getNamesCSV();
 
     }, [])
     // return (<div> foo </div>)
+    // let dataNames = ['dfdsf', 'weqewqe', 'kjkjk'];
     return (
       <>
         <ul>
           <li>10</li>
           <li>11</li>
         </ul>
+        {/* <NumberList numbers={dataNames} /> */}
       </>)
     // return (
     //   <section id="NumberList">
     //     <NumberList numbers={numbers} />
     //   </section>)
   }
-  FirstLoadNamesCsv();
+  // FirstLoadNamesCsv();
 
   return (
     <>
@@ -153,6 +199,9 @@ export const LoadCSV = () => {
       {/* <section id="SampleComponent" className="full-height">
           <SampleComponent />
         </section > */}
+      <section id="FirstLoadNamesCsv" className="full-height">
+        <FirstLoadNamesCsv />
+      </section >
     </>
   )
 }
