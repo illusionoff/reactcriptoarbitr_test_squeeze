@@ -65,7 +65,7 @@ export const LoadCSV = () => {
   // }
   function ListItem(props) {
     // Правильно! Не нужно определять здесь ключ:
-    return <li>{props.value}</li>
+    return <li>{props.value}</li>;
   }
 
   function NumberList(props) {
@@ -78,40 +78,9 @@ export const LoadCSV = () => {
       <ul>
         {listItems}
       </ul>
-    )
+    );
   }
 
-
-  // <select name="user_profile_color_1">
-  //   <option value="1">Синий</option>
-  //   <option value="2">Зеленый</option>
-  //   <option value="3">Желтый</option>
-  //   <option value="4">Красный</option>
-  //   <option value="5">Оранжевый</option>
-  //   <option value="6">Черный</option>
-  // </select>
-
-  function ListSelect(props) {
-    // Правильно! Не нужно определять здесь ключ:
-    // return <li>{props.value}</li>;
-    return <option value={props.number}>{props.value}</option>
-  }
-
-  function NumberListSelect(props) {
-    const values = props.values;
-    let count = 0;
-    const listItems = values.map((value) => {
-      // Правильно! Ключ нужно определять внутри массива:
-      <ListSelect key={value.toString()} value={value} number={count} />
-      count++;
-      console.log('count=', count);
-    });
-    return (
-      <select name="user_profile_color_2">
-        {listItems}
-      </select>
-    )
-  }
   // const numbers = [1, 2, 3, 4, 5, 6];
 
 
@@ -139,15 +108,85 @@ export const LoadCSV = () => {
 
 
 
+
+  const FirstLoadNamesCsv = () => {
+    // const [count, setCount] = useState(0);
+    // const [appointments, setAppointments] = useState([]);
+    useEffect(() => {
+      // код для запуска при монтировании компонента
+      // fetch('http://localhost:3000/data/newsData.json')
+      //   .then(response => {
+      //     return response.json()
+      //   })
+      //   .then(data => {
+      //     console.log(this)
+      //     console.log('приехали данные ', data)
+      //   })
+      document.body.style.backgroundColor = getRandomColor();
+
+      // let componentList = [
+      //   <SampleComponent name="SomeName1" />,
+      //   <SampleComponent name="SomeName2" />
+      // ];
+      document.title = `Вы нажали  раз`;
+
+      postData('http://localhost:3006/api/message/getdircsv', {})
+        .then((data) => {
+          console.log(data); // JSON data parsed by `response.json()` call
+        });
+      // fetch('./data.json')
+      // .then(response => response.json())
+      // .then(result => {
+      //   console.log('getdircsv')
+      //   console.log('Data:', data);
+
+      // });
+      // getNamesCSV();
+
+    }, [])
+    // return (<div> foo </div>)
+    // let dataNames = ['dfdsf', 'weqewqe', 'kjkjk'];
+    return (
+      <>
+        <ul>
+          <li>10</li>
+          <li>11</li>
+        </ul>
+        {/* <NumberList numbers={dataNames} /> */}
+      </>)
+    // return (
+    //   <section id="NumberList">
+    //     <NumberList numbers={numbers} />
+    //   </section>)
+  }
+  // FirstLoadNamesCsv();
+
+  // const [countries, setCountries] = useState([])
+
+  // const hook = () => {
+  //   postData('http://localhost:3006/api/message/getdircsv', {})
+  //     .then((response) => {
+  //       setCountries(response)
+  //     });
+  // }
+
+  // useEffect(hook, [])
+
+  // if (countries.length) {
+  //   console.log(countries[1].name)
+  // }
+
   const MyComponent = () => {
 
     // initialise countries: []
     const [countries, setCountries] = useState([])
 
     const hook = () => {
+      // postData('http://localhost:3006/api/message/getdircsv', {})
       postData('/api/message/getdircsv', {})
         .then((response) => {
           setCountries(response);
+          // setTimeout(() => setCountries(response), 5000);
         });
     }
 
@@ -162,12 +201,15 @@ export const LoadCSV = () => {
     if (Array.isArray(countries.namesfiles)) {
       console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
     }
+    // if (numbers.namesfiles) {
+    //   console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
+    // }
 
     if (Array.isArray(countries.namesfiles)) {
+      // console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
       return (
         // <div>Countries: {countries.namesfiles[2]}</div>
         <div><NumberList numbers={countries.namesfiles} />
-          <NumberListSelect values={countries.namesfiles} />
           <select name="user_profile_color_1">
             <option value="1">Синий</option>
             <option value="2">Зеленый</option>
