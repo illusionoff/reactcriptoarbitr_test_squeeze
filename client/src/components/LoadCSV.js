@@ -205,7 +205,8 @@ export const LoadCSV = () => {
     if (Array.isArray(countries.namesfiles)) {
       // console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
       return (
-        <div>Countries: {countries.namesfiles[2]}</div>
+        // <div>Countries: {countries.namesfiles[2]}</div>
+        <div><NumberList numbers={countries.namesfiles} /></div>
       )
     } else {
       return (
