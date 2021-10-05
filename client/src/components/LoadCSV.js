@@ -161,6 +161,46 @@ export const LoadCSV = () => {
   }
   // FirstLoadNamesCsv();
 
+  // const [countries, setCountries] = useState([])
+
+  // const hook = () => {
+  //   postData('http://localhost:3006/api/message/getdircsv', {})
+  //     .then((response) => {
+  //       setCountries(response)
+  //     });
+  // }
+
+  // useEffect(hook, [])
+
+  // if (countries.length) {
+  //   console.log(countries[1].name)
+  // }
+
+  const MyComponent = () => {
+
+    // initialise countries: []
+    const [countries, setCountries] = useState([])
+
+    const hook = () => {
+      postData('http://localhost:3006/api/message/getdircsv', {})
+        .then((response) => {
+          setCountries(response);
+          // setTimeout(() => setCountries(response), 5000);
+        });
+    }
+
+    // Tell react to run useEffect once the component is loaded
+    useEffect(hook, []);
+    console.log('countries=', countries);
+
+    // Display data
+    return (
+      // <p>Countries: {countries.length}</p>
+      <div>Countries: {countries.namesfiles}</div>
+    );
+  };
+
+
   return (
     <>
       {/* {mounted && <FirstLoadNamesCsv />} */}
@@ -199,9 +239,10 @@ export const LoadCSV = () => {
       {/* <section id="SampleComponent" className="full-height">
           <SampleComponent />
         </section > */}
-      <section id="FirstLoadNamesCsv" className="full-height">
+      {/* <section id="FirstLoadNamesCsv" className="full-height">
         <FirstLoadNamesCsv />
-      </section >
+      </section > */}
+      <MyComponent />
     </>
   )
 }
