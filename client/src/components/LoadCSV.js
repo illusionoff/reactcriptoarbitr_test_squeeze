@@ -146,7 +146,6 @@ export const LoadCSV = () => {
     }
     else {
       return (
-        // <div>files: {files}</div>
         <div>loading download files ...</div>
       )
     }
