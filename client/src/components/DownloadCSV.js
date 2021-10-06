@@ -153,7 +153,29 @@ export const DownloadCSV = () => {
   };
 
   return (
-    <ViewListSelect />
+    <>
+      <h3 className="page-title white-text">DownloadCSV</h3>
+      <div className="card-action">
+        <button
+          // className="btn yellow darken-4"
+          className="btn cyan darken-1"
+          onClick={getNamesCSV}
+        // disabled={loading}
+        >getNamesCSV
+          </button>
+      </div>
+
+      <div className="card-action">
+        <button
+          // className="btn yellow darken-4"
+          className="btn cyan darken-1"
+          onClick={getCSV}
+        // disabled={loading}
+        >getCSV
+          </button>
+      </div>
+      <ViewListSelect />
+    </>
   )
 
 }
