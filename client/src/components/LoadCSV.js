@@ -99,12 +99,13 @@ export const LoadCSV = () => {
 
   function NumberListSelect(props) {
     const values = props.values;
-    let count = 0;
+    // console.log('values=', values);
+    let count = -1;
     const listItems = values.map((value) => {
       // Правильно! Ключ нужно определять внутри массива:
-      <ListSelect key={value.toString()} value={value} number={count} />
       count++;
       console.log('count=', count);
+      return <ListSelect key={value.toString()} value={value} number={count} />
     });
     return (
       <select name="user_profile_color_2">
@@ -164,10 +165,13 @@ export const LoadCSV = () => {
     }
 
     if (Array.isArray(countries.namesfiles)) {
+      // const listSelectData = ['1 listSelectData', '2 listSelectData', '3 listSelectData'];
+      // console.log('listSelectData=', listSelectData);
       return (
         // <div>Countries: {countries.namesfiles[2]}</div>
         <div><NumberList numbers={countries.namesfiles} />
           <NumberListSelect values={countries.namesfiles} />
+          {/* <NumberListSelect values={listSelectData} /> */}
           <select name="user_profile_color_1">
             <option value="1">Синий</option>
             <option value="2">Зеленый</option>
