@@ -112,28 +112,30 @@ export const LoadCSV = () => {
 
 
   const MyComponent = () => {
-    const [countries, setCountries] = useState([]);
+    const [files, setfiles] = useState([]);
 
     const hook = () => {
       postData('/api/message/getdircsv', {})
         .then((response) => {
-          setCountries(response);
+          setfiles(response);
         });
     }
     // Tell react to run useEffect once the component is loaded
     useEffect(hook, []);
-    console.log('countries=', countries);
-    console.log('countries.namesfiles=', countries.namesfiles);
-    if (Array.isArray(countries.namesfiles)) {
-      console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
+    console.log('files=', files);
+    console.log('files.namesfiles=', files.namesfiles);
+    if (Array.isArray(files.namesfiles)) {
+      console.log('files.namesfiles.length-----=', files.namesfiles.length);
       return (
         <div>
-          <NumberListSelect values={countries.namesfiles} />
+          <NumberListSelect values={files.namesfiles} />
         </div>
       )
-    } else {
+    }
+    else {
       return (
-        <div>Countries: {countries}</div>
+        // <div>files: {files}</div>
+        <div>loading download files ...</div>
       )
     }
   };
