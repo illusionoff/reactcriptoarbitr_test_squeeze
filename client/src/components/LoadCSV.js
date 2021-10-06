@@ -72,6 +72,16 @@ export const LoadCSV = () => {
     }
 
     const handleSubmit = (event) => {
+      const getNamesCSV = async () => {
+        try {
+          // postData('/api/message/loadfile', { name: 'test download file' })
+          postData('/api/message/loadfile', { name: state.value })
+            .then((data) => {
+              console.log(data); // JSON data parsed by `response.json()` call
+            });
+        } catch (e) { }
+      }
+      getNamesCSV();
       alert('Ваш любимый вкус: ' + state.value);
       event.preventDefault();
     }
@@ -86,6 +96,7 @@ export const LoadCSV = () => {
       </form>
     )
   }
+
 
   // const getRandomColor = () => {
   //   return "#" + Math.random().toString(16).slice(2, 8);
