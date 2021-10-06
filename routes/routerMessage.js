@@ -7,7 +7,7 @@ const fetch = require('node-fetch');
 
 const fs = require("fs");
 const parse = require('csv-parse');
-const CSVFilePath = "./testCSV/test2_profit_651_1631860141152.csv";// путь берется от места вызова -> app.js
+// const CSVFilePath = "./testCSV/test2_profit_651_1631860141152.csv";// путь берется от места вызова -> app.js
 
 
 //
@@ -65,7 +65,7 @@ router.post('/',
   });
 
 
-const processFile = async () => {
+const processFile = async (CSVFilePath) => {
   let count = 0;
   dataObj = { number: [], bayGate: [], bayBith: [], sellGate: [], sellBith: [], diffSell: [], diffBay: [], timeServer: [], timeGate: [], timeBith: [], percentBonus: [], bayOrSellGate: [], bayOrSellBith: [], init: [] };
   records = [];
@@ -149,7 +149,7 @@ router.post('/getcsv',
       // });
       //
 
-      processFile()
+      processFile("./testCSV/test2_profit_651_1631860141152.csv")
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
         // .then((dataObj) => { console.log('dataObj=', dataObj) })
@@ -243,7 +243,7 @@ router.post('/loadfile',
       console.log('routerMessage name', name);
       // console.log('routerMessage name', message);
       // !!! использовал раньше "res.json(await quotes.getMultiple(name, message))" что вызывало ошибку, потому что уже res дали ответ и пытаюсь получается повторно отсылаю ответ браузеру
-      processFile()
+      processFile(`./testCSV/${name}`)
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
         // .then((dataObj) => { console.log('dataObj=', dataObj) })
