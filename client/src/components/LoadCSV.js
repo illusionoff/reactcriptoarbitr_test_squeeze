@@ -98,6 +98,7 @@ export const LoadCSV = () => {
   }
 
   function NumberListSelect(props) {
+    const [state, setState] = useState({ value: '0' });
     const values = props.values;
     // console.log('values=', values);
     let count = -1;
@@ -105,10 +106,21 @@ export const LoadCSV = () => {
       // Правильно! Ключ нужно определять внутри массива:
       count++;
       console.log('count=', count);
-      return <ListSelect key={value.toString()} value={value} number={count} />
+      // return <ListSelect key={value.toString()} value={value} number={count} />
+      return <ListSelect key={value.toString()} value={value} number={value} />
     });
+    // let state = {value: '0'};
+    const handleChange = (event) => {
+      console.log('handleChange = yes');
+      console.log('Change value: event.target.value=', event.target.value);
+
+      setState({ value: event.target.value });
+    }
+
     return (
-      <select name="user_profile_color_2">
+      // <select name="user_profile_color_2">
+      // value={this.state.value} onChange={this.handleChange}
+      <select name="user_profile_color_2" value={state.value} onChange={handleChange}>
         {listItems}
       </select>
     )
@@ -143,7 +155,7 @@ export const LoadCSV = () => {
   const MyComponent = () => {
 
     // initialise countries: []
-    const [countries, setCountries] = useState([])
+    const [countries, setCountries] = useState([]);
 
     const hook = () => {
       postData('/api/message/getdircsv', {})
