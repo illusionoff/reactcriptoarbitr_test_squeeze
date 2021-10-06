@@ -50,70 +50,21 @@ export const LoadCSV = () => {
     } catch (e) { }
   }
 
-  // getNamesCSV();
-  // const componentDidMountM = () => {
-  //   componentDidMount() {
-  //     fetch('http://localhost:3000/data/newsData.json')
-  //       .then(response => {
-  //         return response.json()
-  //       })
-  //       .then(data => {
-  //         console.log(this)
-  //         console.log('приехали данные ', data)
-  //       })
-  //   }
-  // }
-  function ListItem(props) {
-    // Правильно! Не нужно определять здесь ключ:
-    return <li>{props.value}</li>
-  }
-
-  function NumberList(props) {
-    const numbers = props.numbers;
-    const listItems = numbers.map((number) =>
-      // Правильно! Ключ нужно определять внутри массива:
-      <ListItem key={number.toString()} value={number} />
-    );
-    return (
-      <ul>
-        {listItems}
-      </ul>
-    )
-  }
-
-
-  // <select name="user_profile_color_1">
-  //   <option value="1">Синий</option>
-  //   <option value="2">Зеленый</option>
-  //   <option value="3">Желтый</option>
-  //   <option value="4">Красный</option>
-  //   <option value="5">Оранжевый</option>
-  //   <option value="6">Черный</option>
-  // </select>
-
   function ListSelect(props) {
     // Правильно! Не нужно определять здесь ключ:
-    // return <li>{props.value}</li>;
-    // selected value="coconut"
-    // if (props.selected) return <option value={props.number} selected value={props.value}>{props.value}</option>
     return <option value={props.number}>{props.value}</option>
   }
 
   function NumberListSelect(props) {
     const values = props.values;
     const [state, setState] = useState({ value: values[0] }); //назначаем нулевой элемент массива выбранным по default
-    // console.log('values=', values);
     let count = -1;
     const listItems = values.map((value) => {
       // Правильно! Ключ нужно определять внутри массива:
       count++;
       console.log('count=', count);
-      // return <ListSelect key={value.toString()} value={value} number={count} />
-      // selected value="coconut"
-      if (count === 0) return <ListSelect key={value.toString()} value={value} number={value} />
       return <ListSelect key={value.toString()} value={value} number={value} />
     });
-    // let state = {value: '0'};
     const handleChange = (event) => {
       console.log('handleChange = yes');
       console.log('Change value: event.target.value=', event.target.value);
@@ -125,9 +76,6 @@ export const LoadCSV = () => {
       event.preventDefault();
     }
     return (
-      // <select name="user_profile_color_2">
-      // value={this.state.value} onChange={this.handleChange}
-      // defaultValue={props.value}
       <form onSubmit={handleSubmit}>
         <label>
           <select name="user_profile_color_2" value={state.value} onChange={handleChange}>
@@ -138,12 +86,10 @@ export const LoadCSV = () => {
       </form>
     )
   }
-  // const numbers = [1, 2, 3, 4, 5, 6];
 
-
-  const getRandomColor = () => {
-    return "#" + Math.random().toString(16).slice(2, 8);
-  }
+  // const getRandomColor = () => {
+  //   return "#" + Math.random().toString(16).slice(2, 8);
+  // }
 
   async function postData(url = '', data = {}) {
     // Default options are marked with *
@@ -166,8 +112,6 @@ export const LoadCSV = () => {
 
 
   const MyComponent = () => {
-
-    // initialise countries: []
     const [countries, setCountries] = useState([]);
 
     const hook = () => {
@@ -176,42 +120,15 @@ export const LoadCSV = () => {
           setCountries(response);
         });
     }
-
     // Tell react to run useEffect once the component is loaded
     useEffect(hook, []);
     console.log('countries=', countries);
-
-    // Display data
-    console.log('typeof countries.namesfiles=', typeof countries.namesfiles);
     console.log('countries.namesfiles=', countries.namesfiles);
-    console.log('Array.isArray(countries.namesfiles)=', Array.isArray(countries.namesfiles));
     if (Array.isArray(countries.namesfiles)) {
       console.log('countries.namesfiles.length-----=', countries.namesfiles.length);
-    }
-
-
-    const handleSubmit = (event) => {
-      alert('Ваш любимый вкус: ' + this.state.value);
-      event.preventDefault();
-    }
-
-    if (Array.isArray(countries.namesfiles)) {
-      // const listSelectData = ['1 listSelectData', '2 listSelectData', '3 listSelectData'];
-      // console.log('listSelectData=', listSelectData);
       return (
-        // <div>Countries: {countries.namesfiles[2]}</div>
         <div>
-          {/* <NumberList numbers={countries.namesfiles} /> */}
           <NumberListSelect values={countries.namesfiles} />
-          {/* <NumberListSelect values={listSelectData} /> */}
-          {/* <select name="user_profile_color_1">
-            <option value="1">Синий</option>
-            <option value="2">Зеленый</option>
-            <option value="3">Желтый</option>
-            <option value="4">Красный</option>
-            <option value="5">Оранжевый</option>
-            <option value="6">Черный</option>
-          </select> */}
         </div>
       )
     } else {
@@ -219,13 +136,6 @@ export const LoadCSV = () => {
         <div>Countries: {countries}</div>
       )
     }
-    // return (
-    //   // <p>Countries: {countries.length}</p>
-    //   <div>Countries: {countries.namesfiles}</div>
-    //   // <div>Countries: {countries.namesfiles.lenght}</div>
-
-    // )
-
   };
 
 
@@ -264,9 +174,7 @@ export const LoadCSV = () => {
 
 
       </div>
-      {/* <section id="SampleComponent" className="full-height">
-          <SampleComponent />
-        </section > */}
+
       {/* <section id="FirstLoadNamesCsv" className="full-height">
         <FirstLoadNamesCsv />
       </section > */}
