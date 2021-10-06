@@ -64,6 +64,42 @@ router.post('/',
     }
   });
 
+
+const processFile = async () => {
+  let count = 0;
+  dataObj = { number: [], bayGate: [], bayBith: [], sellGate: [], sellBith: [], diffSell: [], diffBay: [], timeServer: [], timeGate: [], timeBith: [], percentBonus: [], bayOrSellGate: [], bayOrSellBith: [], init: [] };
+  records = [];
+  const parser = fs
+    // .createReadStream(`${__dirname}/fs_read.csv`)
+    .createReadStream(CSVFilePath)
+    .pipe(parse({
+      // CSV options if any
+      // comment: '#',
+      // columns: ['col', 'bayGate', 'bayBith', 'sellGate', 'sellBith', 'diffSell', 'diffBay', 'timeServer', 'timeBith', 'init']
+      // columns: true
+    }));
+  for await (const record of parser) {
+    // Work with each record
+    records.push(record);
+    if (count === 0) dataObj.names = record//console.log('Names=', record)
+    else {
+      // dataObj.number[count - 1] = record[0]; // можно и так
+      // dataObj.number.push(record[0]);
+      let countObj = 0;
+      Object.keys(dataObj).forEach(key => {
+        // elem[key]
+        if (key != 'names') dataObj[key].push(record[countObj]);
+        countObj++;
+      })
+    };
+
+    count++;
+  }
+  // const length = Object.keys(dataObj).length;
+  // console.log('length=', length); // 15
+  return dataObj//records
+}
+
 router.post('/getcsv',
   [
     // // check('name', 'Вы ввели имя меньше двух символов или более 30 символов')
@@ -101,49 +137,18 @@ router.post('/getcsv',
       console.log('routerMessage name', name);
       console.log('routerMessage name', message);
       // !!! использовал раньше "res.json(await quotes.getMultiple(name, message))" что вызывало ошибку, потому что уже res дали ответ и пытаюсь получается повторно отсылаю ответ браузеру
-      const processFile = async () => {
-        let count = 0;
-        dataObj = { number: [], bayGate: [], bayBith: [], sellGate: [], sellBith: [], diffSell: [], diffBay: [], timeServer: [], timeGate: [], timeBith: [], percentBonus: [], bayOrSellGate: [], bayOrSellBith: [], init: [] };
-        records = [];
-        const parser = fs
-          // .createReadStream(`${__dirname}/fs_read.csv`)
-          .createReadStream(CSVFilePath)
-          .pipe(parse({
-            // CSV options if any
-            // comment: '#',
-            // columns: ['col', 'bayGate', 'bayBith', 'sellGate', 'sellBith', 'diffSell', 'diffBay', 'timeServer', 'timeBith', 'init']
-            // columns: true
-          }));
-        for await (const record of parser) {
-          // Work with each record
-          records.push(record);
-          if (count === 0) dataObj.names = record//console.log('Names=', record)
-          else {
-            // dataObj.number[count - 1] = record[0]; // можно и так
-            // dataObj.number.push(record[0]);
-            let countObj = 0;
-            Object.keys(dataObj).forEach(key => {
-              // elem[key]
-              if (key != 'names') dataObj[key].push(record[countObj]);
-              countObj++;
-            })
-          };
 
-          count++;
-        }
-        // const length = Object.keys(dataObj).length;
-        // console.log('length=', length); // 15
-        return dataObj//records
-      }
       // List files working true
       // const testFolder = './tests/';./testCSV/
-      const testFolder = './testCSV/';
-      fs.readdir(testFolder, (err, files) => {
-        files.forEach(file => {
-          console.log(file);
-        });
-      });
+      //////////////////
+      // const testFolder = './testCSV/';
+      // fs.readdir(testFolder, (err, files) => {
+      //   files.forEach(file => {
+      //     console.log(file);
+      //   });
+      // });
       //
+
       processFile()
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
@@ -238,9 +243,20 @@ router.post('/loadfile',
       console.log('routerMessage name', name);
       // console.log('routerMessage name', message);
       // !!! использовал раньше "res.json(await quotes.getMultiple(name, message))" что вызывало ошибку, потому что уже res дали ответ и пытаюсь получается повторно отсылаю ответ браузеру
+      processFile()
+        // .then((result2) => { console.log('result2=', result2) })
+        // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
+        // .then((dataObj) => { console.log('dataObj=', dataObj) })
+        .then((dataObj) => {
+          console.log('dataObj=', dataObj);
+          // res.status(201).json({ message: 'download CSV file' });
+          // res.status(201).json({ message: `Сообщение о загрузке файла доставлено:  ${name}` });
 
+          res.status(201).json({ message: dataObj });
+        })
+        .catch(console.error)
 
-      res.status(201).json({ message: `Сообщение о загрузке файла доставлено:  ${name}` });
+      // res.status(201).json({ message: `Сообщение о загрузке файла доставлено:  ${name}` });
 
     } catch (err) {
       // Упростить вывод ошибок при подготовке  prodaction ( лишняя информация для пользователя)
