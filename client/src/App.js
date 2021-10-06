@@ -3,7 +3,7 @@ import { Chart } from './components/Chart';
 import { WriteMe } from './components/WriteMe';
 // import logo from './logo.svg';
 // import './App.css';
-import { LoadCSV } from './components/LoadCSV';
+// import { LoadCSV } from './components/LoadCSV';
 
 function App() {
   return (
@@ -12,9 +12,9 @@ function App() {
         <section id="WriteMe" className="full-height">
           <WriteMe />
         </section >
-        <section id="LoadCSV" className="full-height">
+        {/* <section id="LoadCSV" className="full-height">
           <LoadCSV />
-        </section >
+        </section > */}
         <section id="chart">
           <Chart />
         </section >
