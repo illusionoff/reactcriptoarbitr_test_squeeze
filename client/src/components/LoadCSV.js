@@ -82,7 +82,8 @@ export const LoadCSV = () => {
         } catch (e) { }
       }
       getNamesCSV();
-      alert('Ваш любимый вкус: ' + state.value);
+      // alert('Ваш любимый вкус: ' + state.value);
+      console.log('name file:', state.value);
       event.preventDefault();
     }
     return (
