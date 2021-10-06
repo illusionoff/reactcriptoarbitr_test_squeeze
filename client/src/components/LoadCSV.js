@@ -111,7 +111,7 @@ export const LoadCSV = () => {
 
 
 
-  const MyComponent = () => {
+  const WiewListSelect = () => {
     const [files, setfiles] = useState([]);
 
     const hook = () => {
@@ -150,9 +150,7 @@ export const LoadCSV = () => {
           <div className="card  blue darken-1 black-text">
             <div className="card-content white-text">
             </div>
-
           </div>
-
         </div>
         <div className="card-action">
           <button
@@ -173,14 +171,12 @@ export const LoadCSV = () => {
           >getNamesCSV
           </button>
         </div>
-
-
       </div>
 
       {/* <section id="FirstLoadNamesCsv" className="full-height">
         <FirstLoadNamesCsv />
       </section > */}
-      <MyComponent />
+      <WiewListSelect />
     </>
   )
 }

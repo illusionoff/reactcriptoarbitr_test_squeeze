@@ -83,6 +83,26 @@ export const WriteMe = () => {
                   <span className="helper-text" data-error="Имя меньше трех символов"></span>
                 </div>
 
+                <div className="input-field">
+                  <textarea
+                    placeholder="Введите Сообщение"
+                    id="message"
+                    type="text"
+                    name="message"
+                    className=" yellow-input materialize-textarea validate"
+                    minLength="3"
+                    // pattern=".{3,500}"
+                    // title="5 to 10 characters"
+                    maxLength="1000"
+                    data-length="1000"
+                    required
+                    value={form.message}
+                    onChange={changeHandler}
+                  />
+                  <label htmlFor="message" >Ваше сообщение:</label>
+                  <span className="helper-text" data-error="Сообщение больше 1000 символов"></span>
+                </div>
+
               </div>
             </div>
             <div className="card-action">
