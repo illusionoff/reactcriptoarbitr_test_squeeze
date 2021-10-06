@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 export const DownloadCSV = () => {
-  const [charts, setCharts] = useState({ value: 0 }); //назначаем нулевой элемент массива выбранным по default
+  // const [charts, setCharts] = useState({ value: 0 }); //назначаем нулевой элемент массива выбранным по default
   ////////////////////////////////////////////////////////
   //// START LoadCSV
   // export const LoadCSV = () => {
