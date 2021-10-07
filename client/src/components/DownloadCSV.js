@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 
-export const DownloadCSV = () => {
+export const DownloadCSV = (props) => {
+  const updateData = props.updateData;
   // const [charts, setCharts] = useState({ value: 0 }); //назначаем нулевой элемент массива выбранным по default
   ////////////////////////////////////////////////////////
   //// START LoadCSV
@@ -103,6 +104,7 @@ export const DownloadCSV = () => {
           postData('/api/message/loadfile', { name: state.value })
             .then((data) => {
               console.log(data); // JSON data parsed by `response.json()` call
+              // updateData(data);// изменяем стейт в Chart.js
             });
         } catch (e) { }
       }
