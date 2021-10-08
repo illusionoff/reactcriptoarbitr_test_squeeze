@@ -6,17 +6,17 @@ import ViewChart from './ViewChart';
 import { DownloadCSV } from './DownloadCSV';
 
 export const Chart = () => {
-  const [dataCsv, setDataCsv] = useState();
+  const [dataCsv, setDataCsv] = useState({ data: 'Данных еще нет' });
 
   const updateData = (value) => {
     setDataCsv({ data: value })
   }
   return (
     <>
-      {/* <DownloadCSV updateData={updateData} /> */}
-      <DownloadCSV />
+      <DownloadCSV updateData={updateData} />
+      {/* <DownloadCSV /> */}
       {/* //dataCsv={dataCsv} */}
-      <ViewChart />
+      <ViewChart dataCsv={dataCsv} />
     </>
   )
 }

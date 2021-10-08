@@ -3,7 +3,8 @@ import { Line } from 'react-chartjs-2';
 const FONT_AXIS = { size: 16, style: 'italic' };
 const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
-function ViewChart() {
+function ViewChart({ dataCsv }) {
+  console.log('dataCsv=', dataCsv);
   Line.animation = false;
 
   // const dataY = ['104-1628959734593', '105-1628959734701', '106-1628959734802', '107-1628959734941', '108-1628959735001', '109-1628959735102', '110-1628959735209', '111-1628959735397', '112-1628959735499', '113-1628959735599', '114-1628959735704', '116-1628959735899', '117-1628959736010', '118-1628959736100'];
