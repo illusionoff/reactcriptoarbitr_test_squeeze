@@ -156,7 +156,7 @@ export const DownloadCSV = ({ updateData }) => {
 
   return (
     <>
-      <h3 className="page-title white-text">DownloadCSV</h3>
+      {/* <h3 className="page-title white-text">DownloadCSV</h3>
       <div className="card-action">
         <button
           // className="btn yellow darken-4"
@@ -175,7 +175,7 @@ export const DownloadCSV = ({ updateData }) => {
         // disabled={loading}
         >getCSV
           </button>
-      </div>
+      </div> */}
       <ViewListSelect />
     </>
   )

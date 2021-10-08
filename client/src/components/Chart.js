@@ -16,7 +16,9 @@ export const Chart = () => {
       <DownloadCSV updateData={updateData} />
       {/* <DownloadCSV /> */}
       {/* //dataCsv={dataCsv} */}
-      <ViewChart dataCsv={dataCsv} />
+      {/* <ViewChart dataCsv={dataCsv} /> */}
+      <ViewChart />
+
     </>
   )
 }
