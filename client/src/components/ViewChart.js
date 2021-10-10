@@ -315,6 +315,26 @@ function ViewChart() {
 
   console.log('numberY[2].toString()=', typeof numberY[2].toString());
   console.log('String', 'str');
+
+  //////////////////////////////
+  // Вставка реальных данных
+  numberY = testDate.number;
+  dataY = testDate.timeServer;//
+
+  function FusionNumberTime(timesArr) {
+    let newDataY = timesArr.map((elem, index) => {
+      let result = elem.toString();
+      let numberToString = numberY[index].toString();
+      result = numberToString + '-' + result.substring(result.length - 7);
+      return result
+    });
+    return newDataY
+  }
+
+  let strtimeServer = FusionNumberTime(testDate.timeServer);// вместо newDataY
+  let strtimeGate = FusionNumberTime(testDate.timeGate);
+  let strtimeBith = FusionNumberTime(testDate.timeBith);
+
   let newDataY = dataY.map((elem, index) => {
     let result = elem.toString();
     let numberToString = numberY[index].toString();
@@ -387,12 +407,12 @@ function ViewChart() {
         // color: "#F7464A",
         // fillColor: "rgba(255, 187, 0, 1)",
         // color: 'blue',
-        data: bayOrSellGateFull
+        data: testDate.bayOrSellGate//bayOrSellGateFull
       }, {
         label: 'bayOrSellBith',
         yAxisID: 'b',
         borderColor: 'green',
-        data: bayOrSellBithFull
+        data: testDate.bayOrSellBith//bayOrSellBithFull
       },
         // {
         //   label: 'x',
@@ -518,7 +538,7 @@ function ViewChart() {
         grid: {
           // offset: true // offset true to get labels in between the lines instead of on the lines
         },
-        labels: newDataY, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+        labels: strtimeBith,//newDataY, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
         ticks: { color: colorArr }, //colorArr через одного другой цвет'green'
       },
       x2: {
@@ -532,7 +552,7 @@ function ViewChart() {
         grid: {
           // offset: true // offset true to get labels in between the lines instead of on the lines
         },
-        labels: newDataY2,  // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+        labels: strtimeGate,//newDataY2,  // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
         ticks: {
           // // For a category axis, the val is the index so the lookup via getLabelForValue is needed
           // callback: function (val, index) {
@@ -608,28 +628,28 @@ function ViewChart() {
         // color: "#F7464A",
         // fillColor: "rgba(255, 187, 0, 1)",
         // color: 'blue',
-        data: percentBonus
+        data: testDate.percentBonus//percentBonus
       }, {
         label: 'bayGate',
         yAxisID: 'b',
         borderColor: 'blue',
-        data: [1.22034442, 1.22044442, 1.22056442, 1.23034442, 1.22184442, 1.217034442, 1.21784442, 1.22034442, 1.22034442, 1.22774442, 1.22554442, 1.22034442, 1.22034442, 1.22094442]
+        data: testDate.bayGate//[1.22034442, 1.22044442, 1.22056442, 1.23034442, 1.22184442, 1.217034442, 1.21784442, 1.22034442, 1.22034442, 1.22774442, 1.22554442, 1.22034442, 1.22034442, 1.22094442]
       }, {
         label: 'bayBith',
         yAxisID: 'c',
         borderColor: '#bbdefb', //light blue
-        data: [1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
+        data: testDate.bayBith//[1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
       }, {
         label: 'sellGate',
         yAxisID: 'd',
         borderColor: 'red',
-        data: [1.25034442, 1.24954442, 1.24856442, 1.24934442, 1.24784442, 1.251034442, 1.25284442, 1.24634442, 1.24534442, 1.24874442, 1.25154442, 1.25434442, 1.25034442, 1.25294442]
+        data: testDate.sellGate//[1.25034442, 1.24954442, 1.24856442, 1.24934442, 1.24784442, 1.251034442, 1.25284442, 1.24634442, 1.24534442, 1.24874442, 1.25154442, 1.25434442, 1.25034442, 1.25294442]
       },
       {
         label: 'sellBith',
         yAxisID: 'e',
         borderColor: '#f8bbd0', //light- pink светло-розовый
-        data: [1.26034442, 1.25954442, 1.23856442, 1.26934442, 1.27784442, 1.261034442, 1.24284442, 1.25634442, 1.24934442, 1.23874442, 1.26154442, 1.26434442, 1.27034442, 1.26294442]
+        data: testDate.sellGate//[1.26034442, 1.25954442, 1.23856442, 1.26934442, 1.27784442, 1.261034442, 1.24284442, 1.25634442, 1.24934442, 1.23874442, 1.26154442, 1.26434442, 1.27034442, 1.26294442]
       }
 
       ]

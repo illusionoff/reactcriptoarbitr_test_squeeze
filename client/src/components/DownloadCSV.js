@@ -104,6 +104,8 @@ export const DownloadCSV = ({ updateData }) => {
           postData('/api/message/loadfile', { name: state.value })
             .then((data) => {
               console.log(data); // JSON data parsed by `response.json()` call
+              console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
+
               updateData(data);// изменяем стейт в Chart.js
             });
         } catch (e) { }
@@ -132,11 +134,12 @@ export const DownloadCSV = ({ updateData }) => {
     const hook = () => {
       postData('/api/message/getdircsv', {})
         .then((response) => {
+          console.log('запрос списка файлов в каталоге /api/message/getdircsv ');
           setfiles(response);
         });
     }
     // Tell react to run useEffect once the component is loaded
-    useEffect(hook, []);
+    useEffect(hook, []); // если указать files то бесконечный цикл
     console.log('files=', files);
     console.log('files.namesfiles=', files.namesfiles);
     if (Array.isArray(files.namesfiles)) {
