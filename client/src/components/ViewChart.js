@@ -4,8 +4,8 @@ const FONT_AXIS = { size: 16, style: 'italic' };
 const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
 // function ViewChart({ dataCsv }) {
-function ViewChart() {
-  // console.log('dataCsv=', dataCsv);
+function ViewChart(props) {
+  console.log('ViewChart dataCsv=', props.ViewChart);
   // console.log('props.dataCsv=', props.dataCsv);
   Line.animation = false;
 
@@ -255,6 +255,16 @@ function ViewChart() {
       "init"
     ]
   }
+  // console.log('ViewChart.js dataCsv.dataCsv.data.message.number= ', dataCsv.dataCsv.data.message)
+  if (props.ViewChart.number) {
+    console.log('ViewChart.js реальный файл данных передан');
+    console.log('ViewChart.js props.ViewChart.number= ', props.ViewChart.number)
+    testDate = props.ViewChart;
+  } else {
+    console.log('ViewChart.js реальный файл данных НЕпередан');
+
+  }
+  // testDate = dataCsv;
 
   // const dataY = ['104-1628959734593', '105-1628959734701', '106-1628959734802', '107-1628959734941', '108-1628959735001', '109-1628959735102', '110-1628959735209', '111-1628959735397', '112-1628959735499', '113-1628959735599', '114-1628959735704', '116-1628959735899', '117-1628959736010', '118-1628959736100'];
   const bayGate = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
@@ -775,7 +785,7 @@ function ViewChart() {
         grid: {
           // offset: true // offset true to get labels in between the lines instead of on the lines
         },
-        labels: newDataY, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+        labels: strtimeServer, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
         ticks: { color: colorArr }, //colorArr через одного другой цвет'green'
       },
       // y2: {

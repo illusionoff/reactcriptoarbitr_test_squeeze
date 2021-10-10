@@ -252,7 +252,7 @@ router.post('/loadfile',
           // res.status(201).json({ message: 'download CSV file' });
           // res.status(201).json({ message: `Сообщение о загрузке файла доставлено:  ${name}` });
 
-          res.status(201).json({ message: dataObj });
+          res.status(201).json(dataObj);
         })
         .catch(console.error)
 

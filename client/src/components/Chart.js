@@ -9,7 +9,7 @@ export const Chart = () => {
   const [dataCsv, setDataCsv] = useState({ data: 'Данных еще нет' });
 
   const updateData = (value) => {
-    setDataCsv({ data: value })
+    setDataCsv(value)
   }
   return (
     <>
@@ -17,8 +17,7 @@ export const Chart = () => {
       <DownloadCSV updateData={updateData} />
       {/* <DownloadCSV /> */}
       {/* //dataCsv={dataCsv} */}
-      {/* <ViewChart dataCsv={dataCsv} /> */}
-      <ViewChart />
+      <ViewChart ViewChart={dataCsv} />
 
     </>
   )
