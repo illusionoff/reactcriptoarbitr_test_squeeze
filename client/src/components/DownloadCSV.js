@@ -1,7 +1,29 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 export const DownloadCSV = ({ updateData }) => {
+  // function closureFunction() {
+  //   let first = false;
+  //   // let count = 0;
+
+  //   function main(getNamesCSV) {
+  //     if (first === false) {
+  //       console.log('first=', first);
+  //       first = true;
+  //       getNamesCSV();
+  //       return true
+  //     }
+  //     if (first === true) {
+  //       console.log('first=', first);
+  //       return false
+  //     };
+  //     // count++;
+  //     // console.log('DownloadCSV count=', count)
+  //   }
+  //   return (getNamesCSV) => main(getNamesCSV)
+  // }
+  // let resultClosureFunction = closureFunction();
+
   // const updateData = props.updateData;
   // const [charts, setCharts] = useState({ value: 0 }); //назначаем нулевой элемент массива выбранным по default
   ////////////////////////////////////////////////////////
@@ -85,6 +107,28 @@ export const DownloadCSV = ({ updateData }) => {
     const values = props.values;
     const [state, setState] = useState({ value: values[0] }); //назначаем нулевой элемент массива выбранным по default
     let count = -1;
+    const getNamesCSV = async (InputData) => {
+      try {
+        // postData('/api/message/loadfile', { name: 'test download file' })
+        postData('/api/message/loadfile', { name: InputData }) //{ name: state.value }
+          .then((data) => {
+            console.log(data); // JSON data parsed by `response.json()` call
+            console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
+
+            updateData(data);// изменяем стейт в Chart.js
+          });
+      } catch (e) { }
+    }
+    // resultClosureFunction(getNamesCSV(state.value));
+    // const memoizedCallback = useCallback(
+    //   () => {
+    //     getNamesCSV(state.value);
+    //   },
+    //   [state.value],
+    // );
+    // memoizedCallback();
+    // getNamesCSV(state.value); // Вызвало бесконечный цикл вызываем первую загрузку данных CSV файла для первой отрисовки графика
+
     const listItems = values.map((value) => {
       // Правильно! Ключ нужно определять внутри массива:
       count++;
@@ -98,19 +142,7 @@ export const DownloadCSV = ({ updateData }) => {
     }
 
     const handleSubmit = (event) => {
-      const getNamesCSV = async () => {
-        try {
-          // postData('/api/message/loadfile', { name: 'test download file' })
-          postData('/api/message/loadfile', { name: state.value })
-            .then((data) => {
-              console.log(data); // JSON data parsed by `response.json()` call
-              console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
-
-              updateData(data);// изменяем стейт в Chart.js
-            });
-        } catch (e) { }
-      }
-      getNamesCSV();
+      getNamesCSV(state.value);
       // alert('Ваш любимый вкус: ' + state.value);
       console.log('name file:', state.value);
       // setCharts({ value: charts.value++ });
