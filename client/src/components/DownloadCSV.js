@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-
+let countStartDownloadCSV = 0;
 async function postData(url = '', data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
@@ -31,8 +31,33 @@ const getDataCSV = async (InputData, updateDataFunc) => {
       });
   } catch (e) { }
 }
+
+function once(fn, context) {
+  var result;
+
+  return function () {
+    if (fn) {
+      result = fn.apply(context || this, arguments);
+      fn = null;
+    }
+
+    return result;
+  };
+}
+// var canOnlyFireOnce = once(function (sendDataTest) {
+//   console.log('Запущено!');
+//   console.log('sendDataTest=', sendDataTest);
+// });
+
+var canOnlyFireOnce2 = once(function (nameFile, updateData) {
+  console.log('Запущено!');
+  getDataCSV(nameFile, updateData);
+});
+
 // let
 export const DownloadCSV = ({ updateData }) => {
+  countStartDownloadCSV++;
+  console.log('countStartDownloadCSV=', countStartDownloadCSV);
   // function closureFunction() {
   //   let first = false;
   //   // let count = 0;
@@ -187,10 +212,22 @@ export const DownloadCSV = ({ updateData }) => {
         .then((response) => {
           console.log('запрос списка файлов в каталоге /api/message/getdircsv ');
           setfiles(response);
+          // getDataCSV('test1_profit_702_1632124312797.csv', updateData); // бесконечный цикл все равно
+          canOnlyFireOnce2('test1_profit_602_1631860131348.csv', updateData); // "Запущено!"
+          // canOnlyFireOnce2(files[0], updateData); // Не запущено
+          // canOnlyFireOnce2(files[0], updateData); // Не запущено
         });
     }
     // Tell react to run useEffect once the component is loaded
-    useEffect(hook, []); // если указать files то бесконечный цикл
+    useEffect(hook, []); // если указать files во втором парамметре массиве то бесконечный цикл
+
+    // const hook2 = () => {
+
+    //   getDataCSV('test1_profit_702_1632124312797.csv', updateData); // бесконечный цикл все равно
+
+    // }
+
+    // useEffect(hook2, []); // если указать files во втором парамметре массиве то бесконечный цикл
     console.log('files=', files);
     console.log('files.namesfiles=', files.namesfiles);
     if (Array.isArray(files.namesfiles)) {
