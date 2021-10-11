@@ -3,6 +3,7 @@ import { Line } from 'react-chartjs-2';
 const FONT_AXIS = { size: 16, style: 'italic' };
 const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
+let firstChange = false;
 // function ViewChart({ dataCsv }) {
 function ViewChart(props) {
   console.log('ViewChart dataCsv=', props.ViewChart);
@@ -257,6 +258,7 @@ function ViewChart(props) {
   }
   // console.log('ViewChart.js dataCsv.dataCsv.data.message.number= ', dataCsv.dataCsv.data.message)
   if (props.ViewChart.number) {
+    firstChange = true;
     console.log('ViewChart.js реальный файл данных передан');
     console.log('ViewChart.js props.ViewChart.number= ', props.ViewChart.number)
     testDate = props.ViewChart;
@@ -267,69 +269,69 @@ function ViewChart(props) {
   // testDate = dataCsv;
 
   // const dataY = ['104-1628959734593', '105-1628959734701', '106-1628959734802', '107-1628959734941', '108-1628959735001', '109-1628959735102', '110-1628959735209', '111-1628959735397', '112-1628959735499', '113-1628959735599', '114-1628959735704', '116-1628959735899', '117-1628959736010', '118-1628959736100'];
-  const bayGate = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
-  const bayBith = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
-  const sellGate = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
-  const sellBith = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
-  const diffSell = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
-  const diffBay = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
-  const bayOrSellGate = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
-  const bayOrSellBith = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
-  const init = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
-  const timeGate = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
-  const timeBith = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
-  const percentBonus = [0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05];
+  // const bayGate = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
+  // const bayBith = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
+  // const sellGate = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
+  // const sellBith = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
+  // const diffSell = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
+  // const diffBay = [1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442, 1.22034442];
+  // const bayOrSellGate = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
+  // const bayOrSellBith = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
+  // const init = [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0];
+  // const timeGate = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
+  // const timeBith = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
+  // const percentBonus = [0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05, 0.03, 0.1, 0.05];
 
-  let dataY = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
-  let numberY = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117];
+  // let dataY = [1628959734593, 1628959734701, 1628959734802, 1628959734941, 1628959735001, 1628959735102, 1628959735209, 1628959735397, 1628959735499, 1628959735599, 1628959735704, 1628959735899, 1628959736010, 1628959736100];
+  // let numberY = [104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117];
 
-  // имитация данных
-  let dataYTimeEnd = dataY[dataY.length - 1];
-  let arrMore = [];
-  let count = 118;
-  let bayOrSellGateFull = [...bayOrSellGate];
-  let bayOrSellBithFull = [...bayOrSellBith];
+  // // имитация данных
+  // let dataYTimeEnd = dataY[dataY.length - 1];
+  // let arrMore = [];
+  // let count = 118;
+  // let bayOrSellGateFull = [...bayOrSellGate];
+  // let bayOrSellBithFull = [...bayOrSellBith];
 
-  for (let i = 0; i < 15; i++) {
-    dataYTimeEnd += 200;
-    arrMore.push(dataYTimeEnd);
-    numberY.push(count);
-    count++;
+  // for (let i = 0; i < 15; i++) {
+  //   dataYTimeEnd += 200;
+  //   arrMore.push(dataYTimeEnd);
+  //   numberY.push(count);
+  //   count++;
 
-    bayOrSellGateFull.push(getRandomIntInclusive(0, 1));
-    bayOrSellBithFull.push(getRandomIntInclusive(0, 1));
-  }
+  //   bayOrSellGateFull.push(getRandomIntInclusive(0, 1));
+  //   bayOrSellBithFull.push(getRandomIntInclusive(0, 1));
+  // }
 
-  function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
-  }
+  // function getRandomIntInclusive(min, max) {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+  // }
 
-  dataY = [...dataY, ...arrMore];
-  // bayOrSellGateFull.map((el, i, array) => {
-  //   // return array[i] = i % 2 === 0 ? '#566573' : 'green'
-  //   console.log('el[i]=', el[i]);
-  //   console.log('array[i]=', array[i]);
-  //   return array[i] = array[i] === 0 ? 1000 : 0
-  // });
-  // bayOrSellBithFull.map((el, i, array) => {
-  //   // return array[i] = i % 2 === 0 ? '#566573' : 'green'
-  //   console.log('el[i]=', el[i]);
-  //   console.log('array[i]=', array[i]);
-  //   return array[i] = array[i] === 0 ? 10000 : 0
-  // });
-  console.log('bayOrSellGateFull=', bayOrSellGateFull);
+  // dataY = [...dataY, ...arrMore];
+  // // bayOrSellGateFull.map((el, i, array) => {
+  // //   // return array[i] = i % 2 === 0 ? '#566573' : 'green'
+  // //   console.log('el[i]=', el[i]);
+  // //   console.log('array[i]=', array[i]);
+  // //   return array[i] = array[i] === 0 ? 1000 : 0
+  // // });
+  // // bayOrSellBithFull.map((el, i, array) => {
+  // //   // return array[i] = i % 2 === 0 ? '#566573' : 'green'
+  // //   console.log('el[i]=', el[i]);
+  // //   console.log('array[i]=', array[i]);
+  // //   return array[i] = array[i] === 0 ? 10000 : 0
+  // // });
+  // console.log('bayOrSellGateFull=', bayOrSellGateFull);
 
 
 
-  console.log('numberY[2].toString()=', typeof numberY[2].toString());
-  console.log('String', 'str');
+  // console.log('numberY[2].toString()=', typeof numberY[2].toString());
+  // console.log('String', 'str');
 
   //////////////////////////////
   // Вставка реальных данных
-  numberY = testDate.number;
-  dataY = testDate.timeServer;//
+  let numberY = testDate.number;
+  let dataY = testDate.timeServer;//
 
   function FusionNumberTime(timesArr) {
     let newDataY = timesArr.map((elem, index) => {
@@ -809,6 +811,40 @@ function ViewChart(props) {
     }
   }
 
+  if (firstChange) {
+    return (
+      <>
+        <div >
+          <h3 className="page-title white-text">About</h3>
+          <div className="container">
+            <blockquote>
+              Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
+              Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
+              </blockquote>
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
+            <Line data={data2}
+              // ref={ref}
+              // width={100}
+              // height={50}
+              // options={{ maintainAspectRatio: false }}
+              options={options2}
+            />
+            <hr width="85%" />
+            <Line data={data}
+              // ref={ref}
+              // width={100}
+              height={100}
+              // options={{ maintainAspectRatio: false }}
+              options={options}
+            />
+
+          </div >
+        </div>
+      </>
+    )
+  }
   return (
     <>
       <div >
@@ -817,30 +853,10 @@ function ViewChart(props) {
           <blockquote>
             Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
             Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
-              </blockquote>
-          <div>
-            <canvas id="myChart"></canvas>
-          </div>
-          <Line data={data2}
-            // ref={ref}
-            // width={100}
-            // height={50}
-            // options={{ maintainAspectRatio: false }}
-            options={options2}
-          />
-          <hr width="85%" />
-          <Line data={data}
-            // ref={ref}
-            // width={100}
-            height={100}
-            // options={{ maintainAspectRatio: false }}
-            options={options}
-          />
-
+        </blockquote>
         </div >
       </div>
-    </>
-  )
+    </>)
 }
 
 export default ViewChart

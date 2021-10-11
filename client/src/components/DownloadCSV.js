@@ -211,15 +211,22 @@ export const DownloadCSV = ({ updateData }) => {
       postData('/api/message/getdircsv', {})
         .then((response) => {
           console.log('запрос списка файлов в каталоге /api/message/getdircsv ');
-          setfiles(response);
-          // getDataCSV('test1_profit_702_1632124312797.csv', updateData); // бесконечный цикл все равно
-          canOnlyFireOnce2('test1_profit_602_1631860131348.csv', updateData); // "Запущено!"
+          // setfiles(response);
+          setfiles(response)
+          // console.log(this.state.name);
+          console.log('response=', response);
+
+          canOnlyFireOnce2(response.namesfiles[0], updateData); // "Запущено!"
+
+          // getDataCSV('test1_profit_602_1631860131348.csv', updateData); // бесконечный цикл все равно
+          // canOnlyFireOnce2(files.namesfiles, updateData); // "Запущено!"
           // canOnlyFireOnce2(files[0], updateData); // Не запущено
           // canOnlyFireOnce2(files[0], updateData); // Не запущено
         });
     }
     // Tell react to run useEffect once the component is loaded
     useEffect(hook, []); // если указать files во втором парамметре массиве то бесконечный цикл
+    // useEffect(() => canOnlyFireOnce2('test1_profit_602_1631860131348.csv', updateData), [files]); // если указать files во втором парамметре массиве то бесконечный цикл
 
     // const hook2 = () => {
 
