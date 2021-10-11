@@ -215,8 +215,8 @@ export const DownloadCSV = ({ updateData }) => {
           setfiles(response)
           // console.log(this.state.name);
           console.log('response=', response);
-
-          canOnlyFireOnce2(response.namesfiles[0], updateData); // "Запущено!"
+          // Загружаем данные из CSV файла последнего идиножды
+          canOnlyFireOnce2(response.namesfiles[response.namesfiles.length - 1], updateData); // "Запущено!"
 
           // getDataCSV('test1_profit_602_1631860131348.csv', updateData); // бесконечный цикл все равно
           // canOnlyFireOnce2(files.namesfiles, updateData); // "Запущено!"
