@@ -19,7 +19,7 @@ async function postData(url = '', data = {}) {
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
-const getNamesCSV = async (InputData, updateDataFunc) => {
+const getDataCSV = async (InputData, updateDataFunc) => {
   try {
     // postData('/api/message/loadfile', { name: 'test download file' })
     postData('/api/message/loadfile', { name: InputData }) //{ name: state.value }
@@ -37,11 +37,11 @@ export const DownloadCSV = ({ updateData }) => {
   //   let first = false;
   //   // let count = 0;
 
-  //   function main(getNamesCSV) {
+  //   function main(getDataCSV) {
   //     if (first === false) {
   //       console.log('first=', first);
   //       first = true;
-  //       getNamesCSV();
+  //       getDataCSV();
   //       return true
   //     }
   //     if (first === true) {
@@ -51,7 +51,7 @@ export const DownloadCSV = ({ updateData }) => {
   //     // count++;
   //     // console.log('DownloadCSV count=', count)
   //   }
-  //   return (getNamesCSV) => main(getNamesCSV)
+  //   return (getDataCSV) => main(getDataCSV)
   // }
   // let resultClosureFunction = closureFunction();
 
@@ -76,19 +76,19 @@ export const DownloadCSV = ({ updateData }) => {
   // }
 
 
-  const getCSV = async () => {
-    try {
-      // const data = await request('/api/message/getcsv', 'POST');
-      // postData('http://localhost:3006/api/message/getcsv', {})
-      postData('/api/message/getcsv', {})
-        .then((data) => {
-          console.log(data); // JSON data parsed by `response.json()` call
-        });
-      // messageRequest(data.message);
-      // console.log('getCSV');
-      // console.log('Data:', data);
-    } catch (e) { }
-  }
+  // const getCSV = async () => {
+  //   try {
+  //     // const data = await request('/api/message/getcsv', 'POST');
+  //     // postData('http://localhost:3006/api/message/getcsv', {})
+  //     postData('/api/message/getcsv', {})
+  //       .then((data) => {
+  //         console.log(data); // JSON data parsed by `response.json()` call
+  //       });
+  //     // messageRequest(data.message);
+  //     // console.log('getCSV');
+  //     // console.log('Data:', data);
+  //   } catch (e) { }
+  // }
 
   // const getNamesCSV = async () => {
   //   try {
@@ -120,12 +120,12 @@ export const DownloadCSV = ({ updateData }) => {
 
   function NumberListSelect(props) {
     const values = props.values;
-    const [state, setState] = useState({ value: values[0] }); //назначаем нулевой элемент массива выбранным по default
+    const [nameFile, setNameFile] = useState(values[0]); //назначаем нулевой элемент массива выбранным по default
     let count = -1;
     // const getNamesCSV = async (InputData) => {
     //   try {
     //     // postData('/api/message/loadfile', { name: 'test download file' })
-    //     postData('/api/message/loadfile', { name: InputData }) //{ name: state.value }
+    //     postData('/api/message/loadfile', { name: InputData }) //{ name: nameFile.value }
     //       .then((data) => {
     //         console.log(data); // JSON data parsed by `response.json()` call
     //         console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
@@ -134,15 +134,15 @@ export const DownloadCSV = ({ updateData }) => {
     //       });
     //   } catch (e) { }
     // }
-    // resultClosureFunction(getNamesCSV(state.value));
+    // resultClosureFunction(getNamesCSV(nameFile.value));
     // const memoizedCallback = useCallback(
     //   () => {
-    //     getNamesCSV(state.value);
+    //     getNamesCSV(nameFile.value);
     //   },
-    //   [state.value],
+    //   [nameFile.value],
     // );
     // memoizedCallback();
-    // getNamesCSV(state.value); // Вызвало бесконечный цикл вызываем первую загрузку данных CSV файла для первой отрисовки графика
+    // getNamesCSV(nameFile.value); // Вызвало бесконечный цикл вызываем первую загрузку данных CSV файла для первой отрисовки графика
 
     const listItems = values.map((value) => {
       // Правильно! Ключ нужно определять внутри массива:
@@ -153,20 +153,24 @@ export const DownloadCSV = ({ updateData }) => {
     const handleChange = (event) => {
       console.log('handleChange = yes');
       console.log('Change value: event.target.value=', event.target.value);
-      setState({ value: event.target.value });
+      setNameFile(event.target.value);
     }
 
     const handleSubmit = (event) => {
-      getNamesCSV(state.value, updateData);
-      // alert('Ваш любимый вкус: ' + state.value);
-      console.log('name file:', state.value);
+      getDataCSV(nameFile, updateData);
+      // alert('Ваш любимый вкус: ' + nameFile.value);
+      console.log('name file:', nameFile);
       // setCharts({ value: charts.value++ });
       event.preventDefault();
     }
+    console.log('DownloadCSV nameFile=', nameFile);
+    // useEffect((nameFile, updateData) => { getDataCSV(nameFile, updateData) }, []);
+
+    // (nameFile.value, updateData);
     return (
       <form onSubmit={handleSubmit}>
         <label>
-          <select name="user_profile_color_2" value={state.value} onChange={handleChange}>
+          <select name="user_profile_color_2" value={nameFile} onChange={handleChange}>
             {listItems}
           </select>
         </label>
@@ -211,9 +215,9 @@ export const DownloadCSV = ({ updateData }) => {
         <button
           // className="btn yellow darken-4"
           className="btn cyan darken-1"
-          onClick={getNamesCSV}
+          onClick={}
         // disabled={loading}
-        >getNamesCSV
+        >
           </button>
       </div>
 
