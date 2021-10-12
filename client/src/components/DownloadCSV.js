@@ -44,7 +44,7 @@ export const DownloadCSV = ({ updateData }) => {
     return (
       <form onSubmit={handleSubmit}>
         <label>
-          <select name="names_files" value={nameFile} onChange={handleChange}>
+          <select name="namesFiles" value={nameFile} onChange={handleChange}>
             {listItems}
           </select>
         </label>

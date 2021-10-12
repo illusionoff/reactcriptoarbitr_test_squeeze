@@ -4,6 +4,7 @@ const router = Router();
 const { check, validationResult, body } = require('express-validator'); // body дополнительно взял
 const config = require('config');
 const fetch = require('node-fetch');
+const FILES_FOLDER = config.get('FILES_FOLDER');
 
 const fs = require("fs");
 const parse = require('csv-parse');
@@ -150,7 +151,7 @@ router.post('/getcsv',
       //
 
       // processFile("./testCSV/test2_profit_651_1631860141152.csv")
-      processFile("./1631860141152_651_test2_profit.csv")
+      processFile(`${FILES_FOLDER}1631860141152_651_test2_profit.csv`)
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
         // .then((dataObj) => { console.log('dataObj=', dataObj) })
@@ -181,9 +182,9 @@ router.post('/getdircsv',
 
       // List files working true
       // const testFolder = './tests/';./testCSV/
-      const testFolder = './testCSV/';
+      // const testFolder = './testCSV/';
       let namesFiles = [];
-      fs.readdir(testFolder, (err, files) => {
+      fs.readdir(FILES_FOLDER, (err, files) => {
         files.forEach(file => {
           namesFiles.push(file);
           console.log(file);
@@ -244,7 +245,7 @@ router.post('/loadfile',
       console.log('routerMessage name', name);
       // console.log('routerMessage name', message);
       // !!! использовал раньше "res.json(await quotes.getMultiple(name, message))" что вызывало ошибку, потому что уже res дали ответ и пытаюсь получается повторно отсылаю ответ браузеру
-      processFile(`./testCSV/${name}`)
+      processFile(`${FILES_FOLDER}${name}`)
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
         // .then((dataObj) => { console.log('dataObj=', dataObj) })
