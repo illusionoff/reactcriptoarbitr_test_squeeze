@@ -15,8 +15,6 @@ export const Chart = () => {
     <>
       <div><h3 className="page-title white-text">Write to me</h3></div>
       <DownloadCSV updateData={updateData} />
-      {/* <DownloadCSV /> */}
-      {/* //dataCsv={dataCsv} */}
       <ViewChart ViewChart={dataCsv} />
 
     </>
