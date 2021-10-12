@@ -36,9 +36,10 @@ export const DownloadCSV = ({ updateData }) => {
 
     const handleSubmit = (event) => {
       getDataCSV(nameFile, updateData);
+      console.log('Данные файла загрузились');
       console.log('name file:', nameFile);
       // setCharts({ value: charts.value++ });
-      event.preventDefault();
+      // event.preventDefault();
     }
     console.log('DownloadCSV nameFile=', nameFile);
     return (
@@ -54,13 +55,13 @@ export const DownloadCSV = ({ updateData }) => {
   }
 
   const ViewListSelect = () => {
-    const [files, setfiles] = useState([]);
+    const [files, setFiles] = useState([]);
 
     const hook = () => {
       postData('/api/message/getdircsv', {})
         .then((response) => {
           console.log('запрос списка файлов в каталоге /api/message/getdircsv ');
-          setfiles(response)
+          setFiles(response)
           console.log('response=', response);
           // Загружаем данные из CSV файла последнего идиножды
           getDataCsvClosureOnce(response.namesfiles[response.namesfiles.length - 1], updateData, getDataCSV);
