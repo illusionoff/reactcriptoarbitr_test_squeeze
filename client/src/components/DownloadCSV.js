@@ -39,7 +39,7 @@ export const DownloadCSV = ({ updateData }) => {
       console.log('Данные файла загрузились');
       console.log('name file:', nameFile);
       // setCharts({ value: charts.value++ });
-      event.preventDefault();
+      event.preventDefault();// обязательно должно быть  если не вставить, то перезагружается вся страница
     }
     console.log('DownloadCSV nameFile=', nameFile);
     return (
