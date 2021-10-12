@@ -9,6 +9,28 @@ let getDataCsvClosureOnce = once(function (nameFile, updateData, fun) {
   fun(nameFile, updateData);
 });
 
+// function getdircsv() {
+//   console.log('startt function getdircsv()');
+//   try {
+//     postData('/api/message/getdircsv', {})
+//       .then((response) => {
+//         console.log('запрос списка файлов в каталоге /api/message/getdircsv ');
+//         console.log('response=', response);
+//         // files.namesfiles[files.namesfiles.length - 1], updateData,
+//         // getDataCSV(response.namesfiles[response.namesfiles.length - 1], updateData)
+//         const nameFile = response.namesfiles[response.namesfiles.length - 1];
+//         postData('/api/message/loadfile', { name: nameFile }) //{ name: state.value }
+//           .then((data) => {
+//             console.log(data); // JSON data parsed by `response.json()` call
+//             console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
+//             // updateDataFunc(data);// изменяем стейт в Chart.js
+//             return data
+//           });
+//         // return response
+//       });
+//   } catch (e) { }
+// }
+
 export const DownloadCSV = ({ updateData }) => {
   countStartDownloadCSV++;
   console.log('countStartDownloadCSV=', countStartDownloadCSV);
