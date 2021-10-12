@@ -149,7 +149,8 @@ router.post('/getcsv',
       // });
       //
 
-      processFile("./testCSV/test2_profit_651_1631860141152.csv")
+      // processFile("./testCSV/test2_profit_651_1631860141152.csv")
+      processFile("./1631860141152_651_test2_profit.csv")
         // .then((result2) => { console.log('result2=', result2) })
         // .then((dataObj) => { res.status(201).json({ message: dataObj }) })
         // .then((dataObj) => { console.log('dataObj=', dataObj) })
