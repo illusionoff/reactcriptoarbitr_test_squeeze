@@ -1,17 +1,17 @@
 import { Chart } from './components/Chart';
 // import { useCallback } from 'react'
-import { WriteMe } from './components/WriteMe';
+// import { WriteMe } from './components/WriteMe';
 // import logo from './logo.svg';
 // import './App.css';
 // import { LoadCSV } from './components/LoadCSV';
 
-function App() {
+function App(props) {
   return (
     <>
       <main>
-        <section id="WriteMe" className="full-height">
+        {/* <section id="WriteMe" className="full-height">
           <WriteMe />
-        </section >
+        </section > */}
         {/* <section id="LoadCSV" className="full-height">
           <LoadCSV />
         </section > */}
