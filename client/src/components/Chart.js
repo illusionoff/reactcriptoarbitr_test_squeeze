@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import ViewChart from './ViewChart';
 // import { DownloadCSV } from './DownloadCSV';
 import { postData, once } from '../functions/functions';//../hooks/message.hook
-// import { DownloadCSV } from './DownloadCSV';
+import { DownloadCSV } from './DownloadCSV';
 async function testGetdircsv() {
   console.log('startt function getdircsv()');
   try {
@@ -107,6 +107,7 @@ export const Chart = () => {
           Отправить
         </button>
       </div>
+      <DownloadCSV />
       <ViewChart ViewChart={dataCsv} name={name1} />
     </>
   )
