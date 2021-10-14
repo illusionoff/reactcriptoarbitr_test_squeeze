@@ -25,14 +25,14 @@ export const DownloadCSV = (props) => {
   // let values = props.nameFilesSelect;
   // console.log('values DownloadCSV=', values);
   console.log(' props.nameFilesSelect DownloadCSV=', props.nameFilesSelect);
-  props.nameFilesSelect.map((item) => {
-    console.log(item);
-    return item
-  })
+  // props.nameFilesSelect.map((item) => {
+  //   console.log(item);
+  //   return item
+  // })
 
   const listItems = props.nameFilesSelect.map((value, index) => {
     // if (index === 0) {
-    //   console.log('ListSelect');
+    console.log('ListSelect');
     //   return <option key={value.toString()} defaultValue={value}>{value}</option>
     //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
     // }
