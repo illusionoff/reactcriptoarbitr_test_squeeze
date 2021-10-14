@@ -10,7 +10,7 @@ function ViewChart(props) {
   console.log('props=', props);
   console.log('props.name=', props.name);
 
-  console.log('props.ViewChart.number=', props.ViewChart.number);
+  // console.log('props.ViewChart.number=', props.ViewChart.number);
 
   countViewChart++;
   console.log('countViewChart=', countViewChart);

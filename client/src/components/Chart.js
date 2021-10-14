@@ -6,6 +6,9 @@ import ViewChart from './ViewChart';
 // import { DownloadCSV } from './DownloadCSV';
 import { postData, once } from '../functions/functions';//../hooks/message.hook
 import { DownloadCSV } from './DownloadCSV';
+
+
+let nameFilesSelect = [];
 async function testGetdircsv() {
   console.log('startt function getdircsv()');
   try {
@@ -15,6 +18,7 @@ async function testGetdircsv() {
         // console.log('getdircsv response=', response);
         const nameFile = response.namesFiles[response.namesFiles.length - 1];
         // console.log('getdircsv nameFile=', nameFile);
+        nameFilesSelect = response.namesFiles;
         return nameFile
       })
     let loadfile = await postData('/api/message/loadfile', { name: getdircsv }) //{ name: state.value }
@@ -53,7 +57,6 @@ export const Chart = () => {
       console.log('END getdircsv loadfile=', loadfile);
       setDataCsv(loadfile);
     })
-
   };
 
 
@@ -78,6 +81,10 @@ export const Chart = () => {
   function writeMeHandler() {
     console.log('this writeMeHandler button');
     // setDataCsv(dataCsv);
+  }
+
+  const updateData = (value) => {
+    setDataCsv(value)
   }
   let name1 = 'name1';
   return (
@@ -107,7 +114,7 @@ export const Chart = () => {
           Отправить
         </button>
       </div>
-      <DownloadCSV />
+      <DownloadCSV nameFilesSelect={nameFilesSelect} updateData={updateData} />
       <ViewChart ViewChart={dataCsv} name={name1} />
     </>
   )
