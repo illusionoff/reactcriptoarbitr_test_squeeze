@@ -51,6 +51,16 @@ async function postData(url = '', data = {}) {
   return await response.json(); // parses JSON response into native JavaScript objects
 }
 
+// const getDataCSV = async (InputData, updateDataFunc) => {
+//   try {
+//     postData('/api/message/loadfile', { name: InputData }) //{ name: state.value }
+//       .then((data) => {
+//         console.log(data); // JSON data parsed by `response.json()` call
+//         console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
+//         updateDataFunc(data);// изменяем стейт в Chart.js
+//       });
+//   } catch (e) { }
+// }
 const getDataCSV = async (InputData, updateDataFunc) => {
   try {
     postData('/api/message/loadfile', { name: InputData }) //{ name: state.value }
