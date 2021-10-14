@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from 'react';
 
 // import { Line } from 'react-chartjs-2';
-// import ViewChart from './ViewChart';
+import ViewChart from './ViewChart';
 // import { DownloadCSV } from './DownloadCSV';
 import { postData, once } from '../functions/functions';//../hooks/message.hook
+// import { DownloadCSV } from './DownloadCSV';
 async function testGetdircsv() {
   console.log('startt function getdircsv()');
   try {
@@ -44,10 +45,15 @@ console.log('this index.js React');
 
 
 export const Chart = () => {
+
+  const [dataCsv, setDataCsv] = useState({ data: 'Данных еще нет' });
+
   const hook = () => {
     testGetdircsv().then((loadfile) => {
       console.log('END getdircsv loadfile=', loadfile);
+      setDataCsv(loadfile);
     })
+
   };
 
 
@@ -71,7 +77,9 @@ export const Chart = () => {
   }
   function writeMeHandler() {
     console.log('this writeMeHandler button');
+    // setDataCsv(dataCsv);
   }
+  let name1 = 'name1';
   return (
     <>
       <input
@@ -99,6 +107,7 @@ export const Chart = () => {
           Отправить
         </button>
       </div>
+      <ViewChart ViewChart={dataCsv} name={name1} />
     </>
   )
 }

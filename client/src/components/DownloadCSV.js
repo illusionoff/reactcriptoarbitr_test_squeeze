@@ -4,10 +4,10 @@ import { once, postData, getDataCSV } from '../functions/functions';//../hooks/m
 
 let countStartDownloadCSV = 0;
 
-let getDataCsvClosureOnce = once(function (nameFile, updateData, fun) {
-  console.log('Запущено!');
-  fun(nameFile, updateData);
-});
+// let getDataCsvClosureOnce = once(function (nameFile, updateData, fun) {
+//   console.log('Запущено!');
+//   fun(nameFile, updateData);
+// });
 
 // async function getdircsv() {
 //   console.log('startt function getdircsv()');
@@ -37,26 +37,26 @@ let getDataCsvClosureOnce = once(function (nameFile, updateData, fun) {
 // getdircsv().then((data) => { console.log('getdircsv data=', data) });
 
 
-async function getdircsv() {
-  console.log('startt function getdircsv()');
-  try {
-    let getdircsv = await postData('/api/message/getdircsv', {})
-      .then(response => {
-        // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
-        // console.log('getdircsv response=', response);
-        const nameFile = response.namesfiles[response.namesfiles.length - 1];
-        // console.log('getdircsv nameFile=', nameFile);
-        return nameFile
-      })
-    let loadfile = await postData('/api/message/loadfile', { name: getdircsv }) //{ name: state.value }
-    // console.log('getdircsv data getdircsv=', getdircsv);
-    // console.log('getdircsv data loadfile=', loadfile);
-    // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
-    return loadfile
-    // updateDataFunc(data);// изменяем стейт в Chart.js
-  } catch (e) { console.log('ERROR function getdircsv', e) }
-}
-getdircsv().then((loadfile) => console.log('END getdircsv loadfile=', loadfile));
+// async function getdircsv() {
+//   console.log('startt function getdircsv()');
+//   try {
+//     let getdircsv = await postData('/api/message/getdircsv', {})
+//       .then(response => {
+//         // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
+//         // console.log('getdircsv response=', response);
+//         const nameFile = response.namesfiles[response.namesfiles.length - 1];
+//         // console.log('getdircsv nameFile=', nameFile);
+//         return nameFile
+//       })
+//     let loadfile = await postData('/api/message/loadfile', { name: getdircsv }) //{ name: state.value }
+//     // console.log('getdircsv data getdircsv=', getdircsv);
+//     // console.log('getdircsv data loadfile=', loadfile);
+//     // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
+//     return loadfile
+//     // updateDataFunc(data);// изменяем стейт в Chart.js
+//   } catch (e) { console.log('ERROR function getdircsv', e) }
+// }
+// getdircsv().then((loadfile) => console.log('END getdircsv loadfile=', loadfile));
 // console.log('getdircsv=', getdircsv());
 export const DownloadCSV = ({ updateData }) => {
   countStartDownloadCSV++;
