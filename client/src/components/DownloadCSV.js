@@ -87,7 +87,8 @@ export const DownloadCSV = (props) => {
       <form onSubmit={handleSubmit}>
         <label>
           {/* <select name="namesFiles" onChange={handleChange}> */}
-          <select name="namesFiles" defaultValue={nameFile} value={nameFile} onChange={handleChange}>
+          {/* //defaultValue={nameFile} ничего не дало */}
+          <select name="namesFiles" value={nameFile} onChange={handleChange}>
             {listItems}
           </select>
         </label>
