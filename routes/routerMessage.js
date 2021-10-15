@@ -4,14 +4,13 @@ const router = Router();
 const { check, validationResult, body } = require('express-validator'); // body дополнительно взял
 const config = require('config');
 const fetch = require('node-fetch');
+// "FILES_FOLDER": "./testCSV/"
+//let path = "../../178.20.42.150.sslip.io/html/logs/";
 const FILES_FOLDER = config.get('FILES_FOLDER');
 
 const fs = require("fs");
 const parse = require('csv-parse');
 // const CSVFilePath = "./testCSV/test2_profit_651_1631860141152.csv";// путь берется от места вызова -> app.js
-
-
-//
 
 /* GET quotes listing. */
 // '/api/message'
