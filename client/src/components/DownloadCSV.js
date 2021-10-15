@@ -17,6 +17,30 @@ console.log('countDownloadUP');
 
 let listItems = [];
 
+function listItemsFun(propsNameFilesSelect) {
+  // listItems = props.nameFilesSelect.map((value, index) => {
+  //   // if (index === 0) {
+  //   console.log('ListSelect');
+  //   //   return <option key={value.toString()} defaultValue={value}>{value}</option>
+  //   //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
+  //   // }
+  //   // Правильно! Ключ нужно определять внутри массива:
+  //   return <ListSelect key={value.toString()} value={value} number={value} />
+  // });
+  // return listItems
+  listItems = propsNameFilesSelect.map((value, index) => {
+    // if (index === 0) {
+    console.log('ListSelect');
+    //   return <option key={value.toString()} defaultValue={value}>{value}</option>
+    //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
+    // }
+    // Правильно! Ключ нужно определять внутри массива:
+    return <ListSelect key={value.toString()} value={value} number={value} />
+  });
+  return listItems
+}
+
+
 export const DownloadCSV = (props) => {
   let firstValueSelected = props.nameFilesSelect[0];
   console.log(' firstValueSelected DownloadCSV=', firstValueSelected);
@@ -28,16 +52,7 @@ export const DownloadCSV = (props) => {
   const firstNameFileHook = () => {
     console.log('nameFile useEffect DownloadCSV=', firstValueSelected)
     setNameFile(firstValueSelected);
-    listItems = props.nameFilesSelect.map((value, index) => {
-      // if (index === 0) {
-      console.log('ListSelect');
-      //   return <option key={value.toString()} defaultValue={value}>{value}</option>
-      //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
-      // }
-      // Правильно! Ключ нужно определять внутри массива:
-      return <ListSelect key={value.toString()} value={value} number={value} />
-    });
-    return listItems
+    listItemsFun(props.nameFilesSelect);
   }
 
   // Tell react to run useEffect once the component is loaded
