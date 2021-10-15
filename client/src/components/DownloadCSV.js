@@ -6,21 +6,49 @@ function ListSelect(props) {
   return <option value={props.number}>{props.value}</option>
 }
 
-const values = ['select#1', 'select#2', 'select#3'];
+function writeMeHandler() {
+  console.log('this writeMeHandler button DownloadCSV');
+  // setDataCsv(dataCsv);
+}
 
+const values = ['select#1', 'select#2', 'select#3'];
+let countDownload = 0;
+console.log('countDownloadUP');
+
+let listItems = [];
 
 export const DownloadCSV = (props) => {
   let firstValueSelected = props.nameFilesSelect[0];
   console.log(' firstValueSelected DownloadCSV=', firstValueSelected);
+  countDownload++;
+  console.log(' test count DownloadCSV=', countDownload);
+
   const [nameFile, setNameFile] = useState(firstValueSelected); //назначаем нулевой элемент массива выбранным по default
-  const hook = () => {
+
+  const firstNameFileHook = () => {
     console.log('nameFile useEffect DownloadCSV=', firstValueSelected)
     setNameFile(firstValueSelected);
+    listItems = props.nameFilesSelect.map((value, index) => {
+      // if (index === 0) {
+      console.log('ListSelect');
+      //   return <option key={value.toString()} defaultValue={value}>{value}</option>
+      //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
+      // }
+      // Правильно! Ключ нужно определять внутри массива:
+      return <ListSelect key={value.toString()} value={value} number={value} />
+    });
+    return listItems
+  }
+
+  // Tell react to run useEffect once the component is loaded
+  useEffect(firstNameFileHook, [firstValueSelected]); // если указать files во втором парамметре массиве то бесконечный цикл
+
+  const firstSelectHook = () => {
+
   }
 
 
-  // Tell react to run useEffect once the component is loaded
-  useEffect(hook, [firstValueSelected]); // если указать files во втором парамметре массиве то бесконечный цикл
+  useEffect(firstSelectHook, []); // если указать files во втором парамметре массиве то бесконечный цикл
   console.log('nameFile DownloadCSV 0 = ', nameFile);
   // let values = props.nameFilesSelect;
   // console.log('values DownloadCSV=', values);
@@ -29,20 +57,6 @@ export const DownloadCSV = (props) => {
   //   console.log(item);
   //   return item
   // })
-
-  const listItems = props.nameFilesSelect.map((value, index) => {
-    // if (index === 0) {
-    console.log('ListSelect');
-    //   return <option key={value.toString()} defaultValue={value}>{value}</option>
-    //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
-    // }
-    // Правильно! Ключ нужно определять внутри массива:
-    return <ListSelect key={value.toString()} value={value} number={value} />
-  });
-  function writeMeHandler() {
-    console.log('this writeMeHandler button DownloadCSV');
-    // setDataCsv(dataCsv);
-  }
 
   const handleSubmit = (event) => {
     console.log('nameFile DownloadCSV = ', nameFile);
