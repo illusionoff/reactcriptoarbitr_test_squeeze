@@ -29,11 +29,7 @@ function listItemsFun(propsNameFilesSelect) {
   // });
   // return listItems
   listItems = propsNameFilesSelect.map((value, index) => {
-    // if (index === 0) {
     console.log('ListSelect');
-    //   return <option key={value.toString()} defaultValue={value}>{value}</option>
-    //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
-    // }
     // Правильно! Ключ нужно определять внутри массива:
     return <ListSelect key={value.toString()} value={value} number={value} />
   });
@@ -57,21 +53,8 @@ export const DownloadCSV = (props) => {
 
   // Tell react to run useEffect once the component is loaded
   useEffect(firstNameFileHook, [firstValueSelected]); // если указать files во втором парамметре массиве то бесконечный цикл
-
-  const firstSelectHook = () => {
-
-  }
-
-
-  useEffect(firstSelectHook, []); // если указать files во втором парамметре массиве то бесконечный цикл
   console.log('nameFile DownloadCSV 0 = ', nameFile);
-  // let values = props.nameFilesSelect;
-  // console.log('values DownloadCSV=', values);
   console.log(' props.nameFilesSelect DownloadCSV=', props.nameFilesSelect);
-  // props.nameFilesSelect.map((item) => {
-  //   console.log(item);
-  //   return item
-  // })
 
   const handleSubmit = (event) => {
     console.log('nameFile DownloadCSV = ', nameFile);
@@ -83,11 +66,6 @@ export const DownloadCSV = (props) => {
         // нужен запрос данных из файла
         props.updateData(data);
       });
-
-    // getDataCSV(nameFile, updateData);
-    // console.log('Данные файла загрузились');
-    // console.log('name file:', nameFile);
-    // // setCharts({ value: charts.value++ });
     event.preventDefault();// обязательно должно быть  если не вставить, то перезагружается вся страница
   }
 
