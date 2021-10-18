@@ -16,10 +16,10 @@ async function testGetdircsv() {
       .then(response => {
         // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
         // console.log('getdircsv response=', response);
-        const nameFile = response.namesFiles[response.namesFiles.length - 1];
-        // const nameFile = response.namesFiles[0];
+        // const nameFile = response.namesFiles[response.namesFiles.length - 1];
         // console.log('getdircsv nameFile=', nameFile);
         nameFilesSelect = response.namesFiles.reverse();
+        const nameFile = response.namesFiles[0];
         return nameFile
       })
     let loadfile = await postData('/api/message/loadfile', { name: getdircsv }) //{ name: state.value }
