@@ -6,7 +6,7 @@ const config = require('config');
 const fetch = require('node-fetch');
 // "FILES_FOLDER": "./testCSV/"
 //let path = "../../178.20.42.150.sslip.io/html/logs/";
-// Currently "../../projectSave/criptoarbitrsumsave/current_2/criptoarbitr_test/logs"
+// Currently "../../projectSave/criptoarbitrsumsave/current_2/criptoarbitr_test/logs/"
 const FILES_FOLDER = config.get('FILES_FOLDER');
 
 const fs = require("fs");
