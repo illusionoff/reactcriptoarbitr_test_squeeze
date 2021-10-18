@@ -183,13 +183,14 @@ router.post('/getdircsv',
       // List files working true
       // const testFolder = './tests/';./testCSV/
       // const testFolder = './testCSV/';
-      let namesFiles = [];
+      // let namesFiles = [];
       fs.readdir(FILES_FOLDER, (err, files) => {
-        files.forEach(file => {
-          namesFiles.push(file);
-          console.log(file);
-        });
-        res.status(201).json({ namesFiles });
+        // files.forEach(file => {
+        //   namesFiles.push(file);
+        //   console.log(file);
+        // });
+        // res.status(201).json({ namesFiles });
+        res.status(201).json({ namesFiles: files });
 
       });
       //
