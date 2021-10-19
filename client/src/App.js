@@ -1,11 +1,16 @@
+import 'materialize-css';
+
 import { Chart } from './components/Chart';
+import { Description } from './components/Description';
+
+
 // import { useCallback } from 'react'
 // import { WriteMe } from './components/WriteMe';
 // import logo from './logo.svg';
 // import './App.css';
 // import { LoadCSV } from './components/LoadCSV';
 
-function App(props) {
+function App() {
   return (
     <>
       <main>
@@ -15,6 +20,9 @@ function App(props) {
         {/* <section id="LoadCSV" className="full-height">
           <LoadCSV />
         </section > */}
+        <section id="Description">
+          <Description />
+        </section >
         <section id="chart">
           <Chart />
         </section >

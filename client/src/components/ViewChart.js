@@ -830,26 +830,27 @@ function ViewChart(props) {
               Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
               Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
               </blockquote>
-            <div>
-              <canvas id="myChart"></canvas>
-            </div>
-            <Line data={data2}
-              // ref={ref}
-              // width={100}
-              // height={50}
-              // options={{ maintainAspectRatio: false }}
-              options={options2}
-            />
-            <hr width="85%" />
-            <Line data={data}
-              // ref={ref}
-              // width={100}
-              height={100}
-              // options={{ maintainAspectRatio: false }}
-              options={options}
-            />
-
           </div >
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          <Line data={data2}
+            // ref={ref}
+            // width={100}
+            // height={50}
+            // options={{ maintainAspectRatio: false }}
+            options={options2}
+          />
+          <hr width="85%" />
+          <Line data={data}
+            // ref={ref}
+            // width={100}
+            height={100}
+            // options={{ maintainAspectRatio: false }}
+            options={options}
+          />
+
+
         </div>
       </>
     )
