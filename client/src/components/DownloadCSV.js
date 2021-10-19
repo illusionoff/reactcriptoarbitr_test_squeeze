@@ -90,7 +90,6 @@ export const DownloadCSV = (props) => {
           Отправить DownloadCSV
         </button>
       </div>
-      <div>nameFilesSelect={props.nameFilesSelect}</div>
       <form onSubmit={handleSubmit}>
         <label>
           {/* <select name="namesFiles" onChange={handleChange}> */}
@@ -99,7 +98,7 @@ export const DownloadCSV = (props) => {
             {listItems}
           </select>
         </label>
-        <input type="submit" value="Отправить" />
+        <input type="submit" value="Отправить" className="btn cyan darken-1" />
       </form>
     </>
   )

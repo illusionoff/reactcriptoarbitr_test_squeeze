@@ -831,10 +831,11 @@ function ViewChart(props) {
               Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
               </blockquote>
           </div >
-          <div>
-            <canvas id="myChart"></canvas>
-          </div>
-          <Line data={data2}
+          {/* <div style={{ height: "500px", width: "1000px" }}> */}
+          {/* <div style={{ height: "500px", width: "1000px" }}>
+            <canvas id="myChart" style={{ display: "block", boxSizing: "border-box", height: "500px", width: "1000px" }}></canvas>
+    </div> */}
+          <Line data={data2} id="ChartQuotation"
             // ref={ref}
             // width={100}
             // height={50}

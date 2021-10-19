@@ -1,7 +1,8 @@
 import 'materialize-css';
 
 import { Chart } from './components/Chart';
-import { Description } from './components/Description';
+import { TechnicalTask } from './components/TechnicalTask';
+import { Navbar } from './components/Navbar';
 
 
 // import { useCallback } from 'react'
@@ -20,8 +21,11 @@ function App() {
         {/* <section id="LoadCSV" className="full-height">
           <LoadCSV />
         </section > */}
-        <section id="Description">
-          <Description />
+        <section id="Navbar">
+          <Navbar />
+        </section >
+        <section id="TechnicalTask">
+          <TechnicalTask />
         </section >
         <section id="chart">
           <Chart />

@@ -17,7 +17,12 @@
   /* height: 1200px;
   width: 1200px; */
   min-height: 600px;
-  min-width: 1000px;
+  /* min-width: 1000px; */
+}
+#ChartQuotation{
+  /* min-height: 600px; */
+  min-width: 2000px;
+  overflow: scroll
 }
 
 main {
@@ -27,7 +32,7 @@ main {
   margin-left: auto; */
 }
 
-#Description .container, #Intro .container {
+#TechnicalTask .container, #Intro .container {
   /* padding-bottom: 30px;
   padding-top: 30px; */
   max-width: 1170px;

@@ -2,10 +2,10 @@ import React from 'react';
 
 
 
-export const Description = () => {
+export const TechnicalTask = () => {
   return (
     <div >
-      <h3 className="page-title ">About</h3>
+      <h3 className="page-title ">Technical task</h3>
       <div className="container">
         <blockquote>
           Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
