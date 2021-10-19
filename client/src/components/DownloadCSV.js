@@ -43,7 +43,7 @@ export const DownloadCSV = (props) => {
   countDownload++;
   console.log(' test count DownloadCSV=', countDownload);
 
-  const [nameFile, setNameFile] = useState(firstValueSelected); //назначаем нулевой элемент массива выбранным по default
+  const [nameFile, setNameFile] = useState(); //назначаем нулевой элемент массива выбранным по default
 
   const firstNameFileHook = () => {
     console.log('nameFile useEffect DownloadCSV=', firstValueSelected)
