@@ -11,34 +11,6 @@
   }
 }
 
-@media (max-width:500px) {
-.navTab {
-  font-size: 14px;
-}
-
-#brand-logo {
-  font-size: 22px;
-}
-
-nav.nav-extended .nav-wrapper {
-  min-height: 30px;
-  line-height: 36px;
-  /* height: auto; */
-  height: 30px;
-}
-
-.tabs .tab {
-  /* display: inline-block;
-  text-align: center; */
-  line-height: 24px;
-  height: 36px;
-  /* padding: 0;
-  margin: 0;
-  text-transform: uppercase; */
-}
-
-}
-
 nav.nav-extended .nav-wrapper {
   min-height: 30px;
   line-height: 36px;
@@ -50,11 +22,45 @@ nav.nav-extended .nav-wrapper {
   /* display: inline-block;
   text-align: center; */
   line-height: 34px;
-  height: 36px;
+  /* height: 36px; */
   /* padding: 0;
   margin: 0;
   text-transform: uppercase; */
 }
+
+.tabs.tabs-transparent {
+  height: 36px;
+}
+
+@media (max-width:500px) {
+  .navTab {
+    font-size: 14px;
+  }
+
+  #brand-logo {
+    font-size: 22px;
+  }
+
+  nav.nav-extended .nav-wrapper {
+    min-height: 30px;
+    line-height: 36px;
+    /* height: auto; */
+    height: 30px;
+  }
+
+  /* .tabs .tab { */
+    /* display: inline-block;
+    text-align: center; */
+    /* line-height: 24px; */
+    /* height: 36px; */
+    /* padding: 0;
+    margin: 0;
+    text-transform: uppercase; */
+  /* } */
+
+}
+
+
 /* div.navbar-fixed {
   height: 30px;
 } */
