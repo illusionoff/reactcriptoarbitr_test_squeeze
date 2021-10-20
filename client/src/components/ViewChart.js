@@ -822,54 +822,53 @@ function ViewChart(props) {
     }
 
     return (
-      <>
-        <div>
-          <h3 className="page-title white-text">About</h3>
-          <div className="container">
-            <blockquote>
-              Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
-              Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
+
+      <div>
+        <h3 className="page-title">About</h3>
+        <div className="container">
+          <blockquote>
+            Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
+            Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
               </blockquote>
-          </div >
-          {/* <div style={{ height: "500px", width: "1000px" }}> */}
-          {/* <div style={{ height: "500px", width: "1000px" }}>
+        </div >
+        {/* <div style={{ height: "500px", width: "1000px" }}> */}
+        {/* <div style={{ height: "500px", width: "1000px" }}>
             <canvas id="myChart" style={{ display: "block", boxSizing: "border-box", height: "500px", width: "1000px" }}></canvas>
     </div> */}
-          {/* <div style={{ overflow: "auto", height: "600px", width: "1000px" }} > */}
-          {/* <div style={{ overflow: "auto" }} > */}
-          {/* <div> */}
-          {/* <div id="chartData2Up" style={{ width: "100%", overflowX: "auto" }}>
+        {/* <div style={{ overflow: "auto", height: "600px", width: "1000px" }} > */}
+        {/* <div style={{ overflow: "auto" }} > */}
+        {/* <div> */}
+        {/* <div id="chartData2Up" style={{ width: "100%", overflowX: "auto" }}>
             <div id="chartData2Down" style={{ width: "920px", height: "460px" }}>    */}
-          <div id="chartData2Up" >
-            <div id="chartData2Down" >
-              {/* <Line data={data2} id="ChartQuotation" style={{ height: "750", width: "0" }} */}
-              <Line data={data2} id="ChartQuotation"
-                // <div>
-                // <Line data={data2} id="ChartQuotation"
-                /* <Line data={data2} id="ChartQuotation" style={{ overflow: "scroll", height: "1000px", width: "2000px" }} */
-                // ref={ref}
-                // width={1000}
-                // height={500}
-                // options={{ maintainAspectRatio: false }}
-                options={options2}
-              />
-            </div>
+        <div id="chartData2Up" >
+          <div id="chartData2Down" >
+            {/* <Line data={data2} id="ChartQuotation" style={{ height: "750", width: "0" }} */}
+            <Line data={data2} id="ChartQuotation"
+              // <div>
+              // <Line data={data2} id="ChartQuotation"
+              /* <Line data={data2} id="ChartQuotation" style={{ overflow: "scroll", height: "1000px", width: "2000px" }} */
+              // ref={ref}
+              // width={1000}
+              // height={500}
+              // options={{ maintainAspectRatio: false }}
+              options={options2}
+            />
           </div>
-          <hr width="85%" />
-          <div id="chartData1Up" >
-            <div id="chartData1Down" >
-              <Line data={data}
-                // ref={ref}
-                // width={100}
-                height={100}
-                // options={{ maintainAspectRatio: false }}
-                options={options}
-              />
-            </div>
-          </div>
-
         </div>
-      </>
+        <hr width="85%" />
+        <div id="chartData1Up" >
+          <div id="chartData1Down" >
+            <Line data={data}
+              // ref={ref}
+              // width={100}
+              height={100}
+              // options={{ maintainAspectRatio: false }}
+              options={options}
+            />
+          </div>
+        </div>
+
+      </div>
     )
   }
 
