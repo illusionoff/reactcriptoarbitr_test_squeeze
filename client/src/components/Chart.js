@@ -10,7 +10,7 @@ import { DownloadCSV } from './DownloadCSV';
 
 let nameFilesSelect = [];
 async function testGetdircsv() {
-  console.log('startt function getdircsv()');
+  console.log('START function getdircsv()');
   try {
     let getdircsv = await postData('/api/message/getdircsv', {})
       .then(response => {
@@ -26,6 +26,7 @@ async function testGetdircsv() {
     // console.log('getdircsv data getdircsv=', getdircsv);
     // console.log('getdircsv data loadfile=', loadfile);
     // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
+    console.log('END function getdircsv()');
     return loadfile
     // updateDataFunc(data);// изменяем стейт в Chart.js
   } catch (e) { console.log('ERROR function getdircsv', e) }
@@ -51,7 +52,8 @@ console.log('this index.js React');
 
 export const Chart = () => {
 
-  const [dataCsv, setDataCsv] = useState({ data: 'Данных еще нет' });
+  // const [dataCsv, setDataCsv] = useState(() => testGetdircsv().then((loadfile) => setDataCsv(loadfile)));
+  const [dataCsv, setDataCsv] = useState({ name: "нет данных" });
 
   const hook = () => {
     testGetdircsv().then((loadfile) => {
@@ -90,7 +92,7 @@ export const Chart = () => {
   let name1 = 'name1';
   return (
     <>
-      <h3 className="page-title">Chart</h3>
+      <h3 className="page-title white-text">Chart</h3>
       <input
         placeholder="Введите ваше имя"
         id="name"

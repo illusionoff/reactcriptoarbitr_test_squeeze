@@ -32,8 +32,8 @@ export const Navbar = () => {
           </div>
           <div className="nav-content">
             <ul className="tabs tabs-transparent">
-              <li className="tab"> <Link activeClass="active" to="TechnicalTask" spy={true} smooth={true} duration={500} offset={-60}><span className="navTab red-text text-darken-2" >Technical task</span></Link></li>
-              <li className="tab"><Link activeClass="active" to="developmentDescription" spy={true} smooth={true} duration={500} offset={-60}><span className="navTab">Development</span></Link></li>
+              <li className="tab"> <Link activeClass="active" to="TechnicalTask" spy={true} smooth={true} duration={500} offset={-60}><span className="navTab" >Technical task</span></Link></li>
+              <li className="tab"><Link activeClass="active" to="DevelopmentDescription" spy={true} smooth={true} duration={500} offset={-60}><span className="navTab">Development</span></Link></li>
               {/* <li className="tab disabled"><Link activeClass="active" to="test3" spy={true} smooth={true} duration={500} offset={-60}><span class="navTab">Disabled Tab</span></Link></li> */}
               <li className="tab"><Link activeClass="active" to="chart" spy={true} smooth={true} duration={500} offset={-60}><span className="navTab">Chart</span></Link></li>
             </ul>

@@ -5,8 +5,8 @@ import React from 'react';
 export const TechnicalTask = () => {
   return (
     <>
-      <div style={{ marginTop: "64px" }}></div>
-      <h3 className="page-title ">Technical task</h3>
+      {/* <div style={{ marginTop: "64px" }}></div> */}
+      <h3 className="page-title white-text">Technical task</h3>
       <div >
         <div className="container">
           <blockquote>

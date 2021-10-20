@@ -1,5 +1,19 @@
 @import "~materialize-css/dist/css/materialize.min.css";
 
+h3 {
+  padding: 20px 30px;
+  margin-bottom: 40px;
+  margin-top: 0px;
+  font-size: 30px;
+  background-color:#747474;
+}
+/* section {
+  margin-top: 20px;
+} */
+/* .page-title {
+  margin-top: 100px;
+} */
+
 @media (max-width:920px) {
   #chartData2Up , #chartData1Up {
     width: 100%;
@@ -13,7 +27,7 @@
 
 nav {
   /* color: greenyellow; */
-  background-color: #4471b9;
+  background-color: #747474;
 }
 /* a.active.navTab {
     color: greenyellow;
@@ -33,6 +47,9 @@ nav.nav-extended .nav-wrapper {
   line-height: 36px;
   /* height: auto; */
   height: 30px;
+}
+.tabs.tabs-transparent .tab a, .tabs.tabs-transparent .tab.disabled a, .tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgba(255,255,255,0.5);
 }
 
 .tabs .tab {
@@ -135,14 +152,17 @@ height:500; */
   overflow: scroll
 } */
 
- /* main { */
+  /* main { */
   /* padding-bottom: 30px;
   padding-top: 30px;
   margin-right: auto;
   margin-left: auto; */
-  /* margin-top: 112px;
-} */
+  /* margin-top: -64px; */
+/* } */
 
+#DevelopmentDescription .container, #TechnicalTask .container, #chart .container  {
+  padding-bottom: 30px;
+}
 /* #TechnicalTask .container, #Intro .container { */
   /* padding-bottom: 30px;
   padding-top: 30px; */
@@ -160,3 +180,8 @@ select{
 #select_downloadcsv select:focus {
   width:auto;
  }
+
+ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i, .navbar-fixed  {
+  height: 64px !important;
+  line-height: 64px !important;
+}

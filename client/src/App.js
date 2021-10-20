@@ -28,7 +28,7 @@ function App() {
         <section id="TechnicalTask">
           <TechnicalTask />
         </section >
-        <section id="developmentDescription">
+        <section id="DevelopmentDescription">
           <DevelopmentDescription />
         </section >
         <section id="chart">
