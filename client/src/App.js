@@ -3,6 +3,7 @@ import 'materialize-css';
 import { Chart } from './components/Chart';
 import { TechnicalTask } from './components/TechnicalTask';
 import { Navbar } from './components/Navbar';
+import { DevelopmentDescription } from './components/DevelopmentDescription';
 
 
 // import { useCallback } from 'react'
@@ -26,6 +27,9 @@ function App() {
         </section >
         <section id="TechnicalTask">
           <TechnicalTask />
+        </section >
+        <section id="developmentDescription">
+          <DevelopmentDescription />
         </section >
         <section id="chart">
           <Chart />

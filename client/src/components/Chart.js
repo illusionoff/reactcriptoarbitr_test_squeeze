@@ -90,6 +90,7 @@ export const Chart = () => {
   let name1 = 'name1';
   return (
     <>
+      <h3 className="page-title">Chart</h3>
       <input
         placeholder="Введите ваше имя"
         id="name"
