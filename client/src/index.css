@@ -1,13 +1,13 @@
 @import "~materialize-css/dist/css/materialize.min.css";
 
 @media (max-width:920px) {
-  #chartData2Up {
+  #chartData2Up , #chartData1Up {
     width: 100%;
     overflow-x: auto
   }
-  #chartData2Down{
+  #chartData2Down , #chartData1Down {
     width: 920px;
-    height: 460px
+     height: 460px
   }
 }
 /* body {

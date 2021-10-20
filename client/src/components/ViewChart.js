@@ -856,14 +856,17 @@ function ViewChart(props) {
             </div>
           </div>
           <hr width="85%" />
-          <Line data={data}
-            // ref={ref}
-            // width={100}
-            height={100}
-            // options={{ maintainAspectRatio: false }}
-            options={options}
-          />
-
+          <div id="chartData1Up" >
+            <div id="chartData1Down" >
+              <Line data={data}
+                // ref={ref}
+                // width={100}
+                height={100}
+                // options={{ maintainAspectRatio: false }}
+                options={options}
+              />
+            </div>
+          </div>
 
         </div>
       </>
