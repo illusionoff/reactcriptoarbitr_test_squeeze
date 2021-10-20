@@ -837,9 +837,15 @@ function ViewChart(props) {
     </div> */}
           {/* <div style={{ overflow: "auto", height: "600px", width: "1000px" }} > */}
           {/* <div style={{ overflow: "auto" }} > */}
-          <div style={{ width: "100%", overflowX: "auto" }}>
-            <div style={{ width: "1500px", height: "750px" }}>
-              <Line data={data2} id="ChartQuotation" style={{ height: "750", width: "0" }}
+          {/* <div> */}
+          {/* <div id="chartData2Up" style={{ width: "100%", overflowX: "auto" }}>
+            <div id="chartData2Down" style={{ width: "920px", height: "460px" }}>    */}
+          <div id="chartData2Up" >
+            <div id="chartData2Down" >
+              {/* <Line data={data2} id="ChartQuotation" style={{ height: "750", width: "0" }} */}
+              <Line data={data2} id="ChartQuotation"
+                // <div>
+                // <Line data={data2} id="ChartQuotation"
                 /* <Line data={data2} id="ChartQuotation" style={{ overflow: "scroll", height: "1000px", width: "2000px" }} */
                 // ref={ref}
                 // width={1000}
