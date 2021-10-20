@@ -11,6 +11,23 @@
   }
 }
 
+nav {
+  /* color: greenyellow; */
+  background-color: #4471b9;
+}
+/* a.active.navTab {
+    color: greenyellow;
+    background-color: #4471b9;
+} */
+
+/* .active {
+  color: greenyellow;
+  background-color: greenyellow;
+} */
+
+/* .tabs.tabs-transparent .tab a, .tabs.tabs-transparent .tab.disabled a, .tabs.tabs-transparent .tab.disabled a:hover {
+  color: rgb(195 50 50 / 70%); */
+
 nav.nav-extended .nav-wrapper {
   min-height: 30px;
   line-height: 36px;
