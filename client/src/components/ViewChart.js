@@ -487,7 +487,7 @@ function ViewChart(props) {
           position: 'left',
           title: {
             display: true,
-            text: 'false/true',
+            text: 'false/true/all',
             color: '#191', // green
             font: {
               family: 'Times',
