@@ -159,9 +159,13 @@ height:500; */
   margin-left: auto; */
   /* margin-top: -64px; */
 /* } */
-
-#DevelopmentDescription .container, #TechnicalTask .container, #chart .container  {
+/* :not(#DownloadCSV .container) */
+#DevelopmentDescription .container, #TechnicalTask .container, #chart .container {
   padding-bottom: 30px;
+}
+
+#DownloadCSV .container  {
+  padding-bottom: 0px;
 }
 /* #TechnicalTask .container, #Intro .container { */
   /* padding-bottom: 30px;
@@ -181,7 +185,16 @@ select{
   width:auto;
  }
 
+ #select_downloadcsv {
+  margin-left: auto;
+  margin-right: auto;
+ }
+
  nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i, .navbar-fixed  {
   height: 64px !important;
   line-height: 64px !important;
+}
+
+.width180 {
+  width: 180px
 }

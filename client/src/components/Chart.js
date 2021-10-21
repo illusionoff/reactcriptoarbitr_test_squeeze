@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from 'react';
 
 // import { Line } from 'react-chartjs-2';
-import ViewChart from './ViewChart';
 // import { DownloadCSV } from './DownloadCSV';
 import { postData, once } from '../functions/functions';//../hooks/message.hook
+import ViewChart from './ViewChart';
 import { DownloadCSV } from './DownloadCSV';
+import { ChartDescription } from './ChartDescription';
 
 
 let nameFilesSelect = [];
@@ -89,10 +90,10 @@ export const Chart = () => {
   const updateData = (value) => {
     setDataCsv(value)
   }
-  let name1 = 'name1';
+  // let name1 = 'name1';
   return (
     <>
-      <h3 className="page-title white-text">Chart</h3>
+      {/* <h3 className="page-title white-text">Chart</h3>
       <input
         placeholder="Введите ваше имя"
         id="name"
@@ -117,10 +118,12 @@ export const Chart = () => {
         >
           Отправить
         </button>
-      </div>
-      <DownloadCSV nameFilesSelect={nameFilesSelect} updateData={updateData} />
-      <div id="test4" className="col s12">Test 4</div>
-      <ViewChart ViewChart={dataCsv} name={name1} />
+      </div> */}
+      <ChartDescription />
+      <section id="DownloadCSV">
+        <DownloadCSV nameFilesSelect={nameFilesSelect} updateData={updateData} />
+      </section>
+      <ViewChart ViewChart={dataCsv} />
     </>
   )
 }

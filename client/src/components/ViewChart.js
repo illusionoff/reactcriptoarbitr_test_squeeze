@@ -824,13 +824,7 @@ function ViewChart(props) {
     return (
 
       <div>
-        <h3 className="page-title">Chart</h3>
-        <div className="container">
-          <blockquote>
-            Я начинающий Back-end, Full Stack Nodejs разработчик, которому интересно создавать новое, пробираться через ошибки и проблемы, постоянно обучаться.
-            Чувствую себя наполненным восторгом и эйфорией, как ребенок, видя результат своих творений, осознавая полезность своих способностей. dsds
-              </blockquote>
-        </div >
+        {/* <h3 className="page-title white-text">ViewChart</h3> */}
         {/* <div style={{ height: "500px", width: "1000px" }}> */}
         {/* <div style={{ height: "500px", width: "1000px" }}>
             <canvas id="myChart" style={{ display: "block", boxSizing: "border-box", height: "500px", width: "1000px" }}></canvas>
