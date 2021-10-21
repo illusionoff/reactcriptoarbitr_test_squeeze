@@ -99,7 +99,7 @@ export const DownloadCSV = (props) => {
               {listItems}
             </select>
           </label>
-          <input type="submit" value="Загрузить файл" className="btn cyan darken-1 width180" />
+          <input type="submit" value="Загрузить файл" className="btn grey darken-1 width180 " />
         </form>
       </div>
     </>

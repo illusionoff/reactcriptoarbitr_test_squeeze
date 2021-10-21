@@ -79,13 +79,13 @@ export const Chart = () => {
 
   //   </>
   // )
-  function changeHandler() {
-    console.log('this changeHandler');
-  }
-  function writeMeHandler() {
-    console.log('this writeMeHandler button');
-    // setDataCsv(dataCsv);
-  }
+  // function changeHandler() {
+  //   console.log('this changeHandler');
+  // }
+  // function writeMeHandler() {
+  //   console.log('this writeMeHandler button');
+  //   // setDataCsv(dataCsv);
+  // }
 
   const updateData = (value) => {
     setDataCsv(value)
