@@ -77,11 +77,10 @@ export const DownloadCSV = (props) => {
   }
   return (
     <>
-      <div className="container">
-        <blockquote>
-          DownloadCSV
+      <blockquote>
+        DownloadCSV
       </blockquote>
-        {/* <div className="card-action">
+      {/* <div className="card-action">
         <button
           // className="btn yellow darken-4"
           className="btn cyan darken-1"
@@ -91,18 +90,17 @@ export const DownloadCSV = (props) => {
           Отправить DownloadCSV
         </button>
       </div> */}
-        <div className="center">
-          <form onSubmit={handleSubmit} >
-            <label className="center">
-              {/* <select name="namesFiles" onChange={handleChange}> */}
-              {/* //defaultValue={nameFile} ничего не дало */}
-              <select name="namesFiles" id="select_downloadcsv" className="width180 center" value={nameFile} onChange={handleChange}>
-                {listItems}
-              </select>
-            </label>
-            <input type="submit" value="Загрузить файл" className="btn cyan darken-1 width180" />
-          </form>
-        </div>
+      <div className="center">
+        <form onSubmit={handleSubmit} >
+          <label className="center">
+            {/* <select name="namesFiles" onChange={handleChange}> */}
+            {/* //defaultValue={nameFile} ничего не дало */}
+            <select name="namesFiles" id="select_downloadcsv" className="width180" value={nameFile} onChange={handleChange}>
+              {listItems}
+            </select>
+          </label>
+          <input type="submit" value="Загрузить файл" className="btn cyan darken-1 width180" />
+        </form>
       </div>
     </>
   )
