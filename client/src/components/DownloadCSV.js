@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { postData } from '../functions/functions';//../hooks/message.hook
 
 function ListSelect(props) {
@@ -43,6 +43,10 @@ export const DownloadCSV = (props) => {
   console.log(' test count DownloadCSV=', countDownload);
 
   const [nameFile, setNameFile] = useState(firstValueSelected); //назначаем нулевой элемент массива выбранным по default
+  //   const listItems = useRef([])
+  //   useEffect(() => {
+  //     listItems.current =
+  // })
 
   const firstNameFileHook = () => {
     console.log('nameFile useEffect DownloadCSV=', firstValueSelected)
