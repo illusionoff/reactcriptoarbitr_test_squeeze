@@ -14,16 +14,20 @@ async function testGetdircsv() {
   console.log('START function getdircsv()');
   try {
     let getdircsv = await postData('/api/message/getdircsv', {})
-      .then(response => {
-        // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
-        // console.log('getdircsv response=', response);
-        // const nameFile = response.namesFiles[response.namesFiles.length - 1];
-        // console.log('getdircsv nameFile=', nameFile);
-        nameFilesSelect = response.namesFiles.reverse();
-        const nameFile = response.namesFiles[0];
-        return nameFile
-      })
-    let loadfile = await postData('/api/message/loadfile', { name: getdircsv }) //{ name: state.value }
+    // .then(response => {
+    //   // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
+    //   // console.log('getdircsv response=', response);
+    //   // const nameFile = response.namesFiles[response.namesFiles.length - 1];
+    //   // console.log('getdircsv nameFile=', nameFile);
+    //   nameFilesSelect = response.namesFiles.reverse();
+    //   const nameFile = response.namesFiles[0];
+    //   return nameFile
+    // })
+
+    nameFilesSelect = getdircsv.namesFiles.reverse();
+    const nameFile = getdircsv.namesFiles[0];
+    let loadfile = await postData('/api/message/loadfile', { name: nameFile }) //{ name: state.value }
+
     // console.log('getdircsv data getdircsv=', getdircsv);
     // console.log('getdircsv data loadfile=', loadfile);
     // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
