@@ -688,19 +688,36 @@ function ViewChart(props) {
 
     const options2 = {
       responsive: true,
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      },
-      stacked: false,
       plugins: {
         title: {
           display: true,
           text: 'Quotation price diagram',
           font: FONT_TITLE_CHART
 
+        },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              let label = context.dataset.label || '';
+              if (label) {
+                label += ': ';
+              }
+              // if (context.parsed.y !== null) {
+              //   label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+              // }
+              if (context.parsed.y !== null) {
+                label += context.parsed.y;
+              }
+              return label;
+            }
+          }
         }
       },
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
+      stacked: false,
       scales: {
 
         a: {
@@ -862,7 +879,7 @@ function ViewChart(props) {
           </div>
         </div>
 
-      </div>
+      </div >
     )
   }
 

@@ -6,12 +6,12 @@ function ListSelect(props) {
   return <option value={props.number}>{props.value}</option>
 }
 
-function writeMeHandler() {
-  console.log('this writeMeHandler button DownloadCSV');
-  // setDataCsv(dataCsv);
-}
+// function writeMeHandler() {
+//   console.log('this writeMeHandler button DownloadCSV');
+//   // setDataCsv(dataCsv);
+// }
 
-const values = ['select#1', 'select#2', 'select#3'];
+// const values = ['select#1', 'select#2', 'select#3'];
 let countDownload = 0;
 console.log('countDownloadUP');
 
@@ -29,7 +29,6 @@ function listItemsFun(propsNameFilesSelect) {
   // });
   // return listItems
   listItems = propsNameFilesSelect.map((value, index) => {
-    console.log('ListSelect');
     // Правильно! Ключ нужно определять внутри массива:
     return <ListSelect key={value.toString()} value={value} number={value} />
   });
