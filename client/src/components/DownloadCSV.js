@@ -15,9 +15,10 @@ function ListSelect(props) {
 let countDownload = 0;
 console.log('countDownloadUP');
 
-let listItems = [];
+// let listItems = [];
 
-function listItemsFun(propsNameFilesSelect) {
+function listItemsFun(propsNameFilesSelect, listItems) {
+  console.log('listItems=', listItems);
   // listItems = props.nameFilesSelect.map((value, index) => {
   //   // if (index === 0) {
   //   console.log('ListSelect');
@@ -28,10 +29,23 @@ function listItemsFun(propsNameFilesSelect) {
   //   return <ListSelect key={value.toString()} value={value} number={value} />
   // });
   // return listItems
-  listItems = propsNameFilesSelect.map((value, index) => {
-    // Правильно! Ключ нужно определять внутри массива:
-    return <ListSelect key={value.toString()} value={value} number={value} />
-  });
+
+  // listItems = propsNameFilesSelect.map((value, index) => {
+  //   // Правильно! Ключ нужно определять внутри массива:
+  //   return <ListSelect key={value.toString()} value={value} number={value} />
+  // });
+  // const listItems_ = propsNameFilesSelect.map((value, index) => {
+  //   // Правильно! Ключ нужно определять внутри массива:
+  //   return <ListSelect key={value.toString()} value={value} number={value} />
+  // });
+
+  propsNameFilesSelect.forEach((value) => listItems.push(
+    <ListSelect key={value.toString()} value={value} number={value} />
+  ));
+
+
+  // listItems_.forEach((value) => listItems.push(value));
+
   return listItems
 }
 
@@ -43,6 +57,9 @@ export const DownloadCSV = (props) => {
   console.log(' test count DownloadCSV=', countDownload);
 
   const [nameFile, setNameFile] = useState(firstValueSelected); //назначаем нулевой элемент массива выбранным по default
+
+  const listItems = useRef([]);
+  // const listItems = useRef([]);
   //   const listItems = useRef([])
   //   useEffect(() => {
   //     listItems.current =
@@ -51,7 +68,7 @@ export const DownloadCSV = (props) => {
   const firstNameFileHook = () => {
     console.log('nameFile useEffect DownloadCSV=', firstValueSelected)
     setNameFile(firstValueSelected);
-    listItemsFun(props.nameFilesSelect);
+    listItemsFun(props.nameFilesSelect, listItems.current);
   }
 
   // Tell react to run useEffect once the component is loaded
@@ -99,7 +116,7 @@ export const DownloadCSV = (props) => {
             {/* <select name="namesFiles" onChange={handleChange}> */}
             {/* //defaultValue={nameFile} ничего не дало */}
             <select name="namesFiles" id="select_downloadcsv" className="width180" value={nameFile} onChange={handleChange}>
-              {listItems}
+              {listItems.current}
             </select>
           </label>
           <input type="submit" value="Загрузить файл" className="btn grey darken-1 width180 " />

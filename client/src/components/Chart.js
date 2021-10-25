@@ -47,7 +47,7 @@ console.log('this index.js React');
 async function firstLoadDataFile(nameFilesSelect) {
   try {
     const funOne = await getNamesFiles();
-    funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.current.push(elem));
+    funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.push(elem));
     console.log('nameFilesSelect_=', nameFilesSelect);
     const nameFile = funOne.namesFiles[0];
 
@@ -65,15 +65,12 @@ export const Chart = () => {
   const [dataCsv, setDataCsv] = useState({ name: "нет данных" });
   const nameFilesSelect = useRef([]);
 
-  // useEffect(() => {
-  //   nameFilesSelect.current
-  // },[])
+  const updateData = (value) => {
+    setDataCsv(value)
+  }
+
   const hook = () => {
-    // testGetdircsv().then((loadfile) => {
-    //   console.log('END getdircsv loadfile=', loadfile);
-    //   setDataCsv(loadfile);
-    // })
-    firstLoadDataFile(nameFilesSelect).then((loadfile) => {
+    firstLoadDataFile(nameFilesSelect.current).then((loadfile) => {
       console.log('END twoAsyncFunction loadfile=', loadfile);
       setDataCsv(loadfile);
     })
@@ -103,9 +100,7 @@ export const Chart = () => {
   //   // setDataCsv(dataCsv);
   // }
 
-  const updateData = (value) => {
-    setDataCsv(value)
-  }
+
   // let name1 = 'name1';
   return (
     <>
