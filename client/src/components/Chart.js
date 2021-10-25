@@ -59,7 +59,7 @@ console.log('this index.js React');
 // }
 // );
 
-async function twoAsyncFunction(nameFilesSelect) {
+async function firstLoadDataFile(nameFilesSelect) {
   const funOne = await getNamesFiles();
   funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.current.push(elem));
   console.log('nameFilesSelect_=', nameFilesSelect);
@@ -86,7 +86,7 @@ export const Chart = () => {
     //   console.log('END getdircsv loadfile=', loadfile);
     //   setDataCsv(loadfile);
     // })
-    twoAsyncFunction(nameFilesSelect).then((loadfile) => {
+    firstLoadDataFile(nameFilesSelect).then((loadfile) => {
       console.log('END twoAsyncFunction loadfile=', loadfile);
       setDataCsv(loadfile);
     })
