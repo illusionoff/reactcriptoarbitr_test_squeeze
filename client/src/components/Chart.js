@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // import { Line } from 'react-chartjs-2';
 // import { DownloadCSV } from './DownloadCSV';
@@ -9,7 +9,7 @@ import { DownloadCSV } from './DownloadCSV';
 import { ChartDescription } from './ChartDescription';
 
 
-let nameFilesSelect = [];
+// let nameFilesSelect = [];
 async function getNamesFiles() {
   console.log('START function getNamesFiles()');
   try {
@@ -61,7 +61,7 @@ console.log('this index.js React');
 
 async function twoAsyncFunction(nameFilesSelect) {
   const funOne = await getNamesFiles();
-  funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.push(elem));
+  funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.current.push(elem));
   console.log('nameFilesSelect_=', nameFilesSelect);
   const nameFile = funOne.namesFiles[0];
 
@@ -76,7 +76,11 @@ export const Chart = () => {
 
   // const [dataCsv, setDataCsv] = useState(() => testGetdircsv().then((loadfile) => setDataCsv(loadfile)));
   const [dataCsv, setDataCsv] = useState({ name: "нет данных" });
+  const nameFilesSelect = useRef([]);
 
+  // useEffect(() => {
+  //   nameFilesSelect.current
+  // },[])
   const hook = () => {
     // testGetdircsv().then((loadfile) => {
     //   console.log('END getdircsv loadfile=', loadfile);
@@ -146,7 +150,7 @@ export const Chart = () => {
       </div> */}
       <ChartDescription />
       <section id="DownloadCSV">
-        <DownloadCSV nameFilesSelect={nameFilesSelect} updateData={updateData} />
+        <DownloadCSV nameFilesSelect={nameFilesSelect.current} updateData={updateData} />
       </section>
       <ViewChart ViewChart={dataCsv} />
     </>
