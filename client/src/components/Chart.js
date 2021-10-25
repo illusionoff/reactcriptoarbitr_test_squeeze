@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // import { Line } from 'react-chartjs-2';
 // import { DownloadCSV } from './DownloadCSV';
-import { postData, once } from '../functions/functions';//../hooks/message.hook
+import { postData, getDataFile, once } from '../functions/functions';//../hooks/message.hook
 import ViewChart from './ViewChart';
 import { DownloadCSV } from './DownloadCSV';
 import { ChartDescription } from './ChartDescription';
@@ -28,21 +28,6 @@ async function getNamesFiles() {
     // updateDataFunc(data);// изменяем стейт в Chart.js
   } catch (e) { console.log('ERROR function getNamesFiles', e) }
 }
-async function getDataFile(nameFile) {
-  console.log('START function getDataFile()');
-  try {
-    // nameFilesSelect = getdircsv.namesFiles.reverse();
-    // const nameFile = getdircsv.namesFiles[0];
-    // let loadfile = await postData('/api/message/loadfile', { name: nameFile }) //{ name: state.value }
-
-    // console.log('getdircsv data getdircsv=', getdircsv);
-    // console.log('getdircsv data loadfile=', loadfile);
-    // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
-    console.log('END function getdircsv()');
-    return await postData('/api/message/loadfile', { name: nameFile })
-    // updateDataFunc(data);// изменяем стейт в Chart.js
-  } catch (e) { console.log('ERROR function getDataFile', e) }
-}
 
 // let testGetdircsvOnce = once(function () {
 //   console.log('Запущено!');
@@ -60,15 +45,17 @@ console.log('this index.js React');
 // );
 
 async function firstLoadDataFile(nameFilesSelect) {
-  const funOne = await getNamesFiles();
-  funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.current.push(elem));
-  console.log('nameFilesSelect_=', nameFilesSelect);
-  const nameFile = funOne.namesFiles[0];
+  try {
+    const funOne = await getNamesFiles();
+    funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.current.push(elem));
+    console.log('nameFilesSelect_=', nameFilesSelect);
+    const nameFile = funOne.namesFiles[0];
 
-  // const funTwo = await getDataFile(JSON.stringify(funOne.query_string));
-  // const result = funOne+funTwo;
-  // getdircsv2().then((result) => console.log('getdircsv2=', result));
-  return await getDataFile(nameFile)
+    // const funTwo = await getDataFile(JSON.stringify(funOne.query_string));
+    // const result = funOne+funTwo;
+    // getdircsv2().then((result) => console.log('getdircsv2=', result));
+    return await getDataFile(nameFile)
+  } catch (e) { console.log(e) }
 }
 
 

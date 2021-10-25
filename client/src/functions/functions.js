@@ -69,7 +69,23 @@ const getDataCSV = async (InputData, updateDataFunc) => {
         console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
         updateDataFunc(data);// изменяем стейт в Chart.js
       });
-  } catch (e) { }
+  } catch (e) { console.log(e) }
 }
 
-export { once, postData, getDataCSV };
+async function getDataFile(nameFile) {
+  console.log('START function getDataFile()');
+  try {
+    // nameFilesSelect = getdircsv.namesFiles.reverse();
+    // const nameFile = getdircsv.namesFiles[0];
+    // let loadfile = await postData('/api/message/loadfile', { name: nameFile }) //{ name: state.value }
+
+    // console.log('getdircsv data getdircsv=', getdircsv);
+    // console.log('getdircsv data loadfile=', loadfile);
+    // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
+    console.log('END function getdircsv()');
+    return await postData('/api/message/loadfile', { name: nameFile })
+    // updateDataFunc(data);// изменяем стейт в Chart.js
+  } catch (e) { console.log('ERROR function getDataFile', e) }
+}
+
+export { once, postData, getDataCSV, getDataFile };
