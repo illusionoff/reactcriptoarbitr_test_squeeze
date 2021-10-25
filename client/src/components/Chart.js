@@ -10,10 +10,10 @@ import { ChartDescription } from './ChartDescription';
 
 
 let nameFilesSelect = [];
-async function testGetdircsv() {
-  console.log('START function getdircsv()');
+async function getNamesFiles() {
+  console.log('START function getNamesFiles()');
   try {
-    let getdircsv = await postData('/api/message/getdircsv', {})
+    // let getdircsv = await postData('/api/message/getdircsv', {})
     // .then(response => {
     //   // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
     //   // console.log('getdircsv response=', response);
@@ -23,18 +23,25 @@ async function testGetdircsv() {
     //   const nameFile = response.namesFiles[0];
     //   return nameFile
     // })
-
-    nameFilesSelect = getdircsv.namesFiles.reverse();
-    const nameFile = getdircsv.namesFiles[0];
-    let loadfile = await postData('/api/message/loadfile', { name: nameFile }) //{ name: state.value }
+    console.log('END function getNamesFiles()');
+    return await postData('/api/message/getdircsv', {})
+    // updateDataFunc(data);// изменяем стейт в Chart.js
+  } catch (e) { console.log('ERROR function getNamesFiles', e) }
+}
+async function getDataFile(nameFile) {
+  console.log('START function getDataFile()');
+  try {
+    // nameFilesSelect = getdircsv.namesFiles.reverse();
+    // const nameFile = getdircsv.namesFiles[0];
+    // let loadfile = await postData('/api/message/loadfile', { name: nameFile }) //{ name: state.value }
 
     // console.log('getdircsv data getdircsv=', getdircsv);
     // console.log('getdircsv data loadfile=', loadfile);
     // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
     console.log('END function getdircsv()');
-    return loadfile
+    return await postData('/api/message/loadfile', { name: nameFile })
     // updateDataFunc(data);// изменяем стейт в Chart.js
-  } catch (e) { console.log('ERROR function getdircsv', e) }
+  } catch (e) { console.log('ERROR function getDataFile', e) }
 }
 
 // let testGetdircsvOnce = once(function () {
@@ -52,7 +59,17 @@ console.log('this index.js React');
 // }
 // );
 
+async function twoAsyncFunction(nameFilesSelect) {
+  const funOne = await getNamesFiles();
+  funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.push(elem));
+  console.log('nameFilesSelect_=', nameFilesSelect);
+  const nameFile = funOne.namesFiles[0];
 
+  // const funTwo = await getDataFile(JSON.stringify(funOne.query_string));
+  // const result = funOne+funTwo;
+  // getdircsv2().then((result) => console.log('getdircsv2=', result));
+  return await getDataFile(nameFile)
+}
 
 
 export const Chart = () => {
@@ -61,8 +78,12 @@ export const Chart = () => {
   const [dataCsv, setDataCsv] = useState({ name: "нет данных" });
 
   const hook = () => {
-    testGetdircsv().then((loadfile) => {
-      console.log('END getdircsv loadfile=', loadfile);
+    // testGetdircsv().then((loadfile) => {
+    //   console.log('END getdircsv loadfile=', loadfile);
+    //   setDataCsv(loadfile);
+    // })
+    twoAsyncFunction(nameFilesSelect).then((loadfile) => {
+      console.log('END twoAsyncFunction loadfile=', loadfile);
       setDataCsv(loadfile);
     })
   };
