@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { getDataFile } from '../functions/functions';//../hooks/message.hook
 
 function ListSelect(props) {
@@ -19,32 +19,9 @@ console.log('countDownloadUP');
 
 function listItemsFun(propsNameFilesSelect, listItems) {
   console.log('listItems=', listItems);
-  // listItems = props.nameFilesSelect.map((value, index) => {
-  //   // if (index === 0) {
-  //   console.log('ListSelect');
-  //   //   return <option key={value.toString()} defaultValue={value}>{value}</option>
-  //   //   // return <ListSelect key={value.toString()} selected="selected" value={value} number={value} />
-  //   // }
-  //   // Правильно! Ключ нужно определять внутри массива:
-  //   return <ListSelect key={value.toString()} value={value} number={value} />
-  // });
-  // return listItems
-
-  // listItems = propsNameFilesSelect.map((value, index) => {
-  //   // Правильно! Ключ нужно определять внутри массива:
-  //   return <ListSelect key={value.toString()} value={value} number={value} />
-  // });
-  // const listItems_ = propsNameFilesSelect.map((value, index) => {
-  //   // Правильно! Ключ нужно определять внутри массива:
-  //   return <ListSelect key={value.toString()} value={value} number={value} />
-  // });
-
   propsNameFilesSelect.forEach((value) => listItems.push(
     <ListSelect key={value.toString()} value={value} number={value} />
   ));
-
-
-  // listItems_.forEach((value) => listItems.push(value));
 
   return listItems
 }
@@ -57,14 +34,15 @@ export const DownloadCSV = (props) => {
   console.log(' test count DownloadCSV=', countDownload);
 
   const [nameFile, setNameFile] = useState(firstValueSelected); //назначаем нулевой элемент массива выбранным по default
-
   const listItems = useRef([]);
-  // const listItems = useRef([]);
-  //   const listItems = useRef([])
-  //   useEffect(() => {
-  //     listItems.current =
-  // })
 
+  // const setNameFileMemo = useMemo(() => {
+  //   return setNameFile(nameFile)
+  // }, [nameFile])
+
+  useEffect(() => {
+    console.log('nameFile changed', nameFile);
+  }, [nameFile])
   const firstNameFileHook = () => {
     console.log('nameFile useEffect DownloadCSV=', firstValueSelected)
     setNameFile(firstValueSelected);
@@ -88,12 +66,18 @@ export const DownloadCSV = (props) => {
       });
     event.preventDefault();// обязательно должно быть  если не вставить, то перезагружается вся страница
   }
+  // const handleChange =useMemo( (event) => {
+  //   return handleChangeMemo(event)
+  // }, [event])
+
 
   const handleChange = (event) => {
     console.log('handleChange = yes');
     // console.log('Change value: event.target.value=', event.target.value);
     console.log('Change value: event.target.value=', event.target.value);
+
     setNameFile(event.target.value);
+    // setNameFileMemo(event.target.value);
   }
   return (
     <>
