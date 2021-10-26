@@ -1,5 +1,6 @@
-import fs from "fs";
-import parse from 'csv-parse';
+// import fs from "fs";
+// import parse from 'csv-parse';
+const memoize = require("memoizee");
 
 // function parseCSV() {
 //   fs.readFile("../data/test_profit_12.csv", "utf8",
@@ -72,7 +73,7 @@ const getDataCSV = async (InputData, updateDataFunc) => {
   } catch (e) { console.log(e) }
 }
 
-async function getDataFile(nameFile) {
+async function getDataFileMemo(nameFile) {
   console.log('START function getDataFile()');
   try {
     // nameFilesSelect = getdircsv.namesFiles.reverse();
@@ -82,10 +83,14 @@ async function getDataFile(nameFile) {
     // console.log('getdircsv data getdircsv=', getdircsv);
     // console.log('getdircsv data loadfile=', loadfile);
     // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
-    console.log('END function getdircsv()');
+    console.log('END function getDataFile()');
     return await postData('/api/message/loadfile', { name: nameFile })
     // updateDataFunc(data);// изменяем стейт в Chart.js
   } catch (e) { console.log('ERROR function getDataFile', e) }
 }
+
+
+
+let getDataFile = memoize(getDataFileMemo);
 
 export { once, postData, getDataCSV, getDataFile };
