@@ -50,7 +50,7 @@ async function firstLoadDataFile(nameFilesSelect) {
     funOne.namesFiles.reverse().forEach((elem) => nameFilesSelect.push(elem));
     console.log('nameFilesSelect_=', nameFilesSelect);
     const nameFile = funOne.namesFiles[0];
-
+    console.log('nameFile firstLoadDataFile=', nameFile);
     // const funTwo = await getDataFile(JSON.stringify(funOne.query_string));
     // const result = funOne+funTwo;
     // getdircsv2().then((result) => console.log('getdircsv2=', result));
@@ -62,7 +62,7 @@ async function firstLoadDataFile(nameFilesSelect) {
 export const Chart = () => {
 
   // const [dataCsv, setDataCsv] = useState(() => testGetdircsv().then((loadfile) => setDataCsv(loadfile)));
-  const [dataCsv, setDataCsv] = useState({ name: "нет данных" });
+  const [dataCsv, setDataCsv] = useState([]);
   const nameFilesSelect = useRef([]);
 
   const updateData = (value) => {
@@ -81,6 +81,11 @@ export const Chart = () => {
   useEffect(hook, []); // если указать files во втором парамметре массиве то бесконечный цикл
   // const [dataCsv, setDataCsv] = useState({ data: 'Данных еще нет' });
 
+
+  useEffect(() => {
+    console.log('Chart.js useEffect dataCsv.length=', dataCsv.length)
+    console.log('Chart.js useEffect dataCsv=', dataCsv)
+  }, [dataCsv]);
   // const updateData = (value) => {
   //   setDataCsv(value)
   // }

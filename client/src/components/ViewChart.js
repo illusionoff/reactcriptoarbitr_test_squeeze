@@ -5,11 +5,26 @@ const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
 let countViewChart = 0;
 
+// function deepEqual(obj1, obj2) {
+//   return JSON.stringify(obj1) === JSON.stringify(obj2);
+// }
+let arrObjData = [];
+function deepEqual(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
 let firstChange = false;
 function ViewChart(props) {
+  arrObjData.push(props);
+  console.log('arrObjData.length=', arrObjData.length);
+  if (arrObjData.length > 6) {
+    console.log('deepEqual [0],[1]', deepEqual(arrObjData[0], arrObjData[1]));
+    console.log('deepEqual [2],[3]', deepEqual(arrObjData[2], arrObjData[3]));
+    console.log('deepEqual [4],[5]', deepEqual(arrObjData[4], arrObjData[5]));
+    console.log('deepEqual [6],[7]', deepEqual(arrObjData[6], arrObjData[7]));
+  }
+  console.log('arrObjData=', arrObjData);
   console.log('props=', props);
   console.log('props.name=', props.name);
-
   // console.log('props.ViewChart.number=', props.ViewChart.number);
 
   countViewChart++;
