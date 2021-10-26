@@ -40,6 +40,11 @@ function ViewChart(props) {
 
   if (firstChange) {
     console.log('ViewChart dataCsv=', props.ViewChart);
+    // for (let key in props.ViewChart) {
+    //   /* ... делать что-то с obj[key] ... */
+    //   props.ViewChart[key].length = props.ViewChart.init.length;
+    //   // obj[key]
+    // }
     // console.log('props.dataCsv=', props.dataCsv);
     Line.animation = false;
 

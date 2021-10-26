@@ -83,7 +83,9 @@ export const Chart = () => {
 
 
   useEffect(() => {
-    console.log('Chart.js useEffect dataCsv.length=', dataCsv.length)
+    if (dataCsv.timeBith) {
+      console.log('Chart.js useEffect dataCsv.timeBith.length=', dataCsv.timeBith.length)
+    }
     console.log('Chart.js useEffect dataCsv=', dataCsv)
   }, [dataCsv]);
   // const updateData = (value) => {
