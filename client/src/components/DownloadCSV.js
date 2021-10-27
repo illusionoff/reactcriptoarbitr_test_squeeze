@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { getDataFile } from '../functions/functions';//../hooks/message.hook
+import { getDataFileMemo } from '../functions/functions';//../hooks/message.hook
 
 function ListSelect(props) {
   // Правильно! Не нужно определять здесь ключ:
@@ -56,7 +56,7 @@ export const DownloadCSV = (props) => {
 
   const handleSubmit = (event) => {
     console.log('nameFile DownloadCSV = ', nameFile);
-    getDataFile(nameFile) //{ name: state.value }
+    getDataFileMemo(nameFile) //{ name: state.value }
       .then((data) => {
         console.log(data); // JSON data parsed by `response.json()` call
         console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');

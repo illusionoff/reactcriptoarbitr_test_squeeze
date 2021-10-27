@@ -3,57 +3,25 @@ import { Line } from 'react-chartjs-2';
 const FONT_AXIS = { size: 16, style: 'italic' };
 const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
-let countViewChart = 0;
 
-// function deepEqual(obj1, obj2) {
-//   return JSON.stringify(obj1) === JSON.stringify(obj2);
-// }
-let arrObjData = [];
-function deepEqual(obj1, obj2) {
-  return JSON.stringify(obj1) === JSON.stringify(obj2);
-}
 let firstChange = false;
 function ViewChart(props) {
   if (props.ViewChart.bayBith) {
-    const my = Object.getOwnPropertyDescriptor(props.ViewChart.bayBith, 'myProperty');
-    const d = Object.getOwnPropertyDescriptor(props.ViewChart.bayBith, '_chartjs');
-    console.log('My ViewChart Object.getOwnPropertyDescriptor(result.bayBith, myProperty', my);
-    console.log(' ViewChart Object.getOwnPropertyDescriptor(result.bayBith, _chartjs', d);
     console.log('props.ViewChart ViewChart.js=', props.ViewChart);
     console.log('props.ViewChart.bayBith ViewChart.js=', props.ViewChart.bayBith);
   }
-  arrObjData.push(props);
-  console.log('arrObjData.length=', arrObjData.length);
-  if (arrObjData.length > 6) {
-    console.log('deepEqual [0],[1]', deepEqual(arrObjData[0], arrObjData[1]));
-    console.log('deepEqual [2],[3]', deepEqual(arrObjData[2], arrObjData[3]));
-    console.log('deepEqual [4],[5]', deepEqual(arrObjData[4], arrObjData[5]));
-    console.log('deepEqual [6],[7]', deepEqual(arrObjData[6], arrObjData[7]));
-  }
-  console.log('arrObjData=', arrObjData);
   console.log('props=', props);
   console.log('props.name=', props.name);
-  // console.log('props.ViewChart.number=', props.ViewChart.number);
-
-  countViewChart++;
-  console.log('countViewChart=', countViewChart);
   if (props.ViewChart.number) {
     firstChange = true;
     console.log('ViewChart.js реальный файл данных передан');
     console.log('ViewChart.js props.ViewChart.number= ', props.ViewChart.number)
-    // testDate = props.ViewChart;
   } else {
     console.log('ViewChart.js реальный файл данных НЕпередан');
   }
 
   if (firstChange) {
     console.log('ViewChart dataCsv=', props.ViewChart);
-    // for (let key in props.ViewChart) {
-    //   /* ... делать что-то с obj[key] ... */
-    //   props.ViewChart[key].length = props.ViewChart.init.length;
-    //   // obj[key]
-    // }
-    // console.log('props.dataCsv=', props.dataCsv);
     Line.animation = false;
 
 
@@ -370,7 +338,7 @@ function ViewChart(props) {
     let testDate = props.ViewChart;
     let numberY = testDate.number;
     let dataY = testDate.timeServer;//
-    let bayBith = testDate.bayBith;
+    // let bayBith = testDate.bayBith;
 
     function fusionNumberTime(timesArr) {
       let newDataY = timesArr.map((elem, index) => {
@@ -689,7 +657,7 @@ function ViewChart(props) {
           label: 'bayBith',
           yAxisID: 'c',
           borderColor: '#bbdefb', //light blue
-          data: bayBith//[1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
+          data: testDate.bayBith//[1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
         }, {
           label: 'sellGate',
           yAxisID: 'd',
@@ -866,19 +834,6 @@ function ViewChart(props) {
         // },
       }
     }
-
-
-    if (bayBith) {
-      const my = Object.getOwnPropertyDescriptor(bayBith, 'myProperty');
-      const d = Object.getOwnPropertyDescriptor(bayBith, '_chartjs');
-      console.log('My ViewChart Object.getOwnPropertyDescriptor(bayBith, myProperty', my);
-      console.log(' ViewChart Object.getOwnPropertyDescriptor(bayBith, _chartjs', d);
-      // console.log('props.ViewChart ViewChart.js=', props.ViewChart);
-      bayBith.push('sadad');
-      console.log('ViewChart Object.getOwnPropertyNames', Object.getOwnPropertyNames(bayBith));
-      console.log('bayBith ViewChart.js=', bayBith);
-    }
-
 
     return (
 

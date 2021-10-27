@@ -3,46 +3,20 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // import { Line } from 'react-chartjs-2';
 // import { DownloadCSV } from './DownloadCSV';
-import { postData, getDataFile, once } from '../functions/functions';//../hooks/message.hook
+import { postData, getDataFileMemo, getDataFile, once } from '../functions/functions';//../hooks/message.hook
 import ViewChart from './ViewChart';
 import { DownloadCSV } from './DownloadCSV';
 import { ChartDescription } from './ChartDescription';
 
-
-// let nameFilesSelect = [];
 async function getNamesFiles() {
   console.log('START function getNamesFiles()');
   try {
-    // let getdircsv = await postData('/api/message/getdircsv', {})
-    // .then(response => {
-    //   // console.log('getdircsv запрос списка файлов в каталоге /api/message/getdircsv ');
-    //   // console.log('getdircsv response=', response);
-    //   // const nameFile = response.namesFiles[response.namesFiles.length - 1];
-    //   // console.log('getdircsv nameFile=', nameFile);
-    //   nameFilesSelect = response.namesFiles.reverse();
-    //   const nameFile = response.namesFiles[0];
-    //   return nameFile
-    // })
     console.log('END function getNamesFiles()');
     return await postData('/api/message/getdircsv', {})
-    // updateDataFunc(data);// изменяем стейт в Chart.js
   } catch (e) { console.log('ERROR function getNamesFiles', e) }
 }
 
-// let testGetdircsvOnce = once(function () {
-//   console.log('Запущено!');
-//   testGetdircsv().then((loadfile) => {
-//     console.log('END getdircsv loadfile=', loadfile);
-//   });
-// });
-
 console.log('this index.js React');
-// let getDataCsvClosureOnce = once(() => {
-//   testGetdircsv().then((loadfile) => {
-//     console.log('END getdircsv loadfile=', loadfile);
-//   })
-// }
-// );
 
 async function firstLoadDataFile(nameFilesSelect) {
   try {
@@ -51,18 +25,12 @@ async function firstLoadDataFile(nameFilesSelect) {
     console.log('nameFilesSelect_=', nameFilesSelect);
     const nameFile = funOne.namesFiles[0];
     console.log('nameFile firstLoadDataFile=', nameFile);
-    // const funTwo = await getDataFile(JSON.stringify(funOne.query_string));
-    // const result = funOne+funTwo;
-    // getdircsv2().then((result) => console.log('getdircsv2=', result));
     return await getDataFile(nameFile)
   } catch (e) { console.log(e) }
 }
 
-
 export const Chart = () => {
-
-  // const [dataCsv, setDataCsv] = useState(() => testGetdircsv().then((loadfile) => setDataCsv(loadfile)));
-  const [dataCsv, setDataCsv] = useState([]);
+  const [dataCsv, setDataCsv] = useState([]);//{ data: 'Данных еще нет' }
   const nameFilesSelect = useRef([]);
 
   const updateData = (value) => {
@@ -75,68 +43,18 @@ export const Chart = () => {
       setDataCsv(loadfile);
     })
   };
-
-
   // Tell react to run useEffect once the component is loaded
   useEffect(hook, []); // если указать files во втором парамметре массиве то бесконечный цикл
-  // const [dataCsv, setDataCsv] = useState({ data: 'Данных еще нет' });
+  // useEffect(() => {
+  //   if (dataCsv.timeBith) {
+  //     console.log('Chart.js useEffect dataCsv.timeBith.length=', dataCsv.timeBith.length)
+  //   }
+  //   console.log('Chart.js useEffect dataCsv=', dataCsv)
+  // }, [dataCsv]);
 
 
-  useEffect(() => {
-    if (dataCsv.timeBith) {
-      console.log('Chart.js useEffect dataCsv.timeBith.length=', dataCsv.timeBith.length)
-    }
-    console.log('Chart.js useEffect dataCsv=', dataCsv)
-  }, [dataCsv]);
-  // const updateData = (value) => {
-  //   setDataCsv(value)
-  // }
-  // return (
-  //   <>
-  //     <div><h3 className="page-title white-text">Write to me</h3></div>
-  //     <DownloadCSV updateData={updateData} />
-  //     <ViewChart ViewChart={dataCsv} />
-
-  //   </>
-  // )
-  // function changeHandler() {
-  //   console.log('this changeHandler');
-  // }
-  // function writeMeHandler() {
-  //   console.log('this writeMeHandler button');
-  //   // setDataCsv(dataCsv);
-  // }
-
-
-  // let name1 = 'name1';
   return (
     <>
-      {/* <h3 className="page-title white-text">Chart</h3>
-      <input
-        placeholder="Введите ваше имя"
-        id="name"
-        type="text"
-        name="name"
-        className="yellow-input validate"
-        minLength="3"
-        // // pattern=".{3,500}"
-        maxLength="30"
-        data-length="30"
-        required
-        value='text'//{form.name}
-        onChange={changeHandler}
-      // onChange={changeHandler}
-      />
-      <div className="card-action">
-        <button
-          // className="btn yellow darken-4"
-          className="btn cyan darken-1"
-          onClick={writeMeHandler}
-        // disabled={loading}
-        >
-          Отправить
-        </button>
-      </div> */}
       <ChartDescription />
       <section id="DownloadCSV">
         <DownloadCSV nameFilesSelect={nameFilesSelect.current} updateData={updateData} />
