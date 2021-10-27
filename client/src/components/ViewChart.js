@@ -14,6 +14,14 @@ function deepEqual(obj1, obj2) {
 }
 let firstChange = false;
 function ViewChart(props) {
+  if (props.ViewChart.bayBith) {
+    const my = Object.getOwnPropertyDescriptor(props.ViewChart.bayBith, 'myProperty');
+    const d = Object.getOwnPropertyDescriptor(props.ViewChart.bayBith, '_chartjs');
+    console.log('My ViewChart Object.getOwnPropertyDescriptor(result.bayBith, myProperty', my);
+    console.log(' ViewChart Object.getOwnPropertyDescriptor(result.bayBith, _chartjs', d);
+    console.log('props.ViewChart ViewChart.js=', props.ViewChart);
+    console.log('props.ViewChart.bayBith ViewChart.js=', props.ViewChart.bayBith);
+  }
   arrObjData.push(props);
   console.log('arrObjData.length=', arrObjData.length);
   if (arrObjData.length > 6) {
@@ -362,8 +370,9 @@ function ViewChart(props) {
     let testDate = props.ViewChart;
     let numberY = testDate.number;
     let dataY = testDate.timeServer;//
+    let bayBith = testDate.bayBith;
 
-    function FusionNumberTime(timesArr) {
+    function fusionNumberTime(timesArr) {
       let newDataY = timesArr.map((elem, index) => {
         let result = elem.toString();
         let numberToString = numberY[index].toString();
@@ -373,9 +382,9 @@ function ViewChart(props) {
       return newDataY
     }
 
-    let strtimeServer = FusionNumberTime(testDate.timeServer);// вместо newDataY
-    let strtimeGate = FusionNumberTime(testDate.timeGate);
-    let strtimeBith = FusionNumberTime(testDate.timeBith);
+    let strtimeServer = fusionNumberTime(testDate.timeServer);// вместо newDataY
+    let strtimeGate = fusionNumberTime(testDate.timeGate);
+    let strtimeBith = fusionNumberTime(testDate.timeBith);
 
     let newDataY = dataY.map((elem, index) => {
       let result = elem.toString();
@@ -680,7 +689,7 @@ function ViewChart(props) {
           label: 'bayBith',
           yAxisID: 'c',
           borderColor: '#bbdefb', //light blue
-          data: testDate.bayBith//[1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
+          data: bayBith//[1.23034442, 1.22054442, 1.21956442, 1.23034442, 1.22384442, 1.215034442, 1.21884442, 1.22834442, 1.22434442, 1.22574442, 1.22654442, 1.22334442, 1.22034442, 1.22294442]
         }, {
           label: 'sellGate',
           yAxisID: 'd',
@@ -857,6 +866,19 @@ function ViewChart(props) {
         // },
       }
     }
+
+
+    if (bayBith) {
+      const my = Object.getOwnPropertyDescriptor(bayBith, 'myProperty');
+      const d = Object.getOwnPropertyDescriptor(bayBith, '_chartjs');
+      console.log('My ViewChart Object.getOwnPropertyDescriptor(bayBith, myProperty', my);
+      console.log(' ViewChart Object.getOwnPropertyDescriptor(bayBith, _chartjs', d);
+      // console.log('props.ViewChart ViewChart.js=', props.ViewChart);
+      bayBith.push('sadad');
+      console.log('ViewChart Object.getOwnPropertyNames', Object.getOwnPropertyNames(bayBith));
+      console.log('bayBith ViewChart.js=', bayBith);
+    }
+
 
     return (
 

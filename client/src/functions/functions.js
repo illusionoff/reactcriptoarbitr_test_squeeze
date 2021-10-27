@@ -1,7 +1,16 @@
 // import fs from "fs";
 // import parse from 'csv-parse';
 const memoize = require("memoizee");
+// import memoizeOne from 'memoize-one';
+// const memoizeOne = require("memoize-one");
 
+const memo = function () {
+  let cache = [];
+  return function (n) {
+    if (cache.includes(n)) { console.log("already in memory") }
+    else { console.log("first"); cache.push(n); }
+  }
+}();
 // function parseCSV() {
 //   fs.readFile("../data/test_profit_12.csv", "utf8",
 //     function (error, input) {
@@ -88,14 +97,68 @@ async function getDataFileMemo(nameFile) {
     // console.log('getdircsv 2запрос загрузки данных выбранного файла /api/message/loadfile ');
     console.log('END function getDataFile()');
     const result = await postData('/api/message/loadfile', { name: nameFile });
+    console.log('result.bayBith from server=', result.bayBith);
+    // result.bayBith = [...result.bayBith];
+    let bayBithArr = [];
+    // for (var i = 0; i < result.bayBith.length; i++) {
+    //   bayBithArr[bayBithArr[i]] = bayBithArr[i];
+    // }
+    // result.bayBith = [...bayBithArr];
+    // for (var field in result.bayBith) {
+    //   if (result.bayBith.hasOwnProperty(field)) {
+    //     var name = result.bayBith[field];
+    //     result[name] = name;
+    //   }
+    // }
+    result.bayBith.myProperty = 'myProperty';
+    console.log('result.bayBith.hasOwnProperty=', result.bayBith.hasOwnProperty('pop'));
+    console.log('result.bayBith.hasOwnProperty myProperty=', result.bayBith.hasOwnProperty('myProperty'));
+    for (let i = 0; i < result.bayBith.length; i++) {
+      bayBithArr[i] = result.bayBith[i];
+    }
+    console.log('bayBithArr=', bayBithArr);
+    // delete result.bayBith.prototype._chartjs;
+    // delete result.prototype._chartjs;
+    // result.bayBith = [1, 2, 3];
+    // console.log('bayBithArr=', bayBithArr);
+    const r = Symbol('Roger');
+    result.bayBith[r] = {
+      name: 'Roger',
+      age: 6
+    }
+    console.log('Object.getOwnPropertySymbols(result.bayBith) =', Object.getOwnPropertySymbols(result.bayBith))
+    Object.defineProperty(result.bayBith, "myProperty", {
+      enumerable: false,
+      writeable: true,
+      configurable: false
+    });
+    // Object.defineProperty(result.bayBith, "_chartjs", {
+    //   // writable: true
+    //   // configurable: false
+    //   value: {}
+    // });
+    const my = Object.getOwnPropertyDescriptor(result.bayBith, 'myProperty');
+    const d = Object.getOwnPropertyDescriptor(result.bayBith, '_chartjs');
+    console.log('My Object.getOwnPropertyDescriptor(result.bayBith, myProperty', my);
+    console.log('Object.getOwnPropertyDescriptor(result.bayBith, _chartjs', d);
     console.log('result download data from server=', result);
     return result
     // updateDataFunc(data);// изменяем стейт в Chart.js
   } catch (e) { console.log('ERROR function getDataFile', e) }
 }
-
-
-
+let showMemoizeArrNames = [];
+let showMemoizeArrData = [];
+// const generateDouble = (f) => (arg) => f(f(arg));
+let showMemoize = (f) => (arg) => {
+  showMemoizeArrNames.push(arg);
+  return f(f(arg));
+}
+// let getDataFileMemo1 = showMemoize(getDataFileMemo)
+// let getDataFile = memoize(getDataFileMemo1);
 let getDataFile = memoize(getDataFileMemo);
+// let getDataFile = memo(getDataFileMemo);
+// const getDataFile = memoizeOne(getDataFileMemo);
+// const getDataFile = fastMemoize(getDataFileMemo);
+console.log('showMemoizeArrNames=', showMemoizeArrNames);
 
 export { once, postData, getDataCSV, getDataFile };
