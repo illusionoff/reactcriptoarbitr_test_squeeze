@@ -14,14 +14,14 @@ h3 {
   margin-top: 100px;
 } */
 
-@media (max-width:920px) {
+@media (max-width:1000px) {
   #chartData2Up , #chartData1Up {
     width: 100%;
     overflow-x: auto
   }
   #chartData2Down , #chartData1Down {
-    width: 920px;
-     height: 460px
+    width: 1000px;
+     height: 500px
   }
 }
 
