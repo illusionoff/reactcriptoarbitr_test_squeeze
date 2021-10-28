@@ -29,15 +29,15 @@ function ViewChart(props) {
       return {
         backgroundColor: gradient,
         datasets: [{
-          label: 'bayOrSellGate',
+          label: 'buyOrSellGate',
           yAxisID: 'a',
           borderColor: 'red',
-          data: testDate.bayOrSellGate
+          data: testDate.buyOrSellGate
         }, {
-          label: 'bayOrSellBith',
+          label: 'buyOrSellBith',
           yAxisID: 'b',
           borderColor: 'green',
-          data: testDate.bayOrSellBith
+          data: testDate.buyOrSellBith
         }]
       };
     }
@@ -153,15 +153,15 @@ function ViewChart(props) {
           borderColor: 'green',
           data: testDate.percentBonus
         }, {
-          label: 'bayGate',
+          label: 'buyGate',
           yAxisID: 'b',
           borderColor: 'blue',
-          data: testDate.bayGate
+          data: testDate.buyGate
         }, {
-          label: 'bayBith',
+          label: 'buyBith',
           yAxisID: 'c',
           borderColor: '#bbdefb', //light blue
-          data: testDate.bayBith
+          data: testDate.buyBith
         }, {
           label: 'sellGate',
           yAxisID: 'd',
