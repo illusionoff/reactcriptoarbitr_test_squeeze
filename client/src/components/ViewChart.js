@@ -4,7 +4,6 @@ const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
 function ViewChart(props) {
   if (props.ViewChart.number) {
-    console.log('ViewChart dataCsv=', props.ViewChart);
     Line.animation = false;
 
     let testDate = props.ViewChart;
@@ -21,7 +20,7 @@ function ViewChart(props) {
       return newDataY
     }
 
-    let strtimeServer = fusionNumberTime(testDate.timeServer);// вместо newDataY
+    let strtimeServer = fusionNumberTime(testDate.timeServer);
     let strtimeGate = fusionNumberTime(testDate.timeGate);
     let strtimeBith = fusionNumberTime(testDate.timeBith);
 
@@ -31,14 +30,12 @@ function ViewChart(props) {
       result = numberToString + '-' + result.substring(result.length - 7);
       return result
     });
-    console.log(newDataY);
-    console.log('newDataY.length=', newDataY.length);
+
     const data = canvas => {
       const ctx = canvas.getContext('2d');
-      console.log('ctx=', ctx);
       const gradient = ctx.createLinearGradient(100, 0, 100, 2);
       return {
-        backgroundColor: gradient, // что-то никакой разницы не видно
+        backgroundColor: gradient,
         datasets: [{
           label: 'bayOrSellGate',
           yAxisID: 'a',
@@ -130,7 +127,7 @@ function ViewChart(props) {
           grid: {
             // offset: true // offset true to get labels in between the lines instead of on the lines
           },
-          labels: strtimeBith,//newDataY, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+          labels: strtimeBith,
           ticks: { color: colorArr }, //colorArr через одного другой цвет'green'
         },
         x2: {
@@ -144,7 +141,7 @@ function ViewChart(props) {
           grid: {
             // offset: true // offset true to get labels in between the lines instead of on the lines
           },
-          labels: strtimeGate,//newDataY2,  // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+          labels: strtimeGate,
           ticks: {
             color: colorArr //colorArr через одного другой цвет'green'
           },
@@ -154,17 +151,15 @@ function ViewChart(props) {
 
     const data2 = canvas => {
       const ctx = canvas.getContext('2d');
-      console.log('ctx=', ctx);
       const gradient = ctx.createLinearGradient(100, 0, 100, 2);
       return {
-        backgroundColor: gradient, // что-то никакой разницы не видно
-        // labels: newDataY,
+        backgroundColor: gradient,
         datasets: [{
           label: 'percentBonus',
           yAxisID: 'a',
           backgroundColor: 'blue',
           borderColor: 'green',
-          data: testDate.percentBonus//percentBonus
+          data: testDate.percentBonus
         }, {
           label: 'bayGate',
           yAxisID: 'b',
@@ -293,32 +288,33 @@ function ViewChart(props) {
           grid: {
             // offset: true // offset true to get labels in between the lines instead of on the lines
           },
-          labels: strtimeServer, // можно в опциях указывать не общий набор данный,  а отдельно для каждой оси х по отдельности
+          labels: strtimeServer,
           ticks: { color: colorArr }, //colorArr через одного другой цвет'green'
         },
       }
     }
 
     return (
-
-      <div>
-        <div id="chartData2Up" >
-          <div id="chartData2Down" >
-            <Line data={data2} id="ChartQuotation"
-              options={options2}
-            />
+      <>
+        <div>
+          <div id="chartData2Up" >
+            <div id="chartData2Down" >
+              <Line data={data2} id="ChartQuotation"
+                options={options2}
+              />
+            </div>
           </div>
-        </div>
-        <hr width="85%" />
-        <div id="chartData1Up" >
-          <div id="chartData1Down" >
-            <Line data={data}
-              height={100}
-              options={options}
-            />
+          <hr width="85%" />
+          <div id="chartData1Up" >
+            <div id="chartData1Down" >
+              <Line data={data}
+                height={100}
+                options={options}
+              />
+            </div>
           </div>
-        </div>
-      </div >
+        </div >
+      </>
     )
   }
 
