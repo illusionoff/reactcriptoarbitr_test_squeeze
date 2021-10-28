@@ -1,21 +1,9 @@
-import React, { useRef } from 'react';
-
 import { Line } from 'react-chartjs-2';
 const FONT_AXIS = { size: 16, style: 'italic' };
 const FONT_TITLE_CHART = { size: 24, style: 'italic' };
 
 function ViewChart(props) {
-  const firstChange = useRef(false);
-
   if (props.ViewChart.number) {
-    firstChange.current = true;
-    console.log('ViewChart.js реальный файл данных передан');
-    console.log('ViewChart.js props.ViewChart.number= ', props.ViewChart.number)
-  } else {
-    console.log('ViewChart.js реальный файл данных НЕпередан');
-  }
-
-  if (firstChange.current) {
     console.log('ViewChart dataCsv=', props.ViewChart);
     Line.animation = false;
 
