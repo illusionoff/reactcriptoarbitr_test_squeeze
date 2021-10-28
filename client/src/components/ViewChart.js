@@ -8,7 +8,6 @@ function ViewChart(props) {
 
     let testDate = props.ViewChart;
     let numberY = testDate.number;
-    let dataY = testDate.timeServer;
 
     function fusionNumberTime(timesArr) {
       let newDataY = timesArr.map((elem, index) => {
@@ -23,13 +22,6 @@ function ViewChart(props) {
     let strtimeServer = fusionNumberTime(testDate.timeServer);
     let strtimeGate = fusionNumberTime(testDate.timeGate);
     let strtimeBith = fusionNumberTime(testDate.timeBith);
-
-    let newDataY = dataY.map((elem, index) => {
-      let result = elem.toString();
-      let numberToString = numberY[index].toString();
-      result = numberToString + '-' + result.substring(result.length - 7);
-      return result
-    });
 
     const data = canvas => {
       const ctx = canvas.getContext('2d');
