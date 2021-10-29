@@ -1,48 +1,41 @@
-// Проверяем функцию defaultView  изменение цвета категорий в соотвествии с default = req.user.calc.costs.categories.name
+// Проверяем функцию processFile которая читает файл .csv
+// парсит его при помощи csv-parse и возвращает объект удобный для отрисовки графиков
 const assert = require("assert").strict;
 const fs = require("fs");
 const { processFile } = require("../../routes/routerMessage.js");
-// const FILES_FOLDER = config.get('FILES_FOLDER');
-const FILE_NAME = "file.csv";
 
-const fileContent = fs.readFileSync(
-  // "./mochaTesting/thisProject/defaultView/days.json",
-  `./mochaTesting/thisProject/${FILE_NAME}`,
-  // "file.csv",
+const FILE_FOLDER_ACTUAL = "./mochaTesting/thisProject/sampleActual";
+const FILE_FOLDER_TEST = "./mochaTesting/thisProject/testData";
+const FILE_NAMES = ["file_1.csv", "file_2.csv"];
+const SAMPLE_FILE_NAMES_ACTUAL = ["sample_1.json", "sample_2.json"];
+
+const sampleFile_1 = fs.readFileSync(
+  `${FILE_FOLDER_ACTUAL}/${SAMPLE_FILE_NAMES_ACTUAL[0]}`,
   "utf8"
 );
-console.log('fiel.csv fs read', fileContent);
+const sampleFile_2 = fs.readFileSync(
+  `${FILE_FOLDER_ACTUAL}/${SAMPLE_FILE_NAMES_ACTUAL[1]}`,
+  "utf8"
+);
+const sampleFileObj_1 = JSON.parse(sampleFile_1);
+const sampleFileObj_2 = JSON.parse(sampleFile_2);
 
+describe(" Test function processFile() test file #1", function () {
+  it("should view data object for chart test file #1", function () {
+    processFile(`${FILE_FOLDER_TEST}/${FILE_NAMES[0]}`)
+      .then((dataObj) => {
+        assert.deepStrictEqual(sampleFileObj_1, dataObj);
+      })
+      .catch(console.error)
+  });
+});
 
-processFile(`${FILE_NAME}`)
-  .then((dataObj) => {
-    // res.status(201).json(dataObj);
-    console.log(json(dataObj))
-  })
-  .catch(console.error)
-// const days = JSON.parse(fileContent);
-
-/* global describe, it */
-// describe("defaultView test", function () {
-//   it("should view day0", function () {
-//     const dayIndex = 0;
-//     defaultView(defaultName, defaultColor, day0, dayIndex, days);
-//     assert.deepStrictEqual(days[0].colorCategories, [
-//       "green",
-//       "teal",
-//       "blue",
-//       "green",
-//     ]);
-//   });
-
-//   it("should view day1", function () {
-//     const dayIndex = 1;
-//     defaultView(defaultName, defaultColor, day1, dayIndex, days);
-//     assert.deepStrictEqual(days[1].colorCategories, [
-//       "aqua",
-//       "teal",
-//       "blue",
-//       "navy",
-//     ]);
-//   });
-// });
+describe(" Test function processFile() test file #2", function () {
+  it("should view data object for chart test file #2", function () {
+    processFile(`${FILE_FOLDER_TEST}/${FILE_NAMES[1]}`)
+      .then((dataObj) => {
+        assert.deepStrictEqual(sampleFileObj_2, dataObj);
+      })
+      .catch(console.error)
+  });
+});
