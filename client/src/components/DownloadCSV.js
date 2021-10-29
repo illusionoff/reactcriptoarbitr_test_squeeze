@@ -19,15 +19,13 @@ export const DownloadCSV = (props) => {
   const [nameFile, setNameFile] = useState(firstValueSelected);
   const listItems = useRef([]);
 
-  useEffect(() => {
-  }, [nameFile])
   const firstNameFileHook = () => {
     setNameFile(firstValueSelected);
     listItemsFun(props.nameFilesSelect, listItems.current);
   }
 
   // Tell react to run useEffect once the component is loaded
-  useEffect(firstNameFileHook, [firstValueSelected]);
+  useEffect(firstNameFileHook, [firstValueSelected, props.nameFilesSelect]);
 
   const handleSubmit = (event) => {
     getDataFileMemo(nameFile)
