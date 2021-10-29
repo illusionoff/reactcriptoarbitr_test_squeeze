@@ -1,6 +1,6 @@
-Number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeGate,timeBith,percentBonus,bayOrSellGate,bayOrSellBith,init
-Number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeGate,timeBith,percentBonus,bayOrSellGate,bayOrSellBith,init
-Number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeGate,timeBith,percentBonus,bayOrSellGate,bayOrSellBith,init
+Number,buyGate,buyBith,sellGate,sellBith,diffSell,diffBuy,timeServer,timeGate,timeBith,percentBonus,buyOrSellGate,buyOrSellBith,init
+Number,buyGate,buyBith,sellGate,sellBith,diffSell,diffBuy,timeServer,timeGate,timeBith,percentBonus,buyOrSellGate,buyOrSellBith,init
+Number,buyGate,buyBith,sellGate,sellBith,diffSell,diffBuy,timeServer,timeGate,timeBith,percentBonus,buyOrSellGate,buyOrSellBith,init
 1,1.07128314,1.07910825,1.07582736,1.08424361,0.00328089,-0.01296047,1633546756764,1633546756565,1633546751783,0.003,2,0,1
 2,1.07285,1.07910825,1.0774506,1.08424361,0.00165765,-0.01139361,1633546757170,1633546756959,1633546751783,0.0015,2,0,1
 3,1.0727003,1.07910825,1.0775508,1.08424361,0.00155745,-0.01154331,1633546757272,1633546757058,1633546751783,0.0014,2,0,1
@@ -51,7 +51,7 @@ Number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeGate,ti
 48,1.06053468,1.06703941,1.0651761,1.08333248,0.00186331,-0.0227978,1633662707404,1633662706823,1633662707296,0.0017,2,1,0
 49,1.06055464,1.06703941,1.0651761,1.08333248,0.00186331,-0.02277783,1633662707556,1633662707342,1633662707296,0.0017,1,1,1
 50,1.0607742,1.06703941,1.06528632,1.08333248,0.00175309,-0.02255827,1633662708859,1633662708660,1633662707842,0.0016,2,1,1
-Number,bayGate,bayBith,sellGate,sellBith,diffSell,diffBay,timeServer,timeGate,timeBith,percentBonus,bayOrSellGate,bayOrSellBith,init
+Number,buyGate,buyBith,sellGate,sellBith,diffSell,diffBuy,timeServer,timeGate,timeBith,percentBonus,buyOrSellGate,buyOrSellBith,init
 1,1.07258054,1.07811,1.07703978,1.08433373,0.00107022,-0.01175319,1634032568249,1634032568057,1634032567823,0.001,2,0,1
 2,1.07258054,1.07811,1.07690952,1.08433373,0.00120048,-0.01175319,1634032568399,1634032568146,1634032567823,0.0011,0,0,1
 3,1.07258054,1.07811,1.07693958,1.08433373,0.00117042,-0.01175319,1634032568428,1634032568248,1634032567823,0.0011,0,0,1
