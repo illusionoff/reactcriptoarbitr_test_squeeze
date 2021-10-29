@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { postData, getDataFile } from '../functions/functions';//../hooks/message.hook
+import { postData, getDataFile } from '../functions/functions';
 import ViewChart from './ViewChart';
 import { DownloadCSV } from './DownloadCSV';
 import { ChartDescription } from './ChartDescription';
@@ -24,7 +24,7 @@ async function firstLoadDataFile(nameFilesSelect) {
 }
 
 export const Chart = () => {
-  const [dataCsv, setDataCsv] = useState([]);//{ data: 'Данных еще нет' }
+  const [dataCsv, setDataCsv] = useState([]);
   const nameFilesSelect = useRef([]);
 
   const updateData = (value) => {

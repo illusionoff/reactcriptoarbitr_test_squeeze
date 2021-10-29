@@ -37,6 +37,7 @@ const processFile = async (CSVFilePath) => {
     };
     count++;
   }
+  console.log('processFile dataObj=', dataObj)
   return dataObj//records
 }
 
@@ -86,4 +87,6 @@ router.post('/loadfile',
     }
   });
 
-module.exports = router;
+// module.exports = router
+// export { router, processFile };
+module.exports = { router, processFile }
