@@ -1,8 +1,4 @@
-
-
 export const DevelopmentDescription = () => {
-
-
   return (
     <>
       <h3 className="page-title white-text">Development description</h3>

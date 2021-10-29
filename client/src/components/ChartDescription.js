@@ -1,5 +1,3 @@
-
-
 export const ChartDescription = () => {
   return (
     <>
@@ -11,6 +9,5 @@ export const ChartDescription = () => {
               </blockquote>
       </div >
     </>
-
   )
 }
