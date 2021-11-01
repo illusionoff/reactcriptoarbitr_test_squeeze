@@ -10,22 +10,22 @@ export const TechnicalTask = () => {
           <h5><p>Общая информация о проекте.</p></h5>
           Исседование возможности извлечения прибыли на разнице курсов между двумя криптобиржами (межбиржевой арбитраж).
           <h5><p> Технологии</p></h5>
-          Серверное железо :
+          <span className="bold-text">Серверное железо :</span>
           <ul className="browser-default">
             <li>VPS (VDS) </li>
             <li>1 ядро CPU, 1 Gb оперативной памяти</li>
             <li>SSD 5 Gb</li>
           </ul>
-          Серверные (Back-end) технологии:
+          <span className="bold-text">Серверные (Back-end) технологии :</span>
           <ul className="browser-default">
             <li>Node.js</li>
             <li>nginx</li>
           </ul>
-          Технологии клиента:
+          <span className="bold-text">Технологии клиента:</span>
           <ul className="browser-default">
             <li>современный браузер, мобильный браузер (2021 г.)</li>
           </ul>
-          Front-end технологии:
+          <span className="bold-text">Front-end технологии :</span>
           <ul className="browser-default">
             <li>React 17</li>
             <li>materialize.css 1.0</li>

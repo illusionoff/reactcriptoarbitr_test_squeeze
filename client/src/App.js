@@ -3,6 +3,7 @@ import { Chart } from './components/Chart';
 import { TechnicalTask } from './components/TechnicalTask';
 import { Navbar } from './components/Navbar';
 import { DevelopmentDescription } from './components/DevelopmentDescription';
+import { Result } from './components/Result';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </section >
         <section id="chart">
           <Chart />
+        </section >
+        <section id="Result">
+          <Result />
         </section >
       </main>
     </>

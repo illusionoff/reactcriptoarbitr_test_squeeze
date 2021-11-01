@@ -46,7 +46,9 @@ export const Chart = () => {
       <section id="DownloadCSV">
         <DownloadCSV nameFilesSelect={nameFilesSelect.current} updateData={updateData} />
       </section>
-      <ViewChart ViewChart={dataCsv} />
+      <section id="ViewChart">
+        <ViewChart ViewChart={dataCsv} />
+      </section>
     </>
   )
 }

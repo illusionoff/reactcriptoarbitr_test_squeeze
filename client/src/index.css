@@ -8,6 +8,12 @@ h3 {
   background-color:#757575;
 }
 
+.bold-text {
+  font-weight:500
+}
+#ViewChart {
+  padding-bottom: 30px;
+}
 @media (max-width:1000px) {
   #chartData2Up , #chartData1Up {
     width: 100%;
@@ -15,7 +21,6 @@ h3 {
   }
   #chartData2Down , #chartData1Down {
     width: 1000px;
-     height: 500px
   }
 }
 
@@ -57,6 +62,12 @@ nav.nav-extended .nav-wrapper {
   }
 }
 
+@media (max-width:400px) {
+    #DevelopmentDescription ul.browser-default li ul {
+    padding: 0; /*Убираем поля */
+    margin-left: 30px; /* Отступ слева */
+  }
+}
 #DevelopmentDescription .container, #TechnicalTask .container, #chart .container {
   padding-bottom: 30px;
 }

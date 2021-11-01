@@ -43,18 +43,18 @@ export const DownloadCSV = (props) => {
 
   return (
     <>
-      <blockquote>
-        DownloadCSV
-      </blockquote>
-      <div className="center">
-        <form onSubmit={handleSubmit} >
-          <label className="center">
-            <select name="namesFiles" id="select_downloadcsv" className="width180" value={nameFile} onChange={handleChange}>
-              {listItems.current}
-            </select>
-          </label>
-          <input type="submit" value="Загрузить файл" className="btn grey darken-1 width180 " />
-        </form>
+      <div className="container">
+        <h5 className="center"><p> Загрузка файла графиков</p></h5>
+        <div className="center">
+          <form onSubmit={handleSubmit} >
+            <label className="center">
+              <select name="namesFiles" id="select_downloadcsv" className="width180" value={nameFile} onChange={handleChange}>
+                {listItems.current}
+              </select>
+            </label>
+            <input type="submit" value="Загрузить файл" className="btn grey darken-1 width180 " />
+          </form>
+        </div>
       </div>
     </>
   )
