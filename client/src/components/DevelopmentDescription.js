@@ -28,7 +28,7 @@ export const DevelopmentDescription = () => {
         <span className="bold-text">Функции  testsqueezebith :</span>
         <ul className="browser-default">
           <li>Анализ скорости (ping) поступления информации о котировках между своим сервером и биржой Bithump Global (Bithumb.pro).</li>
-          <li>Запись данных в файл  при превышении 1.5 % цены вверх или вниз от средней цены за последние 5 минут.</li>
+          <li>Запись данных в файл  при превышении 1.5% цены вверх или вниз от средней цены за последние 5 минут.</li>
           <li>Запись всех данных в файл:
             <ul className="browser-default">
               <li>цена sell, buy;</li>
