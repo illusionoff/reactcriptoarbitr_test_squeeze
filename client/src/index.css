@@ -22,14 +22,14 @@ nav {
 nav.nav-extended .nav-wrapper {
   min-height: 30px;
   line-height: 36px;
-  height: 30px;
+  height: 40px;
 }
 .tabs.tabs-transparent .tab a, .tabs.tabs-transparent .tab.disabled a, .tabs.tabs-transparent .tab.disabled a:hover {
   color: rgba(255,255,255,0.5);
 }
 
 .tabs .tab {
-  line-height: 34px;
+  line-height: 20px;
 }
 
 .tabs.tabs-transparent {
@@ -37,20 +37,20 @@ nav.nav-extended .nav-wrapper {
 }
 
 @media (max-width:500px) {
-  .navTab {
+  /* .navTab {
     font-size: 14px;
-  }
+  } */
 
   #brand-logo {
     font-size: 22px;
   }
 
-  nav.nav-extended .nav-wrapper {
+  /* nav.nav-extended .nav-wrapper {
     min-height: 30px;
-    line-height: 36px;
-    /* height: auto; */
-    height: 30px;
-  }
+    line-height: 36px; */
+    /* height: auto; ///////////*/
+    /* height: 30px;
+  } */
 }
 
 @media (max-width:400px) {
@@ -59,7 +59,18 @@ nav.nav-extended .nav-wrapper {
     margin-left: 30px; /* Отступ слева */
   }
 }
-#DevelopmentDescription .container, #TechnicalTask .container, #chart .container {
+
+#dev:before {
+  content:'dev';
+}
+
+@media (min-width:500px) {
+  #dev:after {
+    content:'elopment';
+  }
+}
+
+#DevelopmentDescription .container, #TechnicalTask .container, #chart .container, #Result .container{
   padding-bottom: 30px;
 }
 
