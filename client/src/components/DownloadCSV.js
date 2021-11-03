@@ -41,7 +41,10 @@ export const DownloadCSV = (props) => {
 
   const [nameFile, setNameFile] = useState(firstValueSelected);
   const listItems = useRef([]);
-  // const getFileNameMemo = useMemo(() => getDataFile(nameFile), [nameFile]);
+  const getFileNameMemo = useMemo(() => {
+    console.log('getFileNameMemo!!!! DownloadCSV')
+    return getDataFile(nameFile)
+  }, [nameFile]);
   // const objFinal = useMemoCompare(obj, (prev, next) => {
   //   return prev && prev === next;
   // });
@@ -73,15 +76,15 @@ export const DownloadCSV = (props) => {
   useEffect(firstNameFileHook, [firstValueSelected, props.nameFilesSelect]);
 
   const handleSubmit = (event) => {
-    getDataFileMemo(nameFile)
-      .then((data) => {
-        console.log(data);
-        console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
-        props.updateData(data);
-      });
+    // getDataFileMemo(nameFile)
+    //   .then((data) => {
+    //     console.log(data);
+    //     console.log('запрос загрузки данных выбранного файла /api/message/loadfile ');
+    //     props.updateData(data);
+    //   });
 
     // getFileNameMemo(nameFile);
-    // props.updateData(data);
+    // props.updateData(getFileNameMemo);
 
 
     event.preventDefault();// обязательно должно быть  если не вставить, то перезагружается вся страница
