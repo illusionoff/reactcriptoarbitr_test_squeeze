@@ -1,4 +1,7 @@
 @import "~materialize-css/dist/css/materialize.min.css";
+body {
+  font-size: 18px;
+}
 
 h3 {
   padding: 20px 30px;
@@ -8,12 +11,20 @@ h3 {
   background-color:#757575;
 }
 
+h5 {
+  font-weight:500
+}
+
+/* span {
+  font-size: 18px;
+} */
+
 .bold-text {
   font-weight:500
 }
-#ViewChart {
+/* #ViewChart {
   padding-bottom: 30px;
-}
+} */
 
 nav {
   background-color: #747474;
@@ -53,12 +64,7 @@ nav.nav-extended .nav-wrapper {
   } */
 }
 
-@media (max-width:400px) {
-    #DevelopmentDescription ul.browser-default li ul {
-    padding: 0; /*Убираем поля */
-    margin-left: 30px; /* Отступ слева */
-  }
-}
+
 
 #dev:before {
   content:'dev';
@@ -70,12 +76,35 @@ nav.nav-extended .nav-wrapper {
   }
 }
 
-#DevelopmentDescription .container, #TechnicalTask .container, #chart .container, #Result .container{
+#DevelopmentDescription .container, #TechnicalTask .container, #chart .container, #Result .container, #ViewChart{
   padding-bottom: 30px;
 }
 
 #DownloadCSV .container  {
   padding-bottom: 0px;
+}
+
+@media (max-width:400px) {
+  body {
+    font-size: 14px;
+  }
+
+  h3 {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    /* margin-top: 0px; */
+    font-size: 24px;
+    /* background-color:#757575; */
+  }
+
+  #DevelopmentDescription .container, #TechnicalTask .container, #chart .container, #Result .container, #ViewChart{
+    padding-bottom: 20px;
+  }
+
+    #DevelopmentDescription ul.browser-default li ul {
+    padding: 0; /*Убираем поля */
+    margin-left: 30px; /* Отступ слева */
+  }
 }
 
 select{
