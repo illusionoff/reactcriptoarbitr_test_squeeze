@@ -21,7 +21,7 @@ function App() {
         <section id="chart">
           <Chart />
         </section >
-        <section id="Result">
+        <section id="Result" className="full-height">
           <Result />
         </section >
       </main>
