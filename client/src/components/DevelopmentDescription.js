@@ -7,13 +7,18 @@ export const DevelopmentDescription = () => {
 
         <span className="bold-text">back-end :</span>
         <ul className="browser-default">
-          <li>criptoarbitr_test - основное приложения</li>
-          <li>testsqueezebith - вспомогательное приложения</li>
+          <li>
+            <a href="https://github.com/illusionoff/criptoarbitr_test" target="_blanc" >
+              criptoarbitr_test</a>- основное приложения</li>
+          <li><a href="https://github.com/illusionoff/testsqueezebith" target="_blanc" >
+            testsqueezebith</a> - вспомогательное приложения</li>
         </ul>
 
         <span className="bold-text">front-end :</span>
         <ul className="browser-default">
-          <li>reactcriptoarbitr_test_squeeze - размещение информации о проекте, вывод данных работы проекта  в виде графиков</li>
+          <li>
+            <a href="https://github.com/illusionoff/reactcriptoarbitr_test_squeeze" target="_blanc" >
+              reactcriptoarbitr_test_squeeze</a> - размещение информации о проекте, вывод данных работы проекта  в виде графиков</li>
         </ul>
 
         <span className="bold-text">Функции  criptoarbitr_test :</span>
