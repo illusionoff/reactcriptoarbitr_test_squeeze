@@ -4,8 +4,8 @@ const assert = require("assert").strict;
 const fs = require("fs");
 const { processFile } = require("../../routes/routerMessage.js");
 
-const FILE_FOLDER_ACTUAL = "./mochaTesting/thisProject/sampleActual";
-const FILE_FOLDER_TEST = "./mochaTesting/thisProject/testData";
+const FILE_FOLDER_ACTUAL = "./mochaTesting/processFile/sampleActual";
+const FILE_FOLDER_TEST = "./mochaTesting/processFile/testData";
 const FILE_NAMES = ["file_1.csv", "file_2.csv"];
 const SAMPLE_FILE_NAMES_ACTUAL = ["sample_1.json", "sample_2.json"];
 
