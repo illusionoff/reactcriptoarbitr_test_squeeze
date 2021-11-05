@@ -288,7 +288,7 @@ function ViewChart(props) {
 
     return (
       <>
-        <div>
+        <div className="noneBackground">
           <div id="chartData2Up" >
             <div id="chartData2Down" >
               <Line data={data2} id="ChartQuotation"

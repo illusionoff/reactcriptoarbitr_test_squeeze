@@ -1,4 +1,19 @@
 @import "~materialize-css/dist/css/materialize.min.css";
+/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:500,600,700 1"); */
+
+main {
+  background: url(font.png) repeat;
+}
+
+.noneBackground {
+  background: white;
+}
+
+html {
+  /* font-family: Georgia,sans-serif; */
+  font-family: Georgia
+}
+
 body {
   font-size: 18px;
 }
@@ -12,7 +27,8 @@ h3 {
 }
 
 h5 {
-  font-weight:500
+  /* font-weight:500 */
+  font-weight: bold
 }
 
 /* span {
@@ -20,7 +36,8 @@ h5 {
 } */
 
 .bold-text {
-  font-weight:500
+  /* font-weight:500 */
+  font-weight: bold
 }
 /* #ViewChart {
   padding-bottom: 30px;
@@ -86,7 +103,8 @@ nav.nav-extended .nav-wrapper {
 
 @media (max-width:400px) {
   body {
-    font-size: 14px;
+    /* font-size: 14px; */
+    font-size: 16px;
   }
 
   h3 {
@@ -97,6 +115,7 @@ nav.nav-extended .nav-wrapper {
     /* background-color:#757575; */
   }
 
+
   #DevelopmentDescription .container, #TechnicalTask .container, #chart .container, #Result .container, #ViewChart{
     padding-bottom: 20px;
   }
@@ -104,6 +123,9 @@ nav.nav-extended .nav-wrapper {
     #DevelopmentDescription ul.browser-default li ul {
     padding: 0; /*Убираем поля */
     margin-left: 30px; /* Отступ слева */
+  }
+  p {
+    font-size: 1.2rem;
   }
 }
 
