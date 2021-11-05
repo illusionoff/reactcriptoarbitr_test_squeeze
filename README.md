@@ -21,6 +21,40 @@ Criptoarbitr
 * Визуализация данных в виде диаграмм
 * Адаптивный дизайн
 
+Проект состоит из двух back-end приложений и одного front-end приложения:
+
+**back-end :**
+* [criptoarbitr_test](https://github.com/illusionoff/criptoarbitr_test) - основное приложения
+* [testsqueezebith](https://github.com/illusionoff/testsqueezebith) - вспомогательное приложения
+
+**front-end :**
+* [reactcriptoarbitr_test_squeeze](https://github.com/illusionoff/testsqueezebith) - размещение информации о проекте, вывод данных работы проекта в виде графиков
+
+**Функции criptoarbitr_test :**
+* Загрузка данных о комиссиях двух бирж и интересующих монетах
+* Получение данных о котировках выбранной монеты с двух бирж одновременно
+* Сравнение котировок между двумя биржами с учетом комиссий
+* Принятие решения - получение сигнала при достижении необходимой прибыли ( профита)
+* Запись данных в .CSV файл основных параметров котировок с максимальной детализацией
+
+**Функции testsqueezebith :**
+* Анализ скорости (ping) поступления информации о котировках между своим сервером и биржой Bithump Global (Bithumb.pro)
+* Запись данных в файл при превышении 1.5% цены вверх или вниз от средней цены за последние 5 минут
+* Запись всех данных в файл :
+* цена sell, buy
+    + время сервера Bithump источник №1
+    + время сервера Bithump источник №2
+    + разница времени между “своим” сервером и двумя источниками времени Bithump
+    + нахождение средней разницы во времени между “своим” сервером и двумя источниками времени Bithump
+* Принятие решения - получение сигнала при достижении необходимой прибыли ( профита)
+* Запись данных в .CSV файл основных параметров котировок с максимальной детализацией
+**Примечание: под “своим” сервером, подразумевается сервер, на котором будет разворачиваться проект**
+* Нахождение пяти точек, имеющих наибольшее отклонение от среднего значения цены за последние 5 минут по sell и buy
+
+**Функции reactcriptoarbitr_test_squeeze :**
+* Описание проекта в виде web приложения
+* Загрузка файлов статистики работающего проекта
+* Визуализация данных из файлов в виде графиков
 
  В ходе разрабоки проекта были задействованы следующие технологии, модули:
  ----
@@ -29,53 +63,28 @@ Criptoarbitr
 :----|:---------
 Node.js| среда выполнения
 npm | менеджер пакетов
-Express| библиотека
-handlebars| шаблонизатор для страниц Html
-bcrypt| хеширования паролей
-crypto| хеширования строки для изменения забытого пароля
-connect-flash|  для хранения и передачи сообщений
-connect-mongodb-session|  для хранения сеансов в MongoDB
-csurf|  для защиты сеансов сессии от подделки- взлома
+Express| библиотека/framework
 express-validator|  валидация форм
-winston|  логирование
-helmet| защита приложений express через различные заголовки HTTP
-moment-timezone|  поддержка часовых поясов IANA для Moment.js
-mongoose| ODM ждя MongoDB
-nodemailer| отправка почты
-passport| авторизация, решистрация через соцсети и т.д.
-underscore| библиотека функций. Использую для проверки на корректную дату _.isDate(date)
 eslint| выявление ошибок в коде
-prettier| форматирование кода и автоформатирование при сохранении
 mocha|  автотесты
 nodemon|  автоматического перезапуска проекта при изменении файлов проекта в dev
 v1.0.0_materialize.min.js|Frontend библиотека
-fontawesomecom | Иконки
-https://cdn.jsdelivr.net/npm/chart.js@2.9.4 | диаграммы
+ws| реализация клиента и сервера WebSocket
+reconnecting-websocket| автоматическое переподключение, если соединение было закрыто
+chart.js | диаграммы
+react-chartjs-2 | диаграммы в React для chartjs
+config | библиотека конфигурационных данных
+csv-parse | парсинг .csv файлов
+kill-port | уничтожение процесса на определенном порту
+node-fetch | аналог window.fetchAPI для node.js
+concurrently | одновременное выполнение нескольких команд, процессов
+cross-env | использование переменных среды на разных платформах
 
-Дополнительные модули:
-----
-express-handlebars
-express-session
-express-winston
-passport-facebook
-passport-google-oauth20
-passport-local
-eslint-config-airbnb-base
-eslint-config-prettier
-eslint-plugin-html
-eslint-plugin-import
-eslint-plugin-mocha
-eslint-plugin-node
-eslint-plugin-prettier
 
 Автотесты:
 ----
-* Проверяем функцию defaultView  изменение цвета категорий в соотвествии с ```default = req.user.calc.costs.categories.name```
-[testDefaultView.js](https://github.com/illusionoff/homemoneycalc/blob/main/mochaTesting/thisProject/defaultView/testDefaultView.js) <br/>
-Запуск: "npm run test2"
-
-* Проверяем функцию monthOrYearView  вывода информации по выбранному месяцу или году в виде массивов для отображения в талице на frontend
-[testMonthOrYearView.js](https://github.com/illusionoff/homemoneycalc/blob/main/mochaTesting/thisProject/monthOrYearView/testMonthOrYearView.js) <br/>
-Запуск: "npm test"
+* Проверяем функцию processFile, которая читает файл.csv, парсит его при помощи csv-parse и возвращает объект удобный для отрисовки графиков
+[testReadDataFromFile.js](mochaTesting/processFile/testReadDataFromFile.js) <br/>
+Запуск: "npm run test"
 
 [Вверх](#anchor)
