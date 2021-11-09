@@ -1,10 +1,9 @@
 <a id="anchor"></a>
 ##### README.markdown
 
-Criptoarbitr
-=============
-Исследовательский проект
---------
+# Criptoarbitr
+
+## Исследовательский проект
 
 #### Проект Criptoarbitr это исследование возможностей извлечения прибыли на разнице курсов между двумя криптобиржами (межбиржевой арбитраж).
 
@@ -26,8 +25,8 @@ Criptoarbitr
 Проект состоит из двух back-end приложений и одного front-end приложения:
 
 **back-end :**
-* [criptoarbitr_test](https://github.com/illusionoff/criptoarbitr_test) - основное приложения
-* [testsqueezebith](https://github.com/illusionoff/testsqueezebith) - вспомогательное приложения
+* [criptoarbitr_test](https://github.com/illusionoff/criptoarbitr_test) - основное приложение
+* [testsqueezebith](https://github.com/illusionoff/testsqueezebith) - вспомогательное приложение
 
 **front-end :**
 * [reactcriptoarbitr_test_squeeze](https://github.com/illusionoff/reactcriptoarbitr_test_squeeze) - размещение информации о проекте, вывод данных работы проекта в виде графиков
