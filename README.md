@@ -30,7 +30,7 @@ Criptoarbitr
 * [testsqueezebith](https://github.com/illusionoff/testsqueezebith) - вспомогательное приложения
 
 **front-end :**
-* [reactcriptoarbitr_test_squeeze](https://github.com/illusionoff/testsqueezebith) - размещение информации о проекте, вывод данных работы проекта в виде графиков
+* [reactcriptoarbitr_test_squeeze](https://github.com/illusionoff/reactcriptoarbitr_test_squeeze) - размещение информации о проекте, вывод данных работы проекта в виде графиков
 
 **Функции criptoarbitr_test :**
 * Загрузка данных о комиссиях двух бирж и интересующих монетах
