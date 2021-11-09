@@ -9,9 +9,9 @@ export const DevelopmentDescription = () => {
         <ul className="browser-default">
           <li>
             <a href="https://github.com/illusionoff/criptoarbitr_test" target="_blanc" >
-              criptoarbitr_test</a>- основное приложения</li>
+              criptoarbitr_test</a>- основное приложение</li>
           <li><a href="https://github.com/illusionoff/testsqueezebith" target="_blanc" >
-            testsqueezebith</a> - вспомогательное приложения</li>
+            testsqueezebith</a> - вспомогательное приложение</li>
         </ul>
 
         <span className="bold-text">front-end :</span>
