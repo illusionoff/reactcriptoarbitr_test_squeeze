@@ -93,6 +93,16 @@ nav.nav-extended .nav-wrapper {
   }
 }
 
+#task:after {
+  content:'task';
+}
+
+@media (min-width:370px) {
+  #task:before {
+    content:'Technical';
+  }
+}
+
 #DevelopmentDescription .container, #TechnicalTask .container, #chart .container, #Result .container, #ViewChart{
   padding-bottom: 30px;
 }
