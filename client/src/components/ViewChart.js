@@ -8,6 +8,7 @@ function ViewChart(props) {
 
     let testDate = props.ViewChart;
     let numberY = testDate.number;
+    const COUNT = testDate.number.length;
 
     function fusionNumberTime(timesArr) {
       let newDataY = timesArr.map((elem, index) => {
@@ -42,7 +43,7 @@ function ViewChart(props) {
       };
     }
 
-    let colorArr = Array(29).fill('red').map((el, i, array) => {
+    let colorArr = Array(COUNT).fill('red').map((el, i, array) => {
       return array[i] = i % 2 === 0 ? '#566573' : 'green'
     });
 
